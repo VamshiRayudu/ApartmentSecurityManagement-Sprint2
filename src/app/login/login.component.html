@@ -1,1 +1,10 @@
-<p>login works!</p>
+<div class="container">
+    <div>
+        Email Id : <input type="text" name="email" [(ngModel)]="email"><br>
+        Password : <input type="password" name="password" [(ngModel)]="password"><br>
+        Role : <input type="text" name="role" [(ngModel)]="role"><br>
+    </div>
+    <button (click)=checkLogin() class="btn btn-success">
+        Login
+    </button>
+</div>

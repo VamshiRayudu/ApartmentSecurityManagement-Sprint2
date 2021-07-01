@@ -47,6 +47,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AddAdminComponent } from './admin/add-admin.component';
 import { EditAdminComponent } from './admin/edit-admin.component';
 import { DeleteAdminComponent } from './admin/delete-admin.component';
+import { HomepageGuardComponent } from './guard/homepage-guard.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { DeleteAdminComponent } from './admin/delete-admin.component';
     ListDeliveryComponent,
     DomestichelpComponent,
     AddVehicleupdateComponent,
-    VisitorComponent
+    VisitorComponent,
+    HomepageGuardComponent
   ],
   imports: [
     BrowserModule,

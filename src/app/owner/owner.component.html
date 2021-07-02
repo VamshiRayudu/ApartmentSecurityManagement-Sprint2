@@ -1,1 +1,21 @@
-<p>owner works!</p>
+<div class="container">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">{{owner.userName}}</div>
+            <div class="card-body">
+                <div class="card-title">Owner Details
+                    <div class="card-subtitle">
+                        <h4>{{owner.role}}</h4>
+                        <h5>{{owner.id}}</h5>
+                        <h5>{{owner.mobileNumber}}</h5>
+                        <h5>{{owner.name}}</h5>
+                        <h5>{{owner.emailId}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button (click)="onBack()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>

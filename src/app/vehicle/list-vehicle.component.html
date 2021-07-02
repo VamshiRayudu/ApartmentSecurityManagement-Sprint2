@@ -1,1 +1,33 @@
-<p>list-vehicle works!</p>
+<!-- <p>list-vehicle works!</p> -->
+
+
+<div class="container">
+    <button *ngIf="isOwner" class="btn btn-info" style="width:100px" (click)="addVehicle()">Add Vehicle</button>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Vehicle List</th>
+        </tr>
+
+        <tr>
+            <th colspan="2">numberPlate</th>
+        </tr>
+
+        <tr *ngFor="let vehicle of vehicles">
+            <td>
+                <a [routerLink]="['/vehicles',vehicle.id]">{{vehicle.numberPlate}}</a>
+            </td>
+
+            <td *ngIf="isOwner" ngClass="td1">
+                <button (click)="onDelete(vehicle)">Delete</button>
+            </td>
+
+            <td *ngIf="isGuard" ngClass="td1">
+                <button (click)="updateVehicle(vehicle)">Update</button>
+            </td>
+
+            <td ngClass="td2">
+                <button (click)="listVehicleUpdate(vehicle)">Vehicle Updates</button>
+            </td>
+        </tr>
+    </table>
+</div>

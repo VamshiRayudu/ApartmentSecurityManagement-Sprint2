@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LogoutComponent } from './logout/logout.component';
 import { EditGuardComponent } from './guard/edit-guard.component';
 import { ListGuardComponent } from './guard/list-guard.component';
-import { DeleteGuardComponent } from './guard/delete-guard.component';
 import { ListAdminComponent } from './admin/list-admin.component';
 import { AddDomestichelpComponent } from './domestichelp/add-domestichelp.component';
 import { ListDomestichelpComponent } from './domestichelp/list-domestichelp.component';
@@ -19,11 +18,9 @@ import { AdminComponent } from './admin/admin.component';
 import { AddSecurityalertComponent } from './securityalert/add-securityalert.component';
 import { ListSecurityalertComponent } from './securityalert/list-securityalert.component';
 import { EditSecurityalertComponent } from './securityalert/edit-securityalert.component';
-import { DeleteVehicleComponent } from './vehicle/delete-vehicle.component';
 import { AddVehicleComponent } from './vehicle/add-vehicle.component';
 import { ListVehicleComponent } from './vehicle/list-vehicle.component';
 import { AddVisitorComponent } from './visitor/add-visitor.component';
-import { DeleteVisitorComponent } from './visitor/delete-visitor.component';
 import { UpdateVisitorComponent } from './visitor/update-visitor.component';
 import { ListVisitorComponent } from './visitor/list-visitor.component';
 import { AddAttendanceComponent } from './attendance/add-attendance.component';
@@ -43,14 +40,15 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditAdminComponent } from './admin/edit-admin.component';
-import { DeleteAdminComponent } from './admin/delete-admin.component';
 import { HomepageGuardComponent } from './guard/homepage-guard.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from './shared/registerservice';
 import { AuthInterceptor } from './shared/AuthInterceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListVehicleUpdateComponent } from './vehicle/list-vehicleupdate.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
 
 @NgModule({
   declarations: [
@@ -59,11 +57,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     FooterComponent,
     EditAdminComponent,
-    DeleteAdminComponent,
     LogoutComponent,
     EditGuardComponent,
     ListGuardComponent,
-    DeleteGuardComponent,
     ListAdminComponent,
     AddDomestichelpComponent,
     ListDomestichelpComponent,
@@ -76,11 +72,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddSecurityalertComponent,
     ListSecurityalertComponent,
     EditSecurityalertComponent,
-    DeleteVehicleComponent,
     AddVehicleComponent,
     ListVehicleComponent,
     AddVisitorComponent,
-    DeleteVisitorComponent,
     UpdateVisitorComponent,
     ListVisitorComponent,
     AddAttendanceComponent,
@@ -97,14 +91,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddVehicleupdateComponent,
     VisitorComponent,
     HomepageGuardComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListVehicleUpdateComponent,
+    VehicleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [RegisterService,
     { provide: HTTP_INTERCEPTORS,

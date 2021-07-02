@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../shared/authentication.service';
 
-export class JwtResponse{
+export class JwtResponse {
 
-  jwtToken!:string;
-  id!:number;
+  jwtToken!: string;
+  id!: number;
 }
 
 @Component({
@@ -15,17 +15,17 @@ export class JwtResponse{
 })
 export class LoginComponent implements OnInit {
 
-  email:string = '';
-  password:string = '';
-  role:string = '';
-  invalidLogin:boolean = false;
-  response!:JwtResponse
+  email: string = '';
+  password: string = '';
+  role: string = '';
+  invalidLogin: boolean = false;
+  response!: JwtResponse
 
   constructor(private router: Router,
     private loginservice: AuthenticationService) { }
 
   ngOnInit() {
-    
+
   }
 
   checkLogin() {
@@ -43,12 +43,12 @@ export class LoginComponent implements OnInit {
 
   }
 
-  setValues(data:any){
-    console.log("in set values",data)
-    sessionStorage.setItem('email',this.email);
-        sessionStorage.setItem('token',data.token)
-        sessionStorage.setItem('id',data.id)
-      console.log('data set')
+  setValues(data: any) {
+    console.log("in set values", data)
+    sessionStorage.setItem('email', this.email);
+    sessionStorage.setItem('token', data.token)
+    sessionStorage.setItem('id', data.id)
+    console.log('data set')
 
 
 

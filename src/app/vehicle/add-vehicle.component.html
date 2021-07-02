@@ -1,1 +1,27 @@
-<p>add-vehicle works!</p>
+<!-- <p>add-vehicle works!</p> -->
+<!-- Reactive form -->
+
+<div class="col-md-6 container">
+    <h2 class="text-center">Add Vehicle Form</h2>
+    <form [formGroup]="addVehicleForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="numberPlate">Number Plate</label>
+            <input type="text" formControlName="numberPlate" placeholder="numberPlate"
+            name="numberPlate" class="form-control" id="numberPlate">
+        </div>
+
+        <div class="form-group">
+            <label for="vehicleColour">Vehicle Colour</label>
+            <input type="text" formControlName="vehicleColour" placeholder="vehicleColour"
+            name="vehicleColour" class="form-control" id="vehicleColour">
+        </div>
+
+        <div class="form-group">
+            <label for="role">Flat Number</label>
+            <input type="text" formControlName="flatNumber" placeholder="flatNumber"
+            name="flatNumber" class="form-control" id="flatNumber">
+        </div>
+
+        <input type="submit" value="Add" class="btn btn-success">
+    </form>
+</div>

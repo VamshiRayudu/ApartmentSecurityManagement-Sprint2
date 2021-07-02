@@ -1,1 +1,21 @@
-<p>admin works!</p>
+<div class="container">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">{{admin.userName}}</div>
+            <div class="card-body">
+                <div class="card-title">Admin Details
+                    <div class="card-subtitle">
+                        <h4>{{admin.role}}</h4>
+                        <h5>{{admin.id}}</h5>
+                        <h5>{{admin.mobileNumber}}</h5>
+                        <h5>{{admin.name}}</h5>
+                        <h5>{{admin.emailId}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button (click)="onBack()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>

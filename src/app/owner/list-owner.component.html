@@ -1,1 +1,18 @@
-<p>list-owner works!</p>
+<div class="container">
+    <button class="btn btn-danger" style="width:100px" (click)="addOwner()">Add Owner</button>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Owner List</th>
+        </tr>
+        <tr>
+            <th colspan="2">Username</th>
+        </tr>
+
+        <tr *ngFor="let owner of owners">
+            <td><a [routerLink]="['/owners/',owner.id] ">{{owner.userName}}</a></td>
+            <td ngClass="td1"><button (click)="onEdit(owner)">Edit</button></td>
+            <td ngClass="td1"><button (click)="onDelete(owner)">Delete</button></td>
+        </tr>
+    </table>
+</div>

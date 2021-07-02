@@ -1,1 +1,22 @@
-<p>add-vehicleupdate works!</p>
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Update Vehicle</h2>
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <div class="hidden">
+        <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id" readonly="true">
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleInTime">Vehicle InTime:</label>
+        <input type="datetime-local" formControlName="vehicleInTime" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleOutTime">Vehicle OutTime:</label>
+        <input type="datetime-local" formControlName="vehicleOutTime" placeholder="vehicleOutTime" name="vehicleOutTime" class="form-control" id="vehicleOutTime" >
+      </div>
+
+      <input type="submit" value="Update" class="btn btn-success">
+    </form>
+  </div>
+
+

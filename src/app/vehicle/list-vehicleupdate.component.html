@@ -1,0 +1,15 @@
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Vehicle Update List</th>
+        </tr>
+
+        <tr *ngFor="let vehicleUpdate of vehicleUpdates">
+            <th colspan="2">InTime:</th>
+            <td colspan="2">{{vehicleUpdate.vehicleInTime}}</td>
+            <th colspan="2">OutTime:</th>
+            <td colspan="2">{{vehicleUpdate.vehicleOutTime}}</td>
+        </tr>
+        
+    </table>
+</div>

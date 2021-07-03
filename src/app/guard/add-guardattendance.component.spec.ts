@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListAttendanceComponent } from './list-attendance.component';
+import { AddGuardattendanceComponent } from './add-guardattendance.component';
 
-describe('ListAttendanceComponent', () => {
-  let component: ListAttendanceComponent;
-  let fixture: ComponentFixture<ListAttendanceComponent>;
+describe('AddGuardattendanceComponent', () => {
+  let component: AddGuardattendanceComponent;
+  let fixture: ComponentFixture<AddGuardattendanceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListAttendanceComponent ]
+      declarations: [ AddGuardattendanceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListAttendanceComponent);
+    fixture = TestBed.createComponent(AddGuardattendanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

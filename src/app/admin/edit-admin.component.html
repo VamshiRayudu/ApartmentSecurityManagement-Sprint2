@@ -1,1 +1,25 @@
-<p>edit-admin works!</p>
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Edit Admin</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="hidden">
+        <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id" readonly="true">
+      </div>
+
+      <div class="form-group">
+        <label for="username">User Name:</label>
+        <input type="text" formControlName="userName" placeholder="userName" name="userName" class="form-control" id="userName" >
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name" >
+      </div>
+
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="mobileNumber" formControlName="mobileNumber" placeholder="mobileNumber" name="mobileNumber" class="form-control" id="mobileNumber" >
+      </div>
+  
+      <input type="submit" value="Update" class="btn btn-success">
+    </form>
+  </div>

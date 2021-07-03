@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddAttendanceComponent } from './add-attendance.component';
+import { SecurityalertComponent } from './securityalert.component';
 
-describe('AddAttendanceComponent', () => {
-  let component: AddAttendanceComponent;
-  let fixture: ComponentFixture<AddAttendanceComponent>;
+describe('SecurityalertComponent', () => {
+  let component: SecurityalertComponent;
+  let fixture: ComponentFixture<SecurityalertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddAttendanceComponent ]
+      declarations: [ SecurityalertComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddAttendanceComponent);
+    fixture = TestBed.createComponent(SecurityalertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

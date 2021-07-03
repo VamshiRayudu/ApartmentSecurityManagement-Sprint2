@@ -23,12 +23,10 @@ import { ListVehicleComponent } from './vehicle/list-vehicle.component';
 import { AddVisitorComponent } from './visitor/add-visitor.component';
 import { UpdateVisitorComponent } from './visitor/update-visitor.component';
 import { ListVisitorComponent } from './visitor/list-visitor.component';
-import { AddAttendanceComponent } from './attendance/add-attendance.component';
 import { AddGuardsalaryComponent } from './guard/add-guardsalary.component';
 import { AddFlatdetailsComponent } from './flatdetails/add-flatdetails.component';
 import { EditFlatdetailsComponent } from './flatdetails/edit-flatdetails.component';
 import { ListFlatdetailsComponent } from './flatdetails/list-flatdetails.component';
-import { ListAttendanceComponent } from './attendance/list-attendance.component';
 import { ViewGuardsalaryComponent } from './guard/view-guardsalary.component';
 import { AddDeliveryComponent } from './delivery/add-delivery.component';
 import { EditDeliveryComponent } from './delivery/edit-delivery.component';
@@ -49,6 +47,11 @@ import { AuthInterceptor } from './shared/AuthInterceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListVehicleUpdateComponent } from './vehicle/list-vehicleupdate.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
+import { SecurityalertComponent } from './securityalert/securityalert.component';
+import { AddGuardattendanceComponent } from './guard/add-guardattendance.component';
+import { AddDomestichelpattendanceComponent } from './domestichelp/add-domestichelpattendance.component';
+import { ListDomestichelpattendanceComponent } from './domestichelp/list-domestichelpattendance.component';
+import { ListGuardattendanceComponent } from './guard/list-guardattendance.component';
 
 @NgModule({
   declarations: [
@@ -77,12 +80,10 @@ import { VehicleComponent } from './vehicle/vehicle.component';
     AddVisitorComponent,
     UpdateVisitorComponent,
     ListVisitorComponent,
-    AddAttendanceComponent,
     AddGuardsalaryComponent,
     AddFlatdetailsComponent,
     EditFlatdetailsComponent,
     ListFlatdetailsComponent,
-    ListAttendanceComponent,
     ViewGuardsalaryComponent,
     AddDeliveryComponent,
     EditDeliveryComponent,
@@ -93,7 +94,12 @@ import { VehicleComponent } from './vehicle/vehicle.component';
     HomepageGuardComponent,
     RegisterComponent,
     ListVehicleUpdateComponent,
-    VehicleComponent
+    VehicleComponent,
+    SecurityalertComponent,
+    AddGuardattendanceComponent,
+    AddDomestichelpattendanceComponent,
+    ListDomestichelpattendanceComponent,
+    ListGuardattendanceComponent
   ],
   imports: [
     BrowserModule,

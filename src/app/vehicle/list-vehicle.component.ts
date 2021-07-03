@@ -36,7 +36,7 @@ export class ListVehicleComponent implements OnInit {
     )
     this.isAdmin=true;
     }
-    else if(role=="OWNER")
+    else if(role=="FLATOWNER")
     {
       this.service.getAllVehiclesByOwnerId(Number(sessionStorage.getItem('id'))).subscribe(
         (data: Vehicle[]) => this.vehicles = data,

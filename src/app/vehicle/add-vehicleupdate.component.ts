@@ -17,8 +17,8 @@ export class AddVehicleupdateComponent implements OnInit {
   updateForm!: FormGroup;
   id: number = 0;
   vehicleUpdate!: vehicleUpdate;
-   vehicleInTime= new Date();
-   vehicleOutTime= new Date();
+  vehicleInTime= new Date();
+  vehicleOutTime= new Date();
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -41,22 +41,12 @@ export class AddVehicleupdateComponent implements OnInit {
     );
   }
 
-//   onSubmit() {
-//     console.log(this.updateForm.value + "from onSubmit of add vehicleupdate component")
-//     this.service.updateVehicleUpdate(this.vehicle.id,this.updateForm.value).subscribe(
-//         data => {this.vehicle = data;
-//             this.router.navigate(['vehicles'])},
-//         err => console.log(err)
-//     )
-// }
-
-
 onSubmit() {
   console.log(this.updateForm.value + "from onSubmit of upadte vehicleupdate component")
   const formValue=this.updateForm.value;
   console.log(this.vehicleInTime);
   // const vehicleInTime = new Date();
-  const vehicleOutTime = new Date();
+  // const vehicleOutTime = new Date();
   this.updateForm = this.formBuilder.group({    
   
   vehicleInTime: new FormControl(new Date(this.vehicleInTime).toISOString()),

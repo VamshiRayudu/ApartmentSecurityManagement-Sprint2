@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['owners']);
+    this.router.navigate(['admins']);
   }
 
 

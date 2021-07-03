@@ -1,1 +1,24 @@
-<p>add-securityalert works!</p>
+<div class="col-md-6 container">
+    <h2 class="text-center">Add Security Alert</h2>
+    <form [formGroup]="addSecurityAlertForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="alert">Alert</label>
+            <input type="text" formControlName="alert" placeholder="alert" name="alert" class="form-control"
+                id="alert">
+        </div>
+<!-- 
+        <div class="form-group">
+            <label for="dateTimeOfAlert">DateTimeOfAlert</label>
+            <input type="datetime-local" formControlName="dateTimeOfAlert" placeholder="dateTimeOfAlert" name="dateTimeOfAlert"
+                class="form-control" id="dateTimeOfAlert">
+        </div> -->
+
+        <div class="form-group">
+            <label for="message">Message</label>
+            <input type="text" formControlName="message" placeholder="message" name="message" class="form-control" id="message">
+        </div>
+
+        <input type="submit" value="Add Alert" class="btn btn-success">
+    </form>
+</div>

@@ -14,21 +14,21 @@ export class AdminService{
     constructor(private http:HttpClient){}
 
     getAllAdmins():Observable<Admin[]>{
-        return <Observable<Owner[]>>this.http.get(this.baseUrl+"/admin/owner/getOwnerList");
+        return <Observable<Owner[]>>this.http.get(this.baseUrl+"/admin//getAdminList");
     }
  
     getAdminById(id:number):Observable<Admin>{
  
-        return <Observable<Admin>>this.http.get(this.baseUrl+"/admin/owner/getOwnerById?id="+id)
+        return <Observable<Admin>>this.http.get(this.baseUrl+"/admin/owner/getAdminById?id="+id)
     }
  
     deleteAdminById(id:number):Observable<Admin>{
  
-        return <Observable<Admin>>this.http.delete(this.baseUrl+"/admin/owner/"+id)
+        return <Observable<Admin>>this.http.delete(this.baseUrl+"/admin/"+id)
     }
  
     updateAdmin(admin:Admin):Observable<Admin>{
  
-        return <Observable<Admin>>this.http.put(this.baseUrl+"/admin/owner",admin)
+        return <Observable<Admin>>this.http.put(this.baseUrl+"/admin/",admin)
     }
 }

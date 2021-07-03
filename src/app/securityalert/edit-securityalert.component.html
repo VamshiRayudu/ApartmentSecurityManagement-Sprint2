@@ -1,1 +1,22 @@
-<p>edit-securityalert works!</p>
+<p>edit-customer works!</p>
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Edit User</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="hidden">
+            <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id"
+                readonly="true">
+        </div>
+        <div class="form-group">
+            <label for="username">Alert:</label>
+            <input type="text" formControlName="alert" placeholder="alert" name="alert" class="form-control" id="alert">
+        </div>
+
+        <div class="form-group">
+            <label for="Role">Message:</label>
+            <input type="text" formControlName="message" placeholder="message" name="message" class="form-control"
+                id="message">
+        </div>
+
+        <input type="submit" value="Update" class="btn btn-success">
+    </form>
+</div>

@@ -1,1 +1,19 @@
-<p>list-securityalert works!</p>
+<div class="container">
+    <button class="btn btn-danger" style="width:100px" (click)="addSecurityAlert()">Add Security Alert</button>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Security Alert List</th>
+        </tr>
+        <tr>
+            <th colspan="2">Alert</th>
+        </tr>
+
+        <tr *ngFor="let securityalert of securityalerts">
+            <td><a [routerLink]="['/securityalerts/',securityalert.id] ">{{securityalert.alert}}</a></td>
+            <td>{{securityalert.message}}</td>
+            <td *ngIf="!isOwner" ngClass="td1"><button (click)="onEdit(securityalert)">Edit</button></td>
+        </tr>
+    </table>
+
+</div>

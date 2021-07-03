@@ -1,1 +1,18 @@
-<p>list-admin works!</p>
+<div class="container">
+    <button class="btn btn-danger" style="width:100px" (click)="addAdmin()">Add Admin</button>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Admin List</th>
+        </tr>
+        <tr>
+            <th colspan="2">Username</th>
+        </tr>
+
+        <tr *ngFor="let admin of admins">
+            <td><a [routerLink]="['/admin/',admin.id] ">{{admin.userName}}</a></td>
+            <td ngClass="td1"><button (click)="onEdit(admin)">Edit</button></td>
+            <td ngClass="td1"><button (click)="onDelete(admin)">Delete</button></td>
+        </tr>
+    </table>
+</div>

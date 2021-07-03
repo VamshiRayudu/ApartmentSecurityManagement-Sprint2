@@ -1,0 +1,19 @@
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Domestic Help Attendance List</th>
+        </tr>
+
+        <tr *ngFor="let attendance of attendances">
+            <th colspan="2">InTime:</th>
+            <td colspan="2">{{attendance.inTime}}</td>
+            <th colspan="2">OutTime:</th>
+            <td colspan="2">{{attendance.outTime}}</td>
+            <th colspan="2">Date:</th>
+            <td colspan="2">{{attendance.dateOfAttendance}}</td>
+            <th colspan="2">Added By:</th>
+            <td colspan="2">{{attendance.updatedByGuardId}}</td>
+        </tr>
+        
+    </table>
+</div>

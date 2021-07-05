@@ -1,6 +1,6 @@
 import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from '../shared/Vehicleservice';
 import { Vehicle } from './vehicle';
@@ -17,8 +17,6 @@ export class AddVehicleupdateComponent implements OnInit {
   updateForm!: FormGroup;
   id: number = 0;
   vehicleUpdate!: vehicleUpdate;
-  vehicleInTime= new Date();
-  vehicleOutTime= new Date();
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -35,6 +33,8 @@ export class AddVehicleupdateComponent implements OnInit {
         this.updateForm = this.formBuilder.group({
           id: this.vehicle.id,
           numberPlate: this.vehicle.numberPlate,
+          vehicleInTime: ['', Validators.required],
+          vehicleOutTime: ['', Validators.required]
         })
       },
       (err) => console.log(err)
@@ -44,19 +44,11 @@ export class AddVehicleupdateComponent implements OnInit {
 onSubmit() {
   console.log(this.updateForm.value + "from onSubmit of upadte vehicleupdate component")
   const formValue=this.updateForm.value;
-  console.log(this.vehicleInTime);
-  // const vehicleInTime = new Date();
-  // const vehicleOutTime = new Date();
-  this.updateForm = this.formBuilder.group({    
-  
-  vehicleInTime: new FormControl(new Date(this.vehicleInTime).toISOString()),
-  
-  vehicleOutTime: new FormControl(new Date(this.vehicleOutTime).toISOString()),
-});
+
   const data:any={
   "updatedByGuardId": Number(sessionStorage.getItem('id')),
-  "vehicleInTime": this.vehicleInTime,
-  "vehicleOutTime": this.vehicleOutTime
+  "vehicleInTime": formValue.vehicleInTime,
+  "vehicleOutTime": formValue.vehicleOutTime
 };
   this.service.updateVehicleUpdate(this.vehicle.id,data).subscribe(
     (        data: any) => {this.vehicle = data;

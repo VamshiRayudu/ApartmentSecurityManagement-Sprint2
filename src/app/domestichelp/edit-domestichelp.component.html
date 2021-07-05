@@ -1,1 +1,22 @@
-<p>edit-domestichelp works!</p>
+
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Edit Type</h2>
+    <form [formGroup]="editDHelpForm" (ngSubmit)="onSubmit()">
+      <div class="hidden">
+        <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id" readonly="true">
+      </div>
+      <div class="form-group">
+        <label for="helpType">Help Type:</label>
+        <input type="text" formControlName="helpType" placeholder="helpType" name="helpType" class="form-control" id="helpType" >
+      </div>
+  
+      
+      <!-- <div class="form-group">
+        <label for="oldHelpType">Old Help Type:</label>
+        <input formControlName="oldHelpType" placeholder="oldHelpType" name="oldHelpType" class="form-control" id="oldHelpType">
+      </div> -->
+  
+      
+      <input type="submit" value="Update" class="btn btn-success">
+    </form>
+  </div>

@@ -55,7 +55,7 @@ export class ListVehicleComponent implements OnInit {
   }
 
   
-  addVehicle() {
+addVehicle() {
     this.router.navigate(['add-vehicle'])
 }
 

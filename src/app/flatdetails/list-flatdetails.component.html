@@ -1,1 +1,46 @@
-<p>list-flatdetails works!</p>
+<div class="container">
+    <button *ngIf="isAdmin" class="btn btn-info" style="width:100px" (click)="addFlatDetails()">Add Flat Details</button>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">FlatDetails List</th>
+        </tr>
+
+        <tr>
+            <th colspan="2">flatNumber</th>
+        </tr>
+
+        <tr *ngFor="let flatDetail of flatDetails">
+            <td>
+                <a [routerLink]="['/flatDetails',flatDetail.flatNumber]">{{flatDetail.flatNumber}}</a>
+            </td>
+
+            <td ngClass="td1">
+                <button (click)="viewDelivery(flatDetail)">View Delivery</button>
+            </td>
+
+            <td ngClass="td2">
+                <button (click)="viewVisitor(flatDetail)">View Visitor</button>
+            </td>
+
+            <td ngClass="td3">
+                <button (click)="viewDHelp(flatDetail)">View Domestic Help</button>
+            </td>
+
+            <td ngClass="td1">
+                <button *ngIf="isGuard" (click)="addDelivery(flatDetail)">Add Delivery</button>
+            </td>
+
+            <td ngClass="td2">
+                <button *ngIf="isGuard" (click)="addVisitor(flatDetail)">Add Visitor</button>
+            </td>
+
+            <td ngClass="td3">
+                <button *ngIf="isGuard" (click)="addDHelp(flatDetail)">Add DHelp</button>
+            </td>
+
+            <td *ngIf="isAdmin" ngClass="td4">
+                <button (click)="onEdit(flatDetail)">Edit</button>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomepageGuardComponent } from './homepage-guard.component';
+import { ViewGuardshiftComponent } from './view-guardshift.component';
 
-describe('HomepageGuardComponent', () => {
-  let component: HomepageGuardComponent;
-  let fixture: ComponentFixture<HomepageGuardComponent>;
+describe('ViewGuardshiftComponent', () => {
+  let component: ViewGuardshiftComponent;
+  let fixture: ComponentFixture<ViewGuardshiftComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomepageGuardComponent ]
+      declarations: [ ViewGuardshiftComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomepageGuardComponent);
+    fixture = TestBed.createComponent(ViewGuardshiftComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

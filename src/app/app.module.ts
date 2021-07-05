@@ -38,7 +38,6 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditAdminComponent } from './admin/edit-admin.component';
-import { HomepageGuardComponent } from './guard/homepage-guard.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -52,6 +51,8 @@ import { AddGuardattendanceComponent } from './guard/add-guardattendance.compone
 import { AddDomestichelpattendanceComponent } from './domestichelp/add-domestichelpattendance.component';
 import { ListDomestichelpattendanceComponent } from './domestichelp/list-domestichelpattendance.component';
 import { ListGuardattendanceComponent } from './guard/list-guardattendance.component';
+import { AddGuardshiftComponent } from './guard/add-guardshift.component';
+import { ViewGuardshiftComponent } from './guard/view-guardshift.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,6 @@ import { ListGuardattendanceComponent } from './guard/list-guardattendance.compo
     DomestichelpComponent,
     AddVehicleupdateComponent,
     VisitorComponent,
-    HomepageGuardComponent,
     RegisterComponent,
     ListVehicleUpdateComponent,
     VehicleComponent,
@@ -99,7 +99,9 @@ import { ListGuardattendanceComponent } from './guard/list-guardattendance.compo
     AddGuardattendanceComponent,
     AddDomestichelpattendanceComponent,
     ListDomestichelpattendanceComponent,
-    ListGuardattendanceComponent
+    ListGuardattendanceComponent,
+    AddGuardshiftComponent,
+    ViewGuardshiftComponent
   ],
   imports: [
     BrowserModule,

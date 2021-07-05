@@ -1,1 +1,14 @@
-<p>update-visitor works!</p>
+<div class="col-md-6 container">
+    <h2 class="text-center">Update Visitor OutTime Form</h2>
+    <form [formGroup]="updateVisitorForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="outTime">Visitor Out Time</label>
+            <input type="datetime-local" formControlName="outTime" placeholder="outTime"
+            name="outTime" class="form-control" id="outTime">
+        </div>
+
+
+        <input type="submit" value="Add" class="btn btn-success">
+    </form>
+</div>

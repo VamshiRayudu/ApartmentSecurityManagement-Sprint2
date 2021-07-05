@@ -1,1 +1,34 @@
-<p>add-domestichelp works!</p>
+
+<!-- Reactive form -->
+
+<div class="col-md-6 container">
+    <h2 class="text-center">Add DomesticHelp Form</h2>
+    <form [formGroup]="addDHelpForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" placeholder="name"
+            name="name" class="form-control" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="text" formControlName="mobileNumber" placeholder="mobileNumber"
+            name="mobileNumber" class="form-control" id="mobileNumber">
+        </div>
+
+        <div class="form-group">
+            <label for="helpType">Help Type</label>
+            <input type="text" formControlName="helpType" placeholder="helpType"
+            name="helpType" class="form-control" id="helpType">
+        </div>
+
+        <div class="form-group">
+            <label for="aadharId">Aadhar Id</label>
+            <input type="text" formControlName="aadharId" placeholder="aadharId"
+            name="aadharId" class="form-control" id="aadharId">
+        </div>
+
+
+        <input type="submit" value="Add" class="btn btn-success">
+    </form>
+</div>

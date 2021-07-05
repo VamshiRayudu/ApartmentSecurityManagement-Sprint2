@@ -10,16 +10,16 @@ import { Admin } from "../admin/admin";
 export class AdminService{
  
     private baseUrl:string='http://localhost:9999/api/v1';
-    
+
     constructor(private http:HttpClient){}
 
     getAllAdmins():Observable<Admin[]>{
-        return <Observable<Owner[]>>this.http.get(this.baseUrl+"/admin//getAdminList");
+        return <Observable<Admin[]>>this.http.get(this.baseUrl+"/admin/getAllAdmins");
     }
  
     getAdminById(id:number):Observable<Admin>{
  
-        return <Observable<Admin>>this.http.get(this.baseUrl+"/admin/owner/getAdminById?id="+id)
+        return <Observable<Admin>>this.http.get(this.baseUrl+"/admin/getAdminById?id="+id)
     }
  
     deleteAdminById(id:number):Observable<Admin>{
@@ -29,6 +29,6 @@ export class AdminService{
  
     updateAdmin(admin:Admin):Observable<Admin>{
  
-        return <Observable<Admin>>this.http.put(this.baseUrl+"/admin/",admin)
+        return <Observable<Admin>>this.http.patch(this.baseUrl+"/admin/",admin)
     }
 }

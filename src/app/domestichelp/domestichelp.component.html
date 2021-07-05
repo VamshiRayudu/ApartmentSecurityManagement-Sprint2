@@ -1,1 +1,23 @@
-<p>domestichelp works!</p>
+<div class="container">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">{{domesticHelp.flatDetails.flatNumber}}</div>
+            <div class="card-body">
+                <div class="card-title">Domestic Help
+                    <div class="card-subtitle">
+                        <h4>{{domesticHelp.name}}</h4>
+                        <h5>{{domesticHelp.helpType}}</h5>
+                        <h6>{{domesticHelp.aadharId}}</h6>
+                        <h6>{{domesticHelp.mobileNumber}}</h6>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button (click)="onBack()">Back</button>
+            </div>
+            <div class="card-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>

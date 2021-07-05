@@ -1,7 +1,7 @@
-export class Attendance {
-    dateOfAttendance!: Date;
-    inTime!: Date ;
-    outTime!: Date ;
-    updatedByGuardId: number = 0;
+export class Attendance{
+    dateOfAttendance: string="";
+    inTime: string="";
+    outTime: string="";
+    updatedByGuardId: number=0;
     attended: boolean = false;
 }

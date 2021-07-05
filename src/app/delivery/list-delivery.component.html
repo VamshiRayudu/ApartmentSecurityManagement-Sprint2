@@ -1,1 +1,23 @@
-<p>list-delivery works!</p>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Delivery List</th>
+        </tr>
+
+            <tr *ngFor="let delivery of deliveries">
+                <th colspan="2">Delivery Id:</th>
+                <td colspan="2">{{delivery.deliveryId}}</td>
+                <th colspan="2">Delivery Date Time:</th>
+                <td colspan="2">{{delivery.deliveryDateTime}}</td>
+                <th colspan="2">Status:</th>
+                <td colspan="2">{{delivery.status}}</td>
+                <th colspan="2">Guard Id:</th>
+                <td colspan="2">{{delivery.guard.id}}</td>
+
+                <td *ngIf="isGuard" ngClass="td2">
+                    <button (click)="onEdit(delivery)">Edit Delivery Status</button>
+                </td>
+            </tr>
+        
+    </table>
+</div>

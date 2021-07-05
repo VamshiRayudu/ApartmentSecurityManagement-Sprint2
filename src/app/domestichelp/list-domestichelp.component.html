@@ -1,1 +1,37 @@
-<p>list-domestichelp works!</p>
+<div class="container">
+    <!-- <button *ngIf="isGuard" class="btn btn-info" style="width:100px" (click)="addDHelp()">Add DHelp</button> -->
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">DHelp List</th>
+        </tr>
+
+        <tr *ngFor="let dHelp of dHelps">
+            <th colspan="2">Domestichelp Id:</th>
+            <td colspan="2">{{dHelp.id}}</td>
+            <th colspan="2">Name:</th>
+            <td colspan="2">{{dHelp.name}}</td>
+            <th colspan="2">DomesticHelp Type:</th>
+            <td colspan="2">{{dHelp.helpType}}</td>
+            <th colspan="2">Aadhar Id:</th>
+            <td colspan="2">{{dHelp.aadharId}}</td>
+            <th colspan="2">Mobile Number:</th>
+            <td colspan="2">{{dHelp.mobileNumber}}</td>
+        
+            <!-- <td>
+                <a [routerLink]="['/dHelps',dHelp.id]">{{dHelp.id}}</a>
+            </td> -->
+
+            <td *ngIf="isGuard" ngClass="td1">
+                <button (click)="addDHelpAttendance(dHelp)">Add Attendance</button>
+            </td>
+
+            <td *ngIf="isAdmin" ngClass="td1">
+                <button (click)="viewDHelpAttendance(dHelp)">View Attendance</button>
+            </td>
+
+            <td *ngIf="isGuard" ngClass="td2">
+                <button (click)="onEdit(dHelp)">Edit</button>
+            </td>
+        </tr>
+    </table>
+</div>

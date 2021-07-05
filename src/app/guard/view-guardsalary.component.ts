@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GuardService } from '../shared/guardservice';
+import { GuardSalary } from './guardsalary';
 
 @Component({
   selector: 'app-view-guardsalary',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewGuardsalaryComponent implements OnInit {
 
-  constructor() { }
+  guardsalaries!: GuardSalary[];
+  private error!: string;
+  private id: number = 0;
+  private numberPlate: string = "";
 
-  ngOnInit(): void {
+
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: GuardService) {
+
   }
 
+  ngOnInit(): void {
+    this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
+    this.service.getGuardSalaryByGuardId(this.id).subscribe(
+      (data) => {
+        console.log(data);
+        this.guardsalaries = data;
+      },
+      (err) => console.log(err)
+    );
+  }
+
+  onBack() {
+    this.router.navigate(['guards']);
+  }
 }

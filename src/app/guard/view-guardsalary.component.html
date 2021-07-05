@@ -1,1 +1,17 @@
-<p>view-guardsalary works!</p>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Guard Salary List</th>
+        </tr>
+
+        <tr *ngFor="let guardsalary of guardsalaries">
+            <th colspan="2">Date of Payment:</th>
+            <td colspan="2">{{guardsalary.dateofPayment}}</td>
+            <th colspan="2">Status:</th>
+            <td colspan="2">{{guardsalary.salaryStatus}}</td>
+            <th colspan="2">Amount:</th>
+            <td colspan="2">{{guardsalary.amount}}</td>
+        </tr>
+
+    </table>
+</div>

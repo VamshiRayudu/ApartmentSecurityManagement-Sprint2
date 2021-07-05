@@ -28,6 +28,6 @@ export class OwnerService{
  
     updateOwner(owner:Owner):Observable<Owner>{
  
-        return <Observable<Owner>>this.http.put(this.baseUrl+"/admin/owner",owner)
+        return <Observable<Owner>>this.http.patch(this.baseUrl+"/admin/owner",owner)
     }
 }

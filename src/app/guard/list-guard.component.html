@@ -1,0 +1,38 @@
+<div class="container">
+    <button class="btn btn-danger" style="width:100px" (click)="addGuard()">Add Guard</button>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Guard List</th>
+        </tr>
+        <tr>
+            <th colspan="2">Username</th>
+        </tr>
+
+        <tr *ngFor="let guard of guards">
+            <td><a [routerLink]="['/guard/',guard.id] ">{{guard.userName}}</a></td>
+            <td ngClass="td1"><button (click)="onEdit(guard)">Edit</button></td>
+            <td ngClass="td1"><button (click)="onDelete(guard)">Delete</button></td>
+
+            <td ngClass="td1">
+                <button (click)="addGuardSalary(guard)">Add Salary</button>
+            </td>
+
+            <td ngClass="td2">
+                <button (click)="listGuardSalary(guard)">View Salary List</button>
+            </td>
+
+            <td ngClass="td2">
+                <button (click)="addGuardShift(guard)">Add Shift</button>
+            </td>
+
+            <td ngClass="td2">
+                <button (click)="viewGuardShift(guard)">View Shift</button>
+            </td>
+
+            <td ngClass="td2">
+                <button (click)="viewGuardAttendance(guard)">View Attendance</button>
+            </td>
+        </tr>
+    </table>
+</div>

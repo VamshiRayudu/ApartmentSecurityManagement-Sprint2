@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { VisitorService } from '../shared/visitorService';
+import { Visitor } from './visitor';
 
 @Component({
   selector: 'app-update-visitor',
@@ -7,9 +11,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateVisitorComponent implements OnInit {
 
-  constructor() { }
+  visitor!: Visitor;
+  id: number = 0;
+  updateVisitorForm!: FormGroup;
+
+  constructor(private _ActivatedRoute: ActivatedRoute,
+    private router: Router, private formBuilder: FormBuilder, private service: VisitorService) { }
 
   ngOnInit(): void {
+    this.id=Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
+    this.service.getVisitorById(this.id).subscribe(
+      (data: Visitor) => {
+        console.log(data);
+        this.visitor = data;
+        this.updateVisitorForm = this.formBuilder.group({
+          outTime: ['', Validators.required]
+        })
+      },
+      (err: any) => console.log(err)
+    );
   }
+
+  onSubmit() {
+    console.log(this.updateVisitorForm.value + "from onSubmit of update visitor component")
+    const formValue=this.updateVisitorForm.value;
+    const data:any={
+    "id": this.visitor.id,
+
+    "inTime": this.visitor.inTime,
+    
+    "outTime": formValue.outTime,
+
+    "mobileNumber": this.visitor.mobileNumber,
+
+    "visitorName": this.visitor.visitorName,
+  
+  };
+        this.service.updateVisitor(data,Number(sessionStorage.getItem('id'))).subscribe(
+          (            data: Visitor) => {this.visitor = data;
+                this.router.navigate(['flatDetails'])},
+          (            err: any) => console.log(err)
+        )
+    }
 
 }

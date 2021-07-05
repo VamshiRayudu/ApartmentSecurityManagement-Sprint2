@@ -1,1 +1,14 @@
-<p>edit-delivery works!</p>
+<div class="col-md-6 container">
+    <h2 class="text-center">Update Delivery Status Form</h2>
+    <form [formGroup]="updateDeliveryForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="status">Delivery Status</label>
+            <input type="text" formControlName="status" placeholder="status"
+            name="status" class="form-control" id="status">
+        </div>
+
+
+        <input type="submit" value="Update" class="btn btn-success">
+    </form>
+</div>

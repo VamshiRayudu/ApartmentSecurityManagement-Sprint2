@@ -1,1 +1,19 @@
-<p>add-delivery works!</p>
+<div class="col-md-6 container">
+    <h2 class="text-center">Add Delivery Form</h2>
+    <form [formGroup]="addDeliveryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="deliveryDateTime">Delivery Date Time</label>
+            <input type="datetime-local" formControlName="deliveryDateTime" placeholder="deliveryDateTime"
+            name="deliveryDateTime" class="form-control" id="deliveryDateTime">
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <input type="text" formControlName="status" placeholder="status"
+            name="status" class="form-control" id="status">
+        </div>
+
+
+        <input type="submit" value="Add" class="btn btn-success">
+    </form>
+</div>

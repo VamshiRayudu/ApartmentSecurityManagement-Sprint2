@@ -1,1 +1,28 @@
-<p>list-visitor works!</p>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th colspan="2">Visitor List</th>
+        </tr>
+
+            <tr *ngFor="let visitor of visitors">
+                <th colspan="2">Visitor Id:</th>
+                <td colspan="2">{{visitor.id}}</td>
+                <th colspan="2">Visitor Name:</th>
+                <td colspan="2">{{visitor.visitorName}}</td>
+                <th colspan="2">Mobile Number:</th>
+                <td colspan="2">{{visitor.mobileNumber}}</td>
+                <th colspan="2">In Time:</th>
+                <td colspan="2">{{visitor.inTime}}</td>
+                <th colspan="2">Out Time:</th>
+                <td colspan="2">{{visitor.outTime}}</td>
+                <th colspan="2">Guard Id:</th>
+                <td colspan="2">{{visitor.guard.id}}</td>
+
+                <td *ngIf="isGuard" ngClass="td2">
+                    <button (click)="onEdit(visitor)">Update OutTime</button>
+                </td>
+            </tr>
+        
+    </table>
+</div>
+

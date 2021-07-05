@@ -16,7 +16,7 @@
             <td colspan="2">{{dHelp.aadharId}}</td>
             <th colspan="2">Mobile Number:</th>
             <td colspan="2">{{dHelp.mobileNumber}}</td>
-        
+
             <!-- <td>
                 <a [routerLink]="['/dHelps',dHelp.id]">{{dHelp.id}}</a>
             </td> -->
@@ -25,7 +25,7 @@
                 <button (click)="addDHelpAttendance(dHelp)">Add Attendance</button>
             </td>
 
-            <td *ngIf="isAdmin" ngClass="td1">
+            <td ngClass="td1">
                 <button (click)="viewDHelpAttendance(dHelp)">View Attendance</button>
             </td>
 

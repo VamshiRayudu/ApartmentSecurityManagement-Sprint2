@@ -26,21 +26,23 @@ export class AddDeliveryComponent implements OnInit {
     this.addDeliveryForm = this.formBuilder.group({
       deliveryDateTime: ['', Validators.required],
       status: ['', Validators.required],
-      flatNumber: ['',Validators.required],
-      guardId: ['',Validators.required]
-  })
+      flatNumber: ['', Validators.required],
+      guardId: ['', Validators.required]
+    })
   }
 
   onSubmit() {
     console.log(this.addDeliveryForm.value + "from onSubmit of add delivery component")
-    
+
     console.log(this.addDeliveryForm.value.flatNumber);
-    const formValue=this.addDeliveryForm.value;
-        this.service.addDelivery(Number(this.id),Number(sessionStorage.getItem('id')),this.addDeliveryForm.value).subscribe(
-          (            data: Delivery) => {this.delivery = data;
-                this.router.navigate(['flatDetails'])},
-          (            err: any) => console.log(err)
-        )
-    }
+    const formValue = this.addDeliveryForm.value;
+    this.service.addDelivery(Number(this.id), Number(sessionStorage.getItem('id')), this.addDeliveryForm.value).subscribe(
+      (data: Delivery) => {
+        this.delivery = data;
+        this.router.navigate(['flatDetails'])
+      },
+      (err: any) => console.log(err)
+    )
+  }
 
 }

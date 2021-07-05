@@ -11,36 +11,35 @@ import { Delivery } from './delivery';
 export class ListDeliveryComponent implements OnInit {
 
   deliveries!: Delivery[];
-    private error!: string;
-    private id: number = 0;
-    private flatNumber: number=0;
-    public isGuard: boolean=false;
-  
+  private error!: string;
+  private id: number = 0;
+  private flatNumber: number = 0;
+  public isGuard: boolean = false;
+
 
   constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: DeliveryService) { }
 
   ngOnInit(): void {
     var role = sessionStorage.getItem('role')
-    if(role == "GUARD")
-    {
-        this.isGuard=true;
+    if (role == "GUARD") {
+      this.isGuard = true;
     }
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
-        this.service.getDeliveryByFlatId(this.id).subscribe(
-            (data: Delivery[]) => {
-                console.log(data);
-                this.deliveries = data;
-            },
-            (err: any) => console.log(err)
-        );
+    this.service.getDeliveryByFlatId(this.id).subscribe(
+      (data: Delivery[]) => {
+        console.log(data);
+        this.deliveries = data;
+      },
+      (err: any) => console.log(err)
+    );
   }
 
-  onEdit(delivery: Delivery){
-    this.router.navigate(['edit-delivery',delivery.deliveryId]);
-}
+  onEdit(delivery: Delivery) {
+    this.router.navigate(['edit-delivery', delivery.deliveryId]);
+  }
 
-  onBack(){
+  onBack() {
     this.router.navigate(['deliveries']);
-}
+  }
 
 }

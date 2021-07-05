@@ -26,19 +26,21 @@ export class AddDomestichelpComponent implements OnInit {
     this.addDHelpForm = this.formBuilder.group({
       name: ['', Validators.required],
       mobileNumber: ['', Validators.required],
-      helpType: ['',Validators.required],
-      aadharId: ['',Validators.required]
-  })
+      helpType: ['', Validators.required],
+      aadharId: ['', Validators.required]
+    })
   }
 
   onSubmit() {
     console.log(this.addDHelpForm.value + "from onSubmit of add customer component")
     console.log(this.addDHelpForm.value.flatNumber);
-    const formValue=this.addDHelpForm.value;
-        this.service.addDomesticHelp(Number(this.id),this.addDHelpForm.value).subscribe(
-            data => {this.dHelp = data;
-                this.router.navigate(['flatDetails'])},
-            err => console.log(err)
-        )
-    }
+    const formValue = this.addDHelpForm.value;
+    this.service.addDomesticHelp(Number(this.id), this.addDHelpForm.value).subscribe(
+      data => {
+        this.dHelp = data;
+        this.router.navigate(['flatDetails'])
+      },
+      err => console.log(err)
+    )
+  }
 }

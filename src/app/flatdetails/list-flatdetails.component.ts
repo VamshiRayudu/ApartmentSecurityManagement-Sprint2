@@ -11,73 +11,70 @@ import { FlatDetails } from './flatdetails';
 export class ListFlatdetailsComponent implements OnInit {
 
   flatDetails!: FlatDetails[];
-    private error!: string;
-    private flatNumber: number = 0;
-    public isOwner: boolean=false;
-    public isAdmin: boolean=false;
-    public isGuard: boolean=false;
+  private error!: string;
+  private flatNumber: number = 0;
+  public isOwner: boolean = false;
+  public isAdmin: boolean = false;
+  public isGuard: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private service: FlatDetailsService) { }
 
   ngOnInit(): void {
     var role = sessionStorage.getItem('role')
-    if(role=="ADMIN")
-    {
+    if (role == "ADMIN") {
       this.service.getFlatDetails().subscribe(
         (data: FlatDetails[]) => this.flatDetails = data,
         (err: any) => console.log(err)
-    )
-    this.isAdmin=true;
+      )
+      this.isAdmin = true;
     }
-    else if(role=="OWNER")
-    {
+    else if (role == "OWNER") {
       this.service.getFlatDetailsByOwnerId(Number(sessionStorage.getItem('id'))).subscribe(
         (data: FlatDetails[]) => this.flatDetails = data,
         (err: any) => console.log(err)
-    )
-    this.isOwner=true;
+      )
+      this.isOwner = true;
     }
-    else if(role=="GUARD")
-    {
+    else if (role == "GUARD") {
       this.service.getFlatDetails().subscribe(
         (data: FlatDetails[]) => this.flatDetails = data,
         (err: any) => console.log(err)
-    )
-    this.isGuard=true;
+      )
+      this.isGuard = true;
     }
   }
 
   addFlatDetails() {
     this.router.navigate(['add-flatdetails'])
-}
+  }
 
-addDHelp(flatDetails: FlatDetails) {
-  this.router.navigate(['add-domestichelp',flatDetails.flatNumber])
-}
+  addDHelp(flatDetails: FlatDetails) {
+    this.router.navigate(['add-domestichelp', flatDetails.flatNumber])
+  }
 
-addDelivery(flatDetails: FlatDetails) {
-  this.router.navigate(['add-delivery',flatDetails.flatNumber])
-}
+  addDelivery(flatDetails: FlatDetails) {
+    this.router.navigate(['add-delivery', flatDetails.flatNumber])
+  }
 
-addVisitor(flatDetails: FlatDetails) {
-  this.router.navigate(['add-visitor',flatDetails.flatNumber])
-}
+  addVisitor(flatDetails: FlatDetails) {
+    this.router.navigate(['add-visitor', flatDetails.flatNumber])
+  }
 
-viewDelivery(flatDetails: FlatDetails) {
-  this.router.navigate(['list-delivery',flatDetails.flatNumber])
-}
+  viewDelivery(flatDetails: FlatDetails) {
+    this.router.navigate(['list-delivery', flatDetails.flatNumber])
+  }
 
-viewVisitor(flatDetails: FlatDetails) {
-  this.router.navigate(['list-visitor',flatDetails.flatNumber])
-}
+  viewVisitor(flatDetails: FlatDetails) {
+    this.router.navigate(['list-visitor', flatDetails.flatNumber])
+  }
 
-viewDHelp(flatDetails: FlatDetails) {
-  this.router.navigate(['list-domestichelp',flatDetails.flatNumber])
-}
+  viewDHelp(flatDetails: FlatDetails) {
+    this.router.navigate(['list-domestichelp', flatDetails.flatNumber])
+  }
 
-onEdit(flatDetails: FlatDetails) {
-  this.router.navigate(['edit-flatdetails', flatDetails.flatNumber])
-}
+  onEdit(flatDetails: FlatDetails) {
+    this.router.navigate(['edit-flatdetails', flatDetails.flatNumber])
+  }
 
 }

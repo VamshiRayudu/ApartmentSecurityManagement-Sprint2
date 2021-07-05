@@ -19,7 +19,7 @@ export class EditDeliveryComponent implements OnInit {
     private router: Router, private formBuilder: FormBuilder, private service: DeliveryService) { }
 
   ngOnInit(): void {
-    this.id=Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
+    this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.service.getDeliveryById(this.id).subscribe(
       (data: Delivery) => {
         console.log(data);
@@ -34,18 +34,20 @@ export class EditDeliveryComponent implements OnInit {
 
   onSubmit() {
     console.log(this.updateDeliveryForm.value + "from onSubmit of update delivery component")
-    const formValue=this.updateDeliveryForm.value;
-    const data:any={
-    "deliveryId": this.delivery.deliveryId,
+    const formValue = this.updateDeliveryForm.value;
+    const data: any = {
+      "deliveryId": this.delivery.deliveryId,
 
-    "status": formValue.status
-  
-  };
-        this.service.updateDelivery(data).subscribe(
-          (            data: Delivery) => {this.delivery = data;
-                this.router.navigate(['flatDetails'])},
-          (            err: any) => console.log(err)
-        )
-    }
+      "status": formValue.status
+
+    };
+    this.service.updateDelivery(data).subscribe(
+      (data: Delivery) => {
+        this.delivery = data;
+        this.router.navigate(['flatDetails'])
+      },
+      (err: any) => console.log(err)
+    )
+  }
 
 }

@@ -44,7 +44,7 @@ export class AddDomestichelpattendanceComponent implements OnInit {
     this.service.addDhelpAttendance(this.id, data).subscribe(
       (data: any) => {
         this.attendance = data;
-        this.router.navigate(['dhelpList'])
+        this.router.navigate(['flatDetails'])
       },
       (err: any) => console.log(err)
     )

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">{{flatDetails.owner.name}}</div>
+            <div class="card-body">
+                <div class="card-title">Flat Details
+                    <div class="card-subtitle">
+                        <h4>floorNumber: {{flatDetails.floorNumber}}</h4>
+                        <h4>Owner UserName: {{flatDetails.owner.userName}}</h4>
+                        <h5>Owner Email: {{flatDetails.owner.emailId}}</h5>
+                        <h5>Owner MobileNumber: {{flatDetails.owner.mobileNumber}}</h5>
+                    </div>
+                    
+                    <div *ngIf="isRented" class="card-subtitle">
+                        <h5>Rent Amount: {{flatDetails.flatRent.amount}}</h5>
+                        <h5>Rental Name: {{flatDetails.flatRent.rentals.name}}</h5>
+                        <h5>Rental MobileNumber: {{flatDetails.flatRent.rentals.mobileNumber}}</h5>
+                        <h5>Rental Email Id: {{flatDetails.flatRent.rentals.emailId}}</h5>
+                        <h5>Rental Aadhar Id: {{flatDetails.flatRent.rentals.aadharId}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button (click)="onBack()">Back</button>
+            </div>
+            <div class="card-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>

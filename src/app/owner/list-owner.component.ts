@@ -11,10 +11,15 @@ import { Owner } from './owner';
 export class ListOwnerComponent implements OnInit {
 
   owners!: Owner[];
+  public isAdmin: boolean = false;
 
   constructor(private service: OwnerService, private router: Router) { }
 
   ngOnInit(): void {
+    var role = sessionStorage.getItem('role');
+    if (role == "ADMIN") {
+      this.isAdmin = true;
+    }
     this.service.getAllOwners().subscribe(
       (data) => this.owners = data,
       (err) => console.log(err)
@@ -44,6 +49,10 @@ export class ListOwnerComponent implements OnInit {
 
   addOwner() {
     this.router.navigate(['register']);
+  }
+
+  addFlatDetails(owner: Owner) {
+    this.router.navigate(['add-flatDetails', owner.id]);
   }
 
 

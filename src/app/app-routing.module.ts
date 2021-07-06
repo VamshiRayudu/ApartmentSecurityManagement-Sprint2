@@ -12,6 +12,9 @@ import { DomestichelpComponent } from './domestichelp/domestichelp.component';
 import { EditDomestichelpComponent } from './domestichelp/edit-domestichelp.component';
 import { ListDomestichelpComponent } from './domestichelp/list-domestichelp.component';
 import { ListDomestichelpattendanceComponent } from './domestichelp/list-domestichelpattendance.component';
+import { AddFlatdetailsComponent } from './flatdetails/add-flatdetails.component';
+import { EditFlatdetailsComponent } from './flatdetails/edit-flatdetails.component';
+import { FlatdetailsComponent } from './flatdetails/flatdetails.component';
 import { ListFlatdetailsComponent } from './flatdetails/list-flatdetails.component';
 import { AddGuardattendanceComponent } from './guard/add-guardattendance.component';
 import { AddGuardsalaryComponent } from './guard/add-guardsalary.component';
@@ -84,7 +87,10 @@ const routes: Routes = [
    {path:'edit-delivery/:id',component:EditDeliveryComponent},
    {path:'list-visitor/:id',component:ListVisitorComponent},
    {path:'add-visitor/:id',component:AddVisitorComponent},
-   {path:'update-visitor/:id',component:UpdateVisitorComponent}
+   {path:'update-visitor/:id',component:UpdateVisitorComponent},
+   {path:'add-flatDetails/:id',component:AddFlatdetailsComponent},
+   {path:'edit-flatdetails/:id',component:EditFlatdetailsComponent},
+   {path:'flatDetails/:id',component:FlatdetailsComponent}
 ];
 
 @NgModule({

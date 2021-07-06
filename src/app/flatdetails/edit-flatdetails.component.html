@@ -1,1 +1,36 @@
-<p>edit-flatdetails works!</p>
+<div class="col-md-6 container">
+    <h2 class="text-center">Update Flat Rentals Form</h2>
+    <form [formGroup]="updateFlatRentalsForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="amount">Flat Rent Amount</label>
+            <input type="text" formControlName="amount" placeholder="amount"
+            name="amount" class="form-control" id="amount">
+        </div>
+
+        <div class="form-group">
+            <label for="aadharId">Rentals AadharId</label>
+            <input type="text" formControlName="aadharId" placeholder="aadharId"
+            name="aadharId" class="form-control" id="aadharId">
+        </div>
+
+        <div class="form-group">
+            <label for="emailId">Rentals EmailId</label>
+            <input type="text" formControlName="emailId" placeholder="emailId"
+            name="emailId" class="form-control" id="emailId">
+        </div>
+
+        <div class="form-group">
+            <label for="mobileNumber">Rentals MobileNumber</label>
+            <input type="text" formControlName="mobileNumber" placeholder="mobileNumber"
+            name="mobileNumber" class="form-control" id="mobileNumber">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Rentals Name</label>
+            <input type="text" formControlName="name" placeholder="name"
+            name="name" class="form-control" id="name">
+        </div>
+
+        <input type="submit" value="Update Rental" class="btn btn-success">
+    </form>
+</div>

@@ -13,6 +13,7 @@
             <td><a [routerLink]="['/owners/',owner.id] ">{{owner.userName}}</a></td>
             <td ngClass="td1"><button (click)="onEdit(owner)">Edit</button></td>
             <td ngClass="td1"><button (click)="onDelete(owner)">Delete</button></td>
+            <td ngClass="td1"><button *ngIf="isAdmin" (click)="addFlatDetails(owner)">Add Flat Details</button></td>
         </tr>
     </table>
 </div>

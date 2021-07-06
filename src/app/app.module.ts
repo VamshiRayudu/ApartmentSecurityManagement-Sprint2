@@ -25,6 +25,7 @@ import { UpdateVisitorComponent } from './visitor/update-visitor.component';
 import { ListVisitorComponent } from './visitor/list-visitor.component';
 import { AddGuardsalaryComponent } from './guard/add-guardsalary.component';
 import { AddFlatdetailsComponent } from './flatdetails/add-flatdetails.component';
+import { FlatdetailsComponent } from './flatdetails/flatdetails.component';
 import { EditFlatdetailsComponent } from './flatdetails/edit-flatdetails.component';
 import { ListFlatdetailsComponent } from './flatdetails/list-flatdetails.component';
 import { ViewGuardsalaryComponent } from './guard/view-guardsalary.component';
@@ -101,7 +102,8 @@ import { ViewGuardshiftComponent } from './guard/view-guardshift.component';
     ListDomestichelpattendanceComponent,
     ListGuardattendanceComponent,
     AddGuardshiftComponent,
-    ViewGuardshiftComponent
+    ViewGuardshiftComponent,
+    FlatdetailsComponent
   ],
   imports: [
     BrowserModule,

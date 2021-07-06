@@ -1,18 +1,22 @@
 <div class="container">
-    <button *ngIf="isAdmin" class="btn btn-info" style="width:100px" (click)="addFlatDetails()">Add Flat
-        Details</button>
     <table class="table table-bordered table-striped">
         <tr>
             <th colspan="2">FlatDetails List</th>
         </tr>
 
         <tr>
-            <th colspan="2">flatNumber</th>
+            <th colspan="1">Flat Number</th>
+            <th colspan="1">Owner Name</th>
         </tr>
+
 
         <tr *ngFor="let flatDetail of flatDetails">
             <td>
                 <a [routerLink]="['/flatDetails',flatDetail.flatNumber]">{{flatDetail.flatNumber}}</a>
+            </td>
+
+            <td>
+                <h4>{{flatDetail.owner.name}}</h4>
             </td>
 
             <td ngClass="td1">
@@ -39,9 +43,9 @@
                 <button *ngIf="isGuard" (click)="addDHelp(flatDetail)">Add DHelp</button>
             </td>
 
-            <td *ngIf="isAdmin" ngClass="td4">
-                <button (click)="onEdit(flatDetail)">Edit</button>
-            </td>
+            <!-- <td *ngIf="isAdmin" ngClass="td4">
+                <button (click)="onEdit(flatDetail)">Edit Rental</button>
+            </td> -->
         </tr>
     </table>
 </div>

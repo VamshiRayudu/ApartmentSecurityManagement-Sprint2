@@ -13,7 +13,7 @@ export class AttendanceService{
     constructor(private http:HttpClient){}
 
     addGuardAttendance(id:number,attendance:Attendance) {
-        return this.http.put<Attendance>(this.baseUrl+"/guard/Attendance"+id,attendance);
+        return this.http.patch<Attendance>(this.baseUrl+"/guard/updateGuardAttendance?id="+id,attendance);
     }
 
     getAttendanceByGuardId(id:number):Observable<Attendance[]>{

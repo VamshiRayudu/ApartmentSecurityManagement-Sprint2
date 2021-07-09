@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DeliveryService } from '../shared/deliveryService';
 import { Delivery } from './delivery';
 
@@ -17,7 +18,7 @@ export class ListDeliveryComponent implements OnInit {
   public isGuard: boolean = false;
 
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: DeliveryService) { }
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: DeliveryService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     var role = sessionStorage.getItem('role')
@@ -27,10 +28,14 @@ export class ListDeliveryComponent implements OnInit {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.service.getDeliveryByFlatId(this.id).subscribe(
       (data: Delivery[]) => {
+        this.toastr.success('Successfully Fetched');
         console.log(data);
         this.deliveries = data;
       },
-      (err: any) => console.log(err)
+      (err: any) => {
+        this.toastr.error('Failed to Fetch Delivery Details: Invalid Status');
+        console.log(err)
+      }
     );
   }
 
@@ -39,7 +44,7 @@ export class ListDeliveryComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['deliveries']);
+    this.router.navigate(['flatDetails']);
   }
 
 }

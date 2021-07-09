@@ -1,3 +1,8 @@
+<div>
+    <app-header></app-header>
+  </div>
+
+
 <div class="col-md-6 user-container">
     <h2 class="text-center">Add Guard Salary</h2>
     <form [formGroup]="addSalaryForm" (ngSubmit)="onSubmit()">
@@ -18,11 +23,22 @@
         </div>
 
         <div class="form-group">
-            <label for="status">Status:</label>
-            <input type="text" formControlName="salaryStatus" placeholder="status" name="status" class="form-control"
-                id="status">
+            <label for="salaryStatus">Status:</label>
+            <!-- <input type="text" formControlName="salaryStatus" placeholder="status" name="status" class="form-control"
+                id="status"> -->
+                <select name="salaryStatus" formControlName="salaryStatus" class="form-control">
+                    <option>---Select---</option>
+                    <option *ngFor="let item of statusData" [value]="item">
+                      {{item}}
+                    </option>
+                  </select>
         </div>
 
         <input type="submit" value="Add Salary" class="btn btn-success">
     </form>
+</div>
+
+
+<div style="margin-top: 530px;">
+    <app-footer></app-footer>
 </div>

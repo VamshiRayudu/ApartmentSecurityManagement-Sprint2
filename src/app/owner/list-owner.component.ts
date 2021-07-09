@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { OwnerService } from '../shared/ownerservice';
 import { Owner } from './owner';
 
@@ -11,18 +12,25 @@ import { Owner } from './owner';
 export class ListOwnerComponent implements OnInit {
 
   owners!: Owner[];
-  public isAdmin: boolean = false;
+  public isAdmin: boolean=false;
 
-  constructor(private service: OwnerService, private router: Router) { }
+  constructor(private service: OwnerService, private router: Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    var role = sessionStorage.getItem('role');
-    if (role == "ADMIN") {
+    var role=sessionStorage.getItem('role');
+    if(role == "ADMIN")
+    {
       this.isAdmin = true;
     }
     this.service.getAllOwners().subscribe(
-      (data) => this.owners = data,
-      (err) => console.log(err)
+      (data) => {
+        // this.toastr.success('Successfully Fetched');
+        this.owners = data;
+      },
+      (err) => {
+        this.toastr.error('Failed to Fetch Owner Details: Invalid Status');
+        console.log(err)
+      }
     );
 
   }
@@ -37,12 +45,16 @@ export class ListOwnerComponent implements OnInit {
 
     this.service.deleteOwnerById(owner.id).subscribe(
       (data) => {
+        this.toastr.success('Successfully Deleted');
         console.log('user deleted');
         this.owners = this.owners.filter(
           own => own !== owner
         )
       },
-      (err) => console.log(err)
+      (err) => {
+        this.toastr.error('Failed to Delete');
+        console.log(err)
+      }
 
     );
   }
@@ -52,7 +64,7 @@ export class ListOwnerComponent implements OnInit {
   }
 
   addFlatDetails(owner: Owner) {
-    this.router.navigate(['add-flatDetails', owner.id]);
+    this.router.navigate(['add-flatDetails',owner.id]);
   }
 
 

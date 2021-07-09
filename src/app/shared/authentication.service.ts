@@ -54,4 +54,8 @@ export class AuthenticationService {
     sessionStorage.removeItem('id')
     sessionStorage.removeItem('role')
   }
+
+  updatePassword(newPassword: string,user: User): Observable<User> {
+    return <Observable<User>>this.httpClient.patch(this.baseUrl + "/updatePassword?newPassword="+newPassword,user)
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DomesticHelpService } from '../shared/domesticHelpService';
 import { DomesticHelp } from './domesticHelp';
 
@@ -11,6 +12,7 @@ import { DomesticHelp } from './domesticHelp';
 })
 export class EditDomestichelpComponent implements OnInit {
 
+  dhelpTypeData: any[] = ['COOKING', 'PLUMBING', 'ELECTRICITY', 'HOUSEKEEPING', 'WASHING']
   dHelp!: DomesticHelp;
   editDHelpForm!: FormGroup;
   id: number = 0;
@@ -18,7 +20,7 @@ export class EditDomestichelpComponent implements OnInit {
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: DomesticHelpService) { }
+    private service: DomesticHelpService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -44,10 +46,13 @@ export class EditDomestichelpComponent implements OnInit {
     this.service.updateDomesticHelpById(this.id, this.editDHelpForm.value).
       subscribe(
         (data) => {
+          this.toastr.success('Successfully Updated');
           this.dHelp = data;
           this.router.navigate(['flatDetails'])
         },
-        (err) => { console.log(err) }
+        (err) => { 
+          this.toastr.error('Failed to Update DomesticHelp Details: Invalid Status');
+          console.log(err) }
       )
   }
 

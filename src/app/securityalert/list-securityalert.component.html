@@ -1,5 +1,17 @@
-<div class="container">
-    <button class="btn btn-danger" style="width:100px" (click)="addSecurityAlert()">Add Security Alert</button>
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+
+
+<div>
+    <app-header></app-header>
+</div>
+
+
+<!-- <div class="container">
+    <button *ngIf="isAdmin || isGuard" class="btn btn-danger" style="width:100px" (click)="addSecurityAlert()">Add Security Alert</button>
 
     <table class="table table-bordered table-striped">
         <tr>
@@ -12,8 +24,38 @@
         <tr *ngFor="let securityalert of securityalerts">
             <td><a [routerLink]="['/securityalerts/',securityalert.id] ">{{securityalert.alert}}</a></td>
             <td>{{securityalert.message}}</td>
-            <td *ngIf="!isOwner" ngClass="td1"><button (click)="onEdit(securityalert)">Edit</button></td>
+            <td *ngIf="isAdmin || isGuard" ngClass="td1"><button (click)="onEdit(securityalert)">Edit</button></td>
         </tr>
     </table>
 
+</div> -->
+
+<h2>SECURITY ALERTS </h2>
+
+<div class="container d-flex flex-column justify-content-center">
+    <button *ngIf="isAdmin || isGuard" class="btn btn-danger add-button" (click)="addSecurityAlert()">Add Security Alert</button>
+	<table class="table table-striped animate__animated animate__zoomInDown">
+		<thead>
+			<tr>
+				<th>ALERT</th>
+				<th>MESSAGE</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			 <tr *ngFor="let securityalert of securityalerts">
+            <td><a [routerLink]="['/securityalerts/',securityalert.id] ">{{securityalert.alert}}</a></td>
+            <td>{{securityalert.message}}</td>
+            <td *ngIf="isAdmin || isGuard" ngClass="td1"><button (click)="onEdit(securityalert)" class="btn-success edit-button">Edit</button></td>
+        </tr>
+			
+			
+		</tbody>
+	</table>
+</div>
+
+
+
+<div>
+    <app-footer></app-footer>
 </div>

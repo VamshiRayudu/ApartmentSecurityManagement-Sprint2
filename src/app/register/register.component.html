@@ -1,4 +1,4 @@
-<!-- Template Driven Form -->
+<!-- Template Driven Form
 
 <div class="col-md-6" style="padding: 0px 0px 0px 100px;">
     <h2 class="text-center">Register</h2>
@@ -38,4 +38,52 @@
 
         <button type="submit">Register</button>
     </form>
+</div> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="home">
+  <button (click)=home()><span class="glyphicon glyphicon-home"></span></button>
 </div>
+
+
+
+<div class="container">
+    <div class="left-section">
+      <div class="header">
+        <h1 class="animation a1">Welcome!</h1>
+        <h4 class="animation a2">Register an account</h4>
+      </div>
+      <form #form1="ngForm" (ngSubmit)="createUser(form1)">
+        
+      <div class="form">
+        
+            <input type="text" [(ngModel)]="user.name" placeholder="Name" name="name" class="form-field animation a3" id="name">
+        
+            <input type="text" [(ngModel)]="user.userName" placeholder="User Name" name="userName" class="form-field animation a3"
+                id="userName">
+        
+            <input type="text" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-field animation a4"
+                id="mobileNumber">
+        
+            <input type="text" [(ngModel)]="user.emailId" placeholder="Email Id" name="emailId" class="form-field animation a4" id="emailId">
+        
+            <input type="password" [(ngModel)]="user.password" placeholder="Password" name="password" class="form-field animation a5"
+                id="password">
+        
+            <!-- <input type="text" [(ngModel)]="user.role" placeholder="Role" name="role" class="form-field animation a5" id="role"> -->
+            <select name="role" class="form-field animation a5" [(ngModel)]="user.role">
+                <option>---Select---</option>
+                <option *ngFor="let item of roleData" [value]="item">
+                  {{item}}
+                </option>
+              </select>
+        
+        <button  type="submit" class="animation a6">Register</button>
+      </div>
+      </form>
+    </div>
+    <div class="right-section"></div>
+  </div>

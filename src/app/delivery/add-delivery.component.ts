@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DeliveryService } from '../shared/deliveryService';
 import { Delivery } from './delivery';
 
@@ -11,6 +12,7 @@ import { Delivery } from './delivery';
 })
 export class AddDeliveryComponent implements OnInit {
 
+  statusData: any[] = ['RECEIVED','PICKEDUP','NOTPICKEDUP']
   delivery!: Delivery;
   id: number = 0;
   addDeliveryForm!: FormGroup;
@@ -19,7 +21,7 @@ export class AddDeliveryComponent implements OnInit {
   // owner!: Owner;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: DeliveryService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: DeliveryService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -38,10 +40,14 @@ export class AddDeliveryComponent implements OnInit {
     const formValue = this.addDeliveryForm.value;
     this.service.addDelivery(Number(this.id), Number(sessionStorage.getItem('id')), this.addDeliveryForm.value).subscribe(
       (data: Delivery) => {
+        this.toastr.success('Successfully Added');
         this.delivery = data;
         this.router.navigate(['flatDetails'])
       },
-      (err: any) => console.log(err)
+      (err: any) => {
+        this.toastr.error('Failed to Add Delivery Details: Invalid Status');
+        console.log(err)
+      }
     )
   }
 

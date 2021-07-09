@@ -2,6 +2,7 @@ import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { VehicleService } from '../shared/Vehicleservice';
 import { Vehicle } from './vehicle';
 import { vehicleUpdate } from './vehicleUpdate';
@@ -21,7 +22,7 @@ export class AddVehicleupdateComponent implements OnInit {
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: VehicleService) { }
+    private service: VehicleService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -41,19 +42,25 @@ export class AddVehicleupdateComponent implements OnInit {
     );
   }
 
-onSubmit() {
-  console.log(this.updateForm.value + "from onSubmit of upadte vehicleupdate component")
-  const formValue=this.updateForm.value;
+  onSubmit() {
+    console.log(this.updateForm.value + "from onSubmit of upadte vehicleupdate component")
+    const formValue = this.updateForm.value;
 
-  const data:any={
-  "updatedByGuardId": Number(sessionStorage.getItem('id')),
-  "vehicleInTime": formValue.vehicleInTime,
-  "vehicleOutTime": formValue.vehicleOutTime
-};
-  this.service.updateVehicleUpdate(this.vehicle.id,data).subscribe(
-    (        data: any) => {this.vehicle = data;
-          this.router.navigate(['vehicles'])},
-    (        err: any) => console.log(err)
-  )
-}
+    const data: any = {
+      "updatedByGuardId": Number(sessionStorage.getItem('id')),
+      "vehicleInTime": formValue.vehicleInTime,
+      "vehicleOutTime": formValue.vehicleOutTime
+    };
+    this.service.updateVehicleUpdate(this.vehicle.id, data).subscribe(
+      (data: any) => {
+        this.toastr.success('Successfully Added');
+        this.vehicle = data;
+        this.router.navigate(['vehicles'])
+      },
+      (err: any) => {
+        this.toastr.error('Failed to Add Vehicle Upadate Details: Invalid Status');
+        console.log(err)
+      }
+    )
+  }
 }

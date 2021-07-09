@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { GuardService } from '../shared/guardservice';
 import { Guard } from './guard';
 import { GuardSalary } from './guardsalary';
@@ -13,12 +14,18 @@ export class ListGuardComponent implements OnInit {
 
   guards!: Guard[];
 
-  constructor(private service: GuardService, private router: Router) { }
+  constructor(private service: GuardService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.service.getAllGuards().subscribe(
-      (data) => this.guards = data,
-      (err) => console.log(err)
+      (data) => {
+        // this.toastr.success('Successfully Fetched');
+        this.guards = data;
+      },
+      (err) => {
+        this.toastr.error('Failed to Fetch Guard Details: Invalid Status');
+        console.log(err)
+      }
     );
 
   }
@@ -33,12 +40,16 @@ export class ListGuardComponent implements OnInit {
 
     this.service.deleteGuardById(guard.id).subscribe(
       (data) => {
+        this.toastr.success('Successfully Deleted');
         console.log('user deleted');
         this.guards = this.guards.filter(
           gua => gua !== guard
         )
       },
-      (err) => console.log(err)
+      (err) => {
+        this.toastr.error('Failed to Delete');
+        console.log(err)
+      }
 
     );
   }
@@ -48,22 +59,22 @@ export class ListGuardComponent implements OnInit {
   }
 
   addGuardSalary(guard: Guard) {
-    this.router.navigate(['add-guardsalary',guard.id])
+    this.router.navigate(['add-guardsalary', guard.id])
   }
-  
+
   listGuardSalary(guard: Guard) {
-    this.router.navigate(['list-guardsalaries',guard.id])
+    this.router.navigate(['list-guardsalaries', guard.id])
   }
 
   addGuardShift(guard: Guard) {
-    this.router.navigate(['add-guardshift',guard.id])
+    this.router.navigate(['add-guardshift', guard.id])
   }
-  
+
   viewGuardShift(guard: Guard) {
-    this.router.navigate(['view-guardshift',guard.id])
+    this.router.navigate(['view-guardshift', guard.id])
   }
 
   viewGuardAttendance(guard: Guard) {
-    this.router.navigate(['list-guardattendance',guard.id])
+    this.router.navigate(['list-guardattendance', guard.id])
   }
 }

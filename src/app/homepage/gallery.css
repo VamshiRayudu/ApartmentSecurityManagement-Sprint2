@@ -1,0 +1,19 @@
+body{
+    background-color: #aaff80;
+    background-image: url("../imgs/gall8.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+div
+{
+    padding:10px 0px 0px 20px;
+   
+}
+img{
+    border:2px solid black;
+}
+h2{
+    text-align: center;
+    color:black;
+}

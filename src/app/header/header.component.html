@@ -1,1 +1,182 @@
-<p>header works!</p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--First Row-->
+ <div class="container-fluid" id="first-row">
+    <div class="col-2" id="icon-style">
+        <img src="assets/images/icon.jpg">
+    </div>
+    <div class="col-10" id="name-style">
+        <h1>APARTMENT SECURITY MANGEMENT SYSTEM</h1>
+    </div>
+</div>
+<!--Second Row-->
+<nav class="navbar navbar-inverse first-div">
+    <div class="container-fluid">
+        <!--Admin Page-->
+        <div class="nav navbar-nav" *ngIf="loginservice.isUserLoggedIn() && isAdmin" style="display:inline;">
+            <ul class="nav navbar-nav ">
+                <li><button  (click)=adminHomePage() style="font-weight: bolder;font-size: 20px; padding-right:50px;">Home</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listAdmins() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Admins</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listGuards() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Guards</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listFlatOwners() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Flat Owners</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listSecurityAlerts() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Security Alerts</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listVehicles() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Vehicles</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button (click)=listFlatDetails() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Flat Details</button></li>
+            </ul>
+        </div>
+
+
+        <!--Owner Page-->
+        <div class="nav navbar-nav" *ngIf="loginservice.isUserLoggedIn() && isOwner" style="display:inline;">
+            <ul class="nav navbar-nav">
+                <li><button  (click)=ownerHomePage() style="font-weight: bolder;font-size: 20px; padding-right: 50px;">Home</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listAdmins() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Admins</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listSecurityAlerts() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Security Alerts</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listVehicles() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Vehicles</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listFlatDetails() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Flat Details</button></li>
+            </ul>
+        </div>
+
+
+        <!--Guard Page-->
+        <div class="nav navbar-nav" *ngIf="loginservice.isUserLoggedIn() && isGuard" style="display:inline;">
+            <ul class="nav navbar-nav">
+                <li><button  (click)=guardHomePage() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Home</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listAdmins() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Admins</button></li>
+            </ul>
+            
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listSecurityAlerts() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Security Alerts</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button (click)=listVehicles() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Vehicles</button></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><button  (click)=listFlatDetails() style="font-weight: bolder;font-size: 20px;padding-right:50px;">Flat Details</button></li>
+            </ul>
+        </div>
+
+        <!--main home-->
+
+        <ul class="nav navbar-nav">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="" style="font-weight: bolder;font-size: 20px;">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#about-us" style="font-weight: bolder;font-size: 20px;">About-Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#gallery" style="font-weight: bolder;font-size: 20px;">Gallery</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#contact" style="font-weight: bolder;font-size: 20px;">Contact-Us</a></li>
+        </ul>
+       
+        <ul class="nav navbar-nav navbar-right">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" class="fa fa-facebook" data-toggle="tooltip" title="Facebook"></a></li>
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" class="fa fa-instagram" data-toggle="tooltip" title="Instagram"></a></li>
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" class="fa fa-twitter" data-toggle="tooltip" title="Twitter"></a></li>
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" data-toggle="tooltip" title="Email"><span
+                        class="glyphicon glyphicon-envelope"></span></a></li>
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" data-toggle="tooltip" title="Contact-Number"><span
+                        class="glyphicon glyphicon-earphone"></span></a></li>
+            <li>
+                <button *ngIf="!loginservice.isUserLoggedIn()" (click)=checkLogin()><span class="glyphicon glyphicon-log-in"></span> LOGIN</button>
+            </li>
+            <li>
+                <button *ngIf="loginservice.isUserLoggedIn()" (click)=checkLogout()><span class="glyphicon glyphicon-log-in"></span> LOG OUT</button>
+            </li>
+        </ul>
+        
+    </div>
+</nav>
+
+<!-- <nav class="navbar navbar-inverse first-div">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="" style="font-weight: bolder;font-size: 20px;">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#about-us" style="font-weight: bolder;font-size: 20px;">About-Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#gallery" style="font-weight: bolder;font-size: 20px;">Gallery</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#contact" style="font-weight: bolder;font-size: 20px;">Contact-Us</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn() && isAdmin" (click)=adminHomePage() style="font-weight: bolder;font-size: 20px;">Home</button></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn() && isOwner" (click)=ownerHomePage() style="font-weight: bolder;font-size: 20px;">Home</button></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn() && isGuard" (click)=guardHomePage() style="font-weight: bolder;font-size: 20px;padding-right: 500px;">Home</button></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn() && (isAdmin || isOwner || isGuard)" (click)=listAdmins() style="font-weight: bolder;font-size: 20px;">Admins</button></li>
+        </ul>
+        <!-- <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn() && isAdmin" (click)=listGuards() style="font-weight: bolder;font-size: 20px;">Guards</button></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn() && isAdmin" (click)=listFlatOwners() style="font-weight: bolder;font-size: 20px;">Flat Owners</button></li>
+        </ul> -->
+        <!-- <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn()" (click)=listFlatDetails() style="font-weight: bolder;font-size: 20px;">Flat Details</button></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn()" (click)=listVehicles() style="font-weight: bolder;font-size: 20px;">Vehicles</button></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn()" (click)=listSecurityAlerts() style="font-weight: bolder;font-size: 20px;">Security Alerts</button></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn() && isAdmin" (click)=listGuards() style="font-weight: bolder;font-size: 20px;">Guards</button></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><button *ngIf="loginservice.isUserLoggedIn() && isAdmin" (click)=listFlatOwners() style="font-weight: bolder;font-size: 20px;">Flat Owners</button></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" class="fa fa-facebook" data-toggle="tooltip" title="Facebook"></a></li>
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" class="fa fa-instagram" data-toggle="tooltip" title="Instagram"></a></li>
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" class="fa fa-twitter" data-toggle="tooltip" title="Twitter"></a></li>
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" data-toggle="tooltip" title="Email"><span
+                        class="glyphicon glyphicon-envelope"></span></a></li>
+            <li><a *ngIf="!loginservice.isUserLoggedIn()" href="#" data-toggle="tooltip" title="Contact-Number"><span
+                        class="glyphicon glyphicon-earphone"></span></a></li>
+            <li>
+                <button *ngIf="!loginservice.isUserLoggedIn()" (click)=checkLogin()><span class="glyphicon glyphicon-log-in"></span> LOGIN</button>
+            </li>
+            <li>
+                <button *ngIf="loginservice.isUserLoggedIn()" (click)=checkLogout()><span class="glyphicon glyphicon-log-in"></span> LOG OUT</button>
+            </li>
+        </ul>
+    </div>
+</nav> -->

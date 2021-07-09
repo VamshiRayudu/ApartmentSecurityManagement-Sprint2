@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Vehicle } from './vehicle';
 import { vehicleUpdate } from './vehicleUpdate';
 import { VehicleService } from "../shared/Vehicleservice";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-vehicle',
@@ -20,7 +21,7 @@ export class ListVehicleComponent implements OnInit {
     public isGuard: boolean=false;
 
     constructor(private route: ActivatedRoute,
-      private router: Router, private service: VehicleService) {
+      private router: Router, private service: VehicleService,private toastr: ToastrService) {
 
     }
 
@@ -31,24 +32,42 @@ export class ListVehicleComponent implements OnInit {
     if(role=="ADMIN")
     {
       this.service.getAllVehicles().subscribe(
-        (data: Vehicle[]) => this.vehicles = data,
-        (err: any) => console.log(err)
+        (data: Vehicle[]) => {
+          // this.toastr.success('Successfully Fetched');
+          this.vehicles = data;
+        },
+        (err: any) => {
+          this.toastr.error('Failed to Fetch Vehicle Details: Invalid Status');
+          console.log(err)
+        }
     )
     this.isAdmin=true;
     }
     else if(role=="FLATOWNER")
     {
       this.service.getAllVehiclesByOwnerId(Number(sessionStorage.getItem('id'))).subscribe(
-        (data: Vehicle[]) => this.vehicles = data,
-        (err: any) => console.log(err)
+        (data: Vehicle[]) => {
+          // this.toastr.success('Successfully Fetched');
+          this.vehicles = data;
+        },
+        (err: any) => {
+          this.toastr.error('Failed to Fetch Vehicle Details: Invalid Status');
+          console.log(err)
+        }
     )
     this.isOwner=true;
     }
     else if(role=="GUARD")
     {
       this.service.getAllVehicles().subscribe(
-        (data: Vehicle[]) => this.vehicles = data,
-        (err: any) => console.log(err)
+        (data: Vehicle[]) => {
+          // this.toastr.success('Successfully Fetched');
+          this.vehicles = data;
+        },
+        (err: any) => {
+          this.toastr.error('Failed to Fetch Vehicle Details: Invalid Status');
+          console.log(err)
+        }
     )
     this.isGuard=true;
     }
@@ -70,10 +89,15 @@ listVehicleUpdate(vehicle: Vehicle) {
 onDelete(vehicle: Vehicle) {
     this.service.deleteVehicleById(vehicle.id).subscribe(
         (data: any) => {
+          this.toastr.success('Successfully Deleted');
             console.log('Vehicle deleted'),
             this.vehicles = this.vehicles.filter(
                 vehi => vehi !== vehicle
             )
+        },
+        (err) =>{
+          this.toastr.error('Failed to Delete');
+          console.log(err)
         }
     )
 }

@@ -1,0 +1,61 @@
+#footer_mail:hover
+{
+   color:blue;
+}
+#footer_phone:hover
+{
+   color:blue;
+}
+.footer-div
+{
+    border:1px solid #18212c;
+    background-color:#18212c;
+    text-align:center;
+     width:100%;
+     height:200px;
+     padding:10px;
+}
+.footer-sub
+{
+    width:100%;
+    height:80px;
+    background-color:#18212c;
+    color:white;
+    text-align:center;
+    padding:20px ;
+    border:1px solid white;
+}
+.fa 
+{
+    padding: 10px;
+    font-size: 30px;
+    width: 80px;
+    text-align: center;
+    text-decoration: none;
+    /* margin: 5px 2px; */
+}
+.fa:hover
+ {
+    
+    color:blue;
+}
+.fa-facebook,.fa-instagram,.fa-twitter
+{
+    background: #18212c;
+    color: lightgray; 
+}
+.glyphicon 
+{
+   font-size:25px;
+   
+}
+
+.address {
+   width:100%;
+    height:50px;
+    color:lightgray;
+    text-align:center;
+    /* padding: 10px ; */
+    font-size:15px;
+    /* margin-top: 25px; */
+}

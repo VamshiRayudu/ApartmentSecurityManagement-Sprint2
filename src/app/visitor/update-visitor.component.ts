@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { VisitorService } from '../shared/visitorService';
 import { Visitor } from './visitor';
 
@@ -16,10 +17,10 @@ export class UpdateVisitorComponent implements OnInit {
   updateVisitorForm!: FormGroup;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: VisitorService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: VisitorService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.id=Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
+    this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.service.getVisitorById(this.id).subscribe(
       (data: Visitor) => {
         console.log(data);
@@ -34,24 +35,30 @@ export class UpdateVisitorComponent implements OnInit {
 
   onSubmit() {
     console.log(this.updateVisitorForm.value + "from onSubmit of update visitor component")
-    const formValue=this.updateVisitorForm.value;
-    const data:any={
-    "id": this.visitor.id,
+    const formValue = this.updateVisitorForm.value;
+    const data: any = {
+      "id": this.visitor.id,
 
-    "inTime": this.visitor.inTime,
-    
-    "outTime": formValue.outTime,
+      "inTime": this.visitor.inTime,
 
-    "mobileNumber": this.visitor.mobileNumber,
+      "outTime": formValue.outTime,
 
-    "visitorName": this.visitor.visitorName,
-  
-  };
-        this.service.updateVisitor(data,Number(sessionStorage.getItem('id'))).subscribe(
-          (            data: Visitor) => {this.visitor = data;
-                this.router.navigate(['flatDetails'])},
-          (            err: any) => console.log(err)
-        )
-    }
+      "mobileNumber": this.visitor.mobileNumber,
+
+      "visitorName": this.visitor.visitorName,
+
+    };
+    this.service.updateVisitor(data, Number(sessionStorage.getItem('id'))).subscribe(
+      (data: Visitor) => {
+        this.toastr.success('Successfully Updated');
+        this.visitor = data;
+        this.router.navigate(['flatDetails'])
+      },
+      (err: any) => {
+        this.toastr.error('Failed to Update Visitor Details: Invalid Status');
+        console.log(err)
+      }
+    )
+  }
 
 }

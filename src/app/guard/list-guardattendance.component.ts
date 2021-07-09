@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Attendance } from '../domestichelp/attendance';
 import { AttendanceService } from '../shared/attendanceservice';
 
@@ -14,7 +15,7 @@ export class ListGuardattendanceComponent implements OnInit {
   private numberPlate: string = "";
 
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: AttendanceService) {
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: AttendanceService,private toastr: ToastrService) {
 
   }
 
@@ -22,15 +23,26 @@ export class ListGuardattendanceComponent implements OnInit {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.service.getAttendanceByGuardId(this.id).subscribe(
       (data) => {
+        this.toastr.success('Successfully Fetched');
         console.log(data);
         this.attendances = data;
       },
-      (err) => console.log(err)
+      (err) => {
+        this.toastr.error('Failed to Fetch Guard Attendance Details: Invalid Status');
+        console.log(err)
+      }
     );
   }
 
   onBack() {
-    this.router.navigate(['guards']);
+    if(sessionStorage.getItem('role') == "ADMIN")
+    {
+      this.router.navigate(['guards']);
+    }
+    else if(sessionStorage.getItem('role') == "GUARD")
+    {
+      this.router.navigate(['guard-home']);
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <table class="table table-bordered table-striped">
         <tr>
             <th colspan="2">Domestic Help Attendance List</th>
@@ -16,4 +16,47 @@
         </tr>
         
     </table>
+</div> -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+
+
+<div>
+    <app-header></app-header>
+</div>
+
+
+<h2>DOMESTICHELP ATTENDANCE</h2>
+
+<div class="container d-flex flex-column justify-content-center">
+	<table class="table table-striped animate__animated animate__zoomInDown">
+		<thead>
+			<tr>
+				<th>IN TIME</th>
+				<th>OUT TIME</th>
+				<th>DATE</th>
+                <th>UPDATED BYGUARD ID</th>
+			</tr>
+		</thead>
+		<tbody>
+			 <tr *ngFor="let attendance of attendances">
+            <td>{{attendance.inTime}}</td>
+            <td>{{attendance.outTime}}</td>
+            <td>{{attendance.dateOfAttendance}}</td>
+            <td>{{attendance.updatedByGuardId}}</td>
+        </tr>	
+		</tbody>
+	</table>
+    <div class="card-footer" style="margin-top: 10px;border-width: 0px;text-align: center;">
+        <button (click)="onBack()" class="btn-info">Back</button>
+    </div>
+</div>
+
+
+
+<div>
+    <app-footer></app-footer>
 </div>

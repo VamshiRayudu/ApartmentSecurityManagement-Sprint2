@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Owner } from '../owner/owner';
 import { FlatDetailsService } from '../shared/flatDetailsService';
 import { FlatDetails } from './flatdetails';
@@ -19,7 +20,7 @@ export class AddFlatdetailsComponent implements OnInit {
   public isRented: boolean = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: FlatDetailsService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: FlatDetailsService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -39,29 +40,34 @@ export class AddFlatdetailsComponent implements OnInit {
     console.log(this.addFlatDetailsForm.value + "from onSubmit of add flatDetails component")
     const formValue = this.addFlatDetailsForm.value;
     // if (this.isRented) {
-      const flatWithRent: any = {
-        "floorNumber": formValue.floorNumber,
-        "flatRent": {
-          "amount": formValue.amount,
-          "rentals": {
-            "aadharId": formValue.aadharId,
-            "emailId": formValue.emailId,
-            "mobileNumber": formValue.mobileNumber,
-            "name": formValue.name
-          }
-        },
-        "isRented": this.isRented,
-        "owner": {
-          "id": this.id
+    const flatWithRent: any = {
+      "floorNumber": formValue.floorNumber,
+      "flatRent": {
+        "amount": formValue.amount,
+        "rentals": {
+          "aadharId": formValue.aadharId,
+          "emailId": formValue.emailId,
+          "mobileNumber": formValue.mobileNumber,
+          "name": formValue.name
         }
-      };
-      this.service.addFlatDetails(flatWithRent).
-        subscribe(
-          (data) => { this.flatDetails = data; this.router.navigate(['owners']) },
-          (err) => console.log(err)
-        )
-      // }
-    
+      },
+      "isRented": this.isRented,
+      "owner": {
+        "id": this.id
+      }
+    };
+    this.service.addFlatDetails(flatWithRent).
+      subscribe(
+        (data) => { 
+          this.toastr.success('Successfully Added');
+          this.flatDetails = data; this.router.navigate(['owners']) },
+        (err) => {
+          this.toastr.error('Failed to Add Flat Details: Invalid Status');
+          console.log(err)
+        }
+      )
+    // }
+
   }
 
 }

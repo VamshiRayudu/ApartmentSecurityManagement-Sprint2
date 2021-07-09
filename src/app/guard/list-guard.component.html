@@ -1,4 +1,16 @@
-<div class="container">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+
+<div>
+    <app-header></app-header>
+</div>
+
+
+
+<!-- <div class="container">
     <button class="btn btn-danger" style="width:100px" (click)="addGuard()">Add Guard</button>
 
     <table class="table table-bordered table-striped">
@@ -35,4 +47,63 @@
             </td>
         </tr>
     </table>
+</div> -->
+
+
+
+<h2>GUARDS</h2>
+
+<div class="container d-flex flex-column justify-content-center">
+    <button class="btn btn-success add-button" (click)="addGuard()">Add Guard</button>
+    
+	<table class="table table-striped animate__animated animate__zoomInDown">
+		<thead>
+			<tr>
+				<th>NAME</th>
+				<th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let guard of guards">
+                <td><a [routerLink]="['/guard/',guard.id] " class="name">{{guard.name | uppercase}}</a></td>
+                
+    
+                <td ngClass="td1">
+                    <button (click)="addGuardSalary(guard)" class="btn-success button">Add Salary</button>
+                </td>
+    
+                <td ngClass="td2">
+                    <button (click)="listGuardSalary(guard)" class="btn-info button">View Salary List</button>
+                </td>
+    
+                <td ngClass="td2">
+                    <button (click)="addGuardShift(guard)" class="btn-success button">Add Shift</button>
+                </td>
+    
+                <td ngClass="td2">
+                    <button (click)="viewGuardShift(guard)" class="btn-info button">View Shift</button>
+                </td>
+    
+                <td ngClass="td2">
+                    <button (click)="viewGuardAttendance(guard)" class="btn-info button">View Attendance</button>
+                </td>
+
+                <td ngClass="td1"><button (click)="onEdit(guard)" class="btn-info del-button">Edit</button></td>
+                <td ngClass="td1"><button (click)="onDelete(guard)" class="btn btn-danger del-button">Delete</button></td>
+            </tr>
+			
+			
+		</tbody>
+	</table>
+</div>
+
+
+<div>
+    <app-footer></app-footer>
 </div>

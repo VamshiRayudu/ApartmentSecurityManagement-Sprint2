@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { FlatDetails } from '../flatdetails/flatdetails';
 import { DomesticHelpService } from '../shared/domesticHelpService';
 import { DomesticHelp } from './domesticHelp';
@@ -12,6 +13,7 @@ import { DomesticHelp } from './domesticHelp';
 })
 export class AddDomestichelpComponent implements OnInit {
 
+  dhelpTypeData: any[] = ['COOKING', 'PLUMBING', 'ELECTRICITY', 'HOUSEKEEPING', 'WASHING']
   dHelp!: DomesticHelp;
   id: number = 0;
   addDHelpForm!: FormGroup;
@@ -19,7 +21,7 @@ export class AddDomestichelpComponent implements OnInit {
   // owner!: Owner;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: DomesticHelpService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: DomesticHelpService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -37,10 +39,14 @@ export class AddDomestichelpComponent implements OnInit {
     const formValue = this.addDHelpForm.value;
     this.service.addDomesticHelp(Number(this.id), this.addDHelpForm.value).subscribe(
       data => {
+        this.toastr.success('Successfully Added');
         this.dHelp = data;
         this.router.navigate(['flatDetails'])
       },
-      err => console.log(err)
+      err => {
+        this.toastr.error('Failed to Add DomesticHelp Details: Invalid Status');
+        console.log(err)
+      }
     )
   }
 }

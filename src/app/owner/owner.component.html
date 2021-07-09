@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="col">
         <div class="card">
             <div class="card-header">{{owner.userName}}</div>
@@ -18,4 +18,55 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+
+<div>
+    <app-header></app-header>
+</div>
+
+
+
+
+<div>
+<aside class="profile-card">
+    <header>
+      <!-- here’s the avatar -->
+      <a target="_blank" href="#">
+        <img src="assets/images/ownerimg.png" class="hoverZoomLink">
+      </a>
+  
+      <!-- the username -->
+      <h1>
+              {{owner.name | uppercase}}
+            </h1>
+  
+      <!-- and role or location -->
+      <h2 style="margin-bottom: -12px;">
+              {{owner.role}}
+            </h2>
+  
+    </header>
+  
+    <!-- bit of a bio; who are you? -->
+    <div class="profile-bio">
+      <h3>Profile</h3>
+      <div style="text-align: left;font-size: 18px;">
+        <h6><span style="font-weight: bold;">Owner Id:  </span><span style="color: #FF5722;">{{owner.id}}</span></h6>
+        <h6 ><span style="font-weight: bold;">User Name:  </span><span style="color: #FF5722;">{{owner.userName}}</span></h6>
+        <h6 ><span style="font-weight: bold;">Email Id:  </span><span style="color: #FF5722;">{{owner.emailId}}</span></h6>
+        <h6 ><span style="font-weight: bold;">Mobile Number:  </span><span style="color: #FF5722;">{{owner.mobileNumber}}</span></h6>
+        <div class="card-footer">
+            <button (click)="onBack()" class="btn-info">Back</button>
+        </div>
+    </div>
+    </div>
+  </aside>
+  </div>
+
+
+
+<div style="margin-top: 550px;">
+    <app-footer></app-footer>
 </div>

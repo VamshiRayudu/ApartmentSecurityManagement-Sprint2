@@ -5,6 +5,7 @@ import { Vehicle } from './vehicle';
 import { FlatDetails } from '../flatdetails/flatdetails';
 import { Owner } from '../owner/owner';
 import { VehicleService } from '../shared/Vehicleservice';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -20,7 +21,7 @@ export class AddVehicleComponent implements OnInit {
   owner!: Owner;
   
   constructor(private route: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: VehicleService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: VehicleService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.addVehicleForm = this.formBuilder.group({
@@ -46,9 +47,14 @@ export class AddVehicleComponent implements OnInit {
     }
   };
     this.service.addVehicle(data).subscribe(
-      (        data: any) => {this.vehicle = data;
-            this.router.navigate(['vehicles'])},
-      (        err: any) => console.log(err)
+      (        data: any) => {
+                this.toastr.success('Successfully Added');
+                this.vehicle = data;
+              this.router.navigate(['vehicles'])},
+      (        err: any) => {
+                   this.toastr.error('Failed to Add Vehicle Details: Invalid Status');
+                   console.log(err)
+                }
     )
 }
 

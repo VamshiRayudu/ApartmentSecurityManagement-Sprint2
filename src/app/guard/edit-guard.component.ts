@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { GuardService } from '../shared/guardservice';
 import { Guard } from './guard';
 
@@ -18,7 +19,7 @@ export class EditGuardComponent implements OnInit {
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: GuardService) { }
+    private service: GuardService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -56,10 +57,13 @@ export class EditGuardComponent implements OnInit {
     this.service.updateGuard(data).
       subscribe(
         (data) => {
+          this.toastr.success('Successfully Updated');
           this.guard = data;
           this.router.navigate(['guards'])
         },
-        (err) => { console.log(err) }
+        (err) => { 
+          this.toastr.error('Failed to Update Guard Details: Invalid Status');
+          console.log(err) }
       )
   }
 }

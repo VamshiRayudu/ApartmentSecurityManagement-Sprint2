@@ -1,4 +1,17 @@
-<div class="container">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+
+<div>
+    <app-header></app-header>
+</div>
+
+
+
+
+<!-- <div class="container">
     <button class="btn btn-danger" style="width:100px" (click)="addOwner()">Add Owner</button>
 
     <table class="table table-bordered table-striped">
@@ -16,4 +29,40 @@
             <td ngClass="td1"><button *ngIf="isAdmin" (click)="addFlatDetails(owner)">Add Flat Details</button></td>
         </tr>
     </table>
+</div> -->
+
+
+
+
+<h2>OWNERS</h2>
+
+<div class="container d-flex flex-column justify-content-center">
+    <button class="btn btn-success add-button" (click)="addOwner()">Add Owner</button>
+    
+	<table class="table table-striped animate__animated animate__zoomInDown">
+		<thead>
+			<tr>
+				<th>NAME</th>
+				<th></th>
+                <th></th>
+                <th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let owner of owners">
+                <td><a [routerLink]="['/owners/',owner.id] " class="name">{{owner.name | uppercase}}</a></td>
+                <td ngClass="td1"><button *ngIf="isAdmin" (click)="addFlatDetails(owner)" class="btn-success button">Add<br>Flat Details</button></td>
+                <td ngClass="td1"><button (click)="onEdit(owner)" class="btn-info button">Edit</button></td>
+                <td ngClass="td1"><button (click)="onDelete(owner)" class="btn btn-danger del-button">Delete</button></td>
+                
+            </tr>
+			
+			
+		</tbody>
+	</table>
+</div>
+
+
+<div>
+    <app-footer></app-footer>
 </div>

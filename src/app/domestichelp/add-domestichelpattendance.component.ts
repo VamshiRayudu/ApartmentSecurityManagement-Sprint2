@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Attendance } from './attendance';
 import { AttendanceService } from '../shared/attendanceservice';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-domestichelpattendance',
@@ -19,7 +20,7 @@ export class AddDomestichelpattendanceComponent implements OnInit {
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: AttendanceService) { }
+    private service: AttendanceService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -43,10 +44,14 @@ export class AddDomestichelpattendanceComponent implements OnInit {
 
     this.service.addDhelpAttendance(this.id, data).subscribe(
       (data: any) => {
+        this.toastr.success('Successfully Added');
         this.attendance = data;
         this.router.navigate(['flatDetails'])
       },
-      (err: any) => console.log(err)
+      (err: any) => {
+        this.toastr.error('Failed to Add DomesticHelp Attendance Details: Invalid Status');
+        console.log(err)
+      }
     )
   }
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div>
         Email Id : <input type="text" name="email" [(ngModel)]="email"><br>
         Password : <input type="password" name="password" [(ngModel)]="password"><br>
@@ -7,4 +7,39 @@
     <button (click)=checkLogin() class="btn btn-success">
         Login
     </button>
+</div> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="home">
+  <button (click)=home()><span class="glyphicon glyphicon-home"></span></button>
 </div>
+<!-- <h1><span class="glyphicon glyphicon-home"></span></h1> -->
+<div class="container">
+  
+    <div class="left-section">
+      
+      <div class="header">
+        <h1 class="animation a1">Welcome Back!</h1>
+        <h4 class="animation a2">Login to your account</h4>
+      </div>
+      <div class="form">
+        
+        <input type="text" name="email" [(ngModel)]="email" class="form-field animation a3" placeholder="Email Id">
+        
+        <input type="password" name="password" [(ngModel)]="password" class="form-field animation a4" placeholder="Password">
+        <!-- <input type="text" name="role" [(ngModel)]="role" class="form-field animation a5" placeholder="Role"> -->
+        <select name="role" class="form-field animation a5" [(ngModel)]="role">
+          <option>---Select---</option>
+          <option *ngFor="let item of roleData" [value]="item">
+            {{item}}
+          </option>
+        </select>
+        
+        <button (click)=checkLogin() class="animation a6">LOGIN</button>
+      </div>
+    </div>
+    <div class="right-section"></div>
+  </div>

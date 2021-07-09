@@ -1,0 +1,122 @@
+/*first row*/
+#first-row
+{
+    border:1px solid black;
+    width:100%;
+    height:123px;
+    
+}
+#icon-style
+{
+    float:left;
+    width:100%;
+    height:123px;
+   
+}
+#name-style
+{
+    float:right;
+    width:100%;
+    height:123px;
+    padding:30px 30px 10px 0px;
+    text-shadow: 2px 2px blue;
+
+}
+/*second row*/
+.fa 
+{
+    padding: 20px;
+    font-size: 30px;
+    width: 80px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+.fa:hover
+ {
+    
+    color:blue;
+}
+.fa-facebook,.fa-instagram,.fa-twitter
+{
+    background: black;
+    color: lightgray;
+}
+.glyphicon 
+{
+   font-size:25px;
+   
+}
+.navbar-right
+{
+   display:inline;
+}
+/*third row*/
+ .carousel-inner img {/* Make the image fully responsive */
+    width: 100%;
+    height: 50%;
+}
+/*fourth row*/
+.fourth-div
+{
+    width: 100%;
+    height:300px;
+    border:1px solid black;
+    padding:70px ;
+}
+/*fifth row*/
+#fifth-img1,#fifth-img2
+{
+  float:left;
+  width:40%;
+  height:580px;
+
+ 
+}
+#fifth-img3
+{
+  float:right;
+   width:40%;
+  height:580px;
+  
+}
+.class-row3:hover
+{
+    border:1px solid blue ;
+}
+.fifth-div
+{
+    padding:100px 100px 0px 100px;
+    background-color: lightgray;
+}
+h4{
+    text-align:center;
+}
+/*footer*/
+#footer_mail:hover
+{
+   color:blue;
+}
+#footer_phone:hover
+{
+   color:blue;
+}
+.footer-div
+{
+    border:1px solid black;
+    background-color:black;
+    text-align:center;
+     width:100%;
+     height:300px;
+     padding:40px;
+}
+.footer-sub
+{
+    width:100%;
+    height:80px;
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:20px ;
+    border:1px solid white;
+}

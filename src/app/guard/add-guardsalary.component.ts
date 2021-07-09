@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { GuardService } from '../shared/guardservice';
 import { Guard } from './guard';
 import { GuardSalary } from './guardsalary';
@@ -12,15 +13,16 @@ import { GuardSalary } from './guardsalary';
 })
 export class AddGuardsalaryComponent implements OnInit {
 
+  statusData: any = ['PENDING','CREDITED']
   guardsalary!: GuardSalary;
-  guard!:Guard;
+  guard!: Guard;
   id: number = 0;
   addSalaryForm!: FormGroup;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: GuardService) { }
+    private service: GuardService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -43,10 +45,16 @@ export class AddGuardsalaryComponent implements OnInit {
   onSubmit() {
     console.log(this.addSalaryForm.value + "from onSubmit of add salary component")
 
-    this.service.addGuardSalary(this.id,this.addSalaryForm.value).subscribe(
-      (        data: any) => {this.guardsalary = data;
-            this.router.navigate(['guards'])},
-      (        err: any) => console.log(err)
+    this.service.addGuardSalary(this.id, this.addSalaryForm.value).subscribe(
+      (data: any) => {
+        this.toastr.success('Successfully Added');
+        this.guardsalary = data;
+        this.router.navigate(['guards'])
+      },
+      (err: any) => {
+        this.toastr.error('Failed to Add Guard Salary Details: Invalid Status');
+        console.log(err)
+      }
     )
   }
 }

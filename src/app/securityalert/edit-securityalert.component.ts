@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SecurityAlertService } from '../shared/securityalertservice';
 import { SecurityAlert } from './securityalert';
 
@@ -19,7 +20,7 @@ export class EditSecurityalertComponent implements OnInit {
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: SecurityAlertService) { }
+    private service: SecurityAlertService,private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -47,10 +48,13 @@ export class EditSecurityalertComponent implements OnInit {
     this.service.updateSecurityAlert(this.id, this.editForm.value).
       subscribe(
         (data) => {
+          this.toastr.success('Successfully Updated');
           this.securityalert = data;
           this.router.navigate(['securityalerts'])
         },
-        (err) => { console.log(err) }
+        (err) => { 
+          this.toastr.error('Failed to Update Security Alert Details: Invalid Status');
+          console.log(err) }
       )
   }
 }

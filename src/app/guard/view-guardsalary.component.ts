@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { GuardService } from '../shared/guardservice';
 import { GuardSalary } from './guardsalary';
 
@@ -16,7 +17,7 @@ export class ViewGuardsalaryComponent implements OnInit {
   private numberPlate: string = "";
 
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: GuardService) {
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: GuardService,private toastr: ToastrService) {
 
   }
 
@@ -24,10 +25,14 @@ export class ViewGuardsalaryComponent implements OnInit {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.service.getGuardSalaryByGuardId(this.id).subscribe(
       (data) => {
+        this.toastr.success('Successfully Fetched');
         console.log(data);
         this.guardsalaries = data;
       },
-      (err) => console.log(err)
+      (err) => {
+        this.toastr.error('Failed to Fetch Guard Salary Details: Invalid Status');
+        console.log(err)
+      }
     );
   }
 

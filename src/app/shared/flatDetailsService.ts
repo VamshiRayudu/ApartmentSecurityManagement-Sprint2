@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/internal/Observable";
 import { FlatDetails } from "../flatdetails/flatdetails";
+import { FlatRent } from "../flatdetails/flatRent";
 import { Owner } from "../owner/owner";
 
 @Injectable({
@@ -30,7 +31,7 @@ export class FlatDetailsService {
         return <Observable<FlatDetails[]>>this.http.get(this.baseUrl + "/owner/getFlatDetailsByOwnerId?id=" + ownerId)
     }
 
-    updateFlatDetails(flatNumber: number,owner: Owner): Observable<FlatDetails> {
-        return <Observable<FlatDetails>>this.http.patch(this.baseUrl + "/admin/flatDetails/"+flatNumber, owner)
+    updateFlatDetails(flatNumber: number,flatRent: FlatRent): Observable<FlatDetails> {
+        return <Observable<FlatDetails>>this.http.patch(this.baseUrl + "/admin/flatDetails/"+flatNumber, flatRent)
     }
 }

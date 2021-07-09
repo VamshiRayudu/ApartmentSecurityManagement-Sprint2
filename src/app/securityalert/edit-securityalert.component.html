@@ -1,4 +1,8 @@
-<p>edit-customer works!</p>
+<div>
+    <app-header></app-header>
+  </div>
+
+
 <div class="col-md-6 user-container">
     <h2 class="text-center">Edit User</h2>
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
@@ -19,4 +23,9 @@
 
         <input type="submit" value="Update" class="btn btn-success">
     </form>
+</div>
+
+
+<div style="margin-top: 500px;">
+    <app-footer></app-footer>
 </div>

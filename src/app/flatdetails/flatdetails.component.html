@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="col">
         <div class="card">
             <div class="card-header">{{flatDetails.owner.name}}</div>
@@ -28,4 +28,77 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+
+
+<div>
+    <app-header></app-header>
 </div>
+
+
+
+
+<div>
+<aside class="profile-card">
+    <header>
+      <!-- here’s the avatar -->
+      <a target="_blank" href="#">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.uDXgDF12kq2-7ZUjdlnL9gHaFj&pid=Api&P=0&w=203&h=153" class="hoverZoomLink" style="margin-top: -28px;">
+      </a>
+  
+      <!-- the username -->
+      <h1 style="font-size: 15px;margin-top: -20px;">
+              FLAT OWNER
+            </h1>
+  
+      <!-- and role or location -->
+      <h2 style="margin-bottom: -0px;">
+              {{flatDetails.owner.name | uppercase}}
+            </h2>
+  
+    </header>
+  
+    <!-- bit of a bio; who are you? -->
+    <div class="profile-bio">
+      <h3>Flat Details</h3>
+      <div style="text-align: left;font-size: 18px;">
+        <!-- <h6><span style="font-weight: bold;">Flat Number:  </span><span style="color: #FF5722;">{{flatDetails.flatNumber}}</span></h6> -->
+        <h6><span style="font-weight: bold;">Floor Number:  </span><span style="color: #FF5722;">{{flatDetails.floorNumber}}</span></h6>
+        <h6 ><span style="font-weight: bold;">Owner User Name:  </span><span style="color: #FF5722;">{{flatDetails.owner.userName}}</span></h6>
+        <h6 ><span style="font-weight: bold;">Owner Email Id:  </span><span style="color: #FF5722;">{{flatDetails.owner.emailId}}</span></h6>
+        <h6 ><span style="font-weight: bold;">Owner Mobile Number:  </span><span style="color: #FF5722;">{{flatDetails.owner.mobileNumber}}</span></h6>
+        
+        <div *ngIf="isRented" class="card-subtitle">
+            <h6><span style="font-weight: bold;">Rent Amount: </span><span style="color: #FF5722;">{{flatDetails.flatRent.amount}}</span></h6>
+            <h6><span style="font-weight: bold;">Rental Name: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.name}}</span></h6>
+            <h6><span style="font-weight: bold;">Rental MobileNumber: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.mobileNumber}}</span></h6>
+            <h6><span style="font-weight: bold;">Rental Email Id: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.emailId}}</span></h6>
+            <h6><span style="font-weight: bold;">Rental Aadhar Id: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.aadharId}}</span></h6>
+        
+        </div>
+        
+        
+    </div>
+    </div>
+  </aside>
+
+  
+  </div>
+
+  <!-- <div class="card-footer">
+    <button (click)="onBack()" class="btn-info">Back</button>
+</div> -->
+<!-- <div class="card-footer" style="background-color: white;border-width: 0px;">
+    <button (click)="onBack()" class="btn-info">Back</button>
+</div> -->
+
+
+<div style="margin-top: 550px;">
+    <div class="card-footer" style="background-color: white;border-width: 0px;text-align: center;">
+        <button (click)="onBack()" class="btn-info">Back</button>
+    </div>
+    <app-footer></app-footer>
+</div>
+

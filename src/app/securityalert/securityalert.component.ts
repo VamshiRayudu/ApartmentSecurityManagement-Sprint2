@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SecurityAlertService } from '../shared/securityalertservice';
 import { SecurityAlert } from './securityalert';
 
@@ -16,7 +17,7 @@ export class SecurityalertComponent implements OnInit {
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private router: Router,
-    private service: SecurityAlertService) { }
+    private service: SecurityAlertService,private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -24,10 +25,14 @@ export class SecurityalertComponent implements OnInit {
 
     this.service.getSecurityAlertById(this.id).subscribe(
       (data) => {
+        this.toastr.success('Successfully Fetched');
         console.log(data);
         this.securityalert = data
       },
-      (err) => console.log(err)
+      (err) => {
+        this.toastr.error('Failed to Fetch Data');
+        console.log(err)
+      }
     );
 
   }

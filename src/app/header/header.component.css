@@ -1,0 +1,76 @@
+/*first row*/
+#first-row
+{
+    border:1px solid black;
+    width:100%;
+    height:123px;
+    
+}
+#icon-style
+{
+    float:left;
+    width:100%;
+    height:123px;
+   
+}
+#name-style
+{
+    text-align: center;
+    float: right;
+    width:100%;
+    height:123px;
+    padding:30px 30px 10px 0px;
+    text-shadow: 2px 2px blue;
+
+}
+/*second row*/
+.fa 
+{
+    padding: 20px;
+    font-size: 30px;
+    width: 80px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+.fa:hover
+ {
+    
+    color:blue;
+}
+.fa-facebook,.fa-instagram,.fa-twitter
+{
+    background: #18212c;
+    color: lightgray;
+}
+.glyphicon 
+{
+   font-size: 28px;
+   margin-top: 6px;
+}
+.navbar-right
+{
+   display:inline;
+}
+
+
+.first-div {
+    background-color: #18212c;
+    
+}
+
+/* .list {
+    color: black; 
+} */
+
+button {
+    background-color: #18212c;
+    border-width: 0px;
+    color: lightgray;
+    margin-top: 12px;
+}
+
+button:hover {
+    color: whitesmoke;
+}
+

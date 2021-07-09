@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../shared/authentication.service';
 
 export class JwtResponse {
@@ -15,13 +16,14 @@ export class JwtResponse {
 })
 export class LoginComponent implements OnInit {
 
+  roleData: any[] = ['ADMIN','GUARD','FLATOWNER']
   email: string = '';
   password: string = '';
-  role: string = '';
+  role: string = '---Select---';
   invalidLogin: boolean = false;
   response!: JwtResponse
 
-  constructor(private router: Router,
+  constructor(private router: Router,private toastr: ToastrService,
     private loginservice: AuthenticationService) { }
 
   ngOnInit() {
@@ -31,11 +33,25 @@ export class LoginComponent implements OnInit {
   checkLogin() {
     (this.loginservice.authenticate(this.email, this.password, this.role).subscribe(
       data => {
+        this.toastr.success('Login Successful');
         console.log(data)
-        this.router.navigate([''])
+        // this.router.navigate([''])
+        if(this.role == "ADMIN")
+        {
+          this.router.navigate(['admin-home'])
+        }
+        else if(this.role == "GUARD")
+        {
+          this.router.navigate(['guard-home'])
+        }
+        else if(this.role == "FLATOWNER")
+        {
+          this.router.navigate(['owner-home'])
+        }
         this.invalidLogin = false
       },
       error => {
+        this.toastr.error('Login Failed: Invalid Credentials');
         this.invalidLogin = true
       }
     )
@@ -52,6 +68,10 @@ export class LoginComponent implements OnInit {
 
 
 
+  }
+
+  home() {
+    this.router.navigate([''])
   }
 
 }

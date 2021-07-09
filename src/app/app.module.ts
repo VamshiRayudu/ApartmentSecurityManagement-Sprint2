@@ -25,7 +25,6 @@ import { UpdateVisitorComponent } from './visitor/update-visitor.component';
 import { ListVisitorComponent } from './visitor/list-visitor.component';
 import { AddGuardsalaryComponent } from './guard/add-guardsalary.component';
 import { AddFlatdetailsComponent } from './flatdetails/add-flatdetails.component';
-import { FlatdetailsComponent } from './flatdetails/flatdetails.component';
 import { EditFlatdetailsComponent } from './flatdetails/edit-flatdetails.component';
 import { ListFlatdetailsComponent } from './flatdetails/list-flatdetails.component';
 import { ViewGuardsalaryComponent } from './guard/view-guardsalary.component';
@@ -54,6 +53,20 @@ import { ListDomestichelpattendanceComponent } from './domestichelp/list-domesti
 import { ListGuardattendanceComponent } from './guard/list-guardattendance.component';
 import { AddGuardshiftComponent } from './guard/add-guardshift.component';
 import { ViewGuardshiftComponent } from './guard/view-guardshift.component';
+import { FlatdetailsComponent } from './flatdetails/flatdetails.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { AdminHomepageComponent } from './homepage/admin-homepage.component';
+import { OwnerHomepageComponent } from './homepage/owner-homepage.component';
+import { GuardHomepageComponent } from './homepage/guard-homepage.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { UpdatepasswordComponent } from './password/updatepassword.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
+import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -103,7 +116,13 @@ import { ViewGuardshiftComponent } from './guard/view-guardshift.component';
     ListGuardattendanceComponent,
     AddGuardshiftComponent,
     ViewGuardshiftComponent,
-    FlatdetailsComponent
+    FlatdetailsComponent,
+    HomepageComponent,
+    AdminHomepageComponent,
+    OwnerHomepageComponent,
+    GuardHomepageComponent,
+    UpdatepasswordComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +130,11 @@ import { ViewGuardshiftComponent } from './guard/view-guardshift.component';
     HttpClientModule,
     FormsModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    CarouselModule,
+    RouterModule.forRoot([])
   ],
   providers: [RegisterService,
     { provide: HTTP_INTERCEPTORS,

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <table class="table table-bordered table-striped">
         <tr>
             <th colspan="2">Visitor List</th>
@@ -25,4 +25,56 @@
         
     </table>
 </div>
+ -->
+ <link
+ rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+ />
 
+ 
+
+
+ <div>
+    <app-header></app-header>
+</div>
+
+
+<h2>VISITORS</h2>
+
+<div class="container d-flex flex-column justify-content-center">
+	<table class="table table-striped animate__animated animate__zoomInDown">
+		<thead>
+			<tr>
+				<th>VISITOR ID</th>
+				<th>VISITOR NAME</th>
+				<th>MOBILE NUMBER</th>
+                <th>IN TIME</th>
+                <th>OUT TIME</th>
+                <th>GUARD ID</th>
+                <th *ngIf="isGuard"></th>
+			</tr>
+		</thead>
+		<tbody>
+			 <tr *ngFor="let visitor of visitors">
+            <td>{{visitor.id}}</td>
+            <td>{{visitor.visitorName}}</td>
+            <td>{{visitor.mobileNumber}}</td>
+            <td>{{visitor.inTime}}</td>
+            <td>{{visitor.outTime}}</td>
+            <td>{{visitor.guard.id}}</td>
+            <td *ngIf="isGuard" ngClass="td1">
+                <button (click)="onEdit(visitor)" class="btn-success edit-button" style="height: 43px;width: 85px;">Update OutTime</button>
+            </td>
+        </tr>	
+		</tbody>
+	</table>
+    <div class="card-footer" style="margin-top: 10px;border-width: 0px;text-align: center;">
+        <button (click)="onBack()" class="btn-info">Back</button>
+    </div>
+</div>
+
+
+
+<div>
+    <app-footer></app-footer>
+</div>

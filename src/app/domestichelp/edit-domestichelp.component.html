@@ -1,22 +1,37 @@
+<div>
+  <app-header></app-header>
+</div>
+
+
 <div class="col-md-6 user-container">
-  <h2 class="text-center">Edit Type</h2>
-  <form [formGroup]="editDHelpForm" (ngSubmit)="onSubmit()">
-    <div class="hidden">
-      <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id" readonly="true">
-    </div>
-    <div class="form-group">
-      <label for="helpType">Help Type:</label>
-      <input type="text" formControlName="helpType" placeholder="helpType" name="helpType" class="form-control"
-        id="helpType">
-    </div>
-
-
-    <!-- <div class="form-group">
+    <h2 class="text-center">Edit DomesticHelp Type</h2>
+    <form [formGroup]="editDHelpForm" (ngSubmit)="onSubmit()">
+      <div class="hidden">
+        <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id" readonly="true">
+      </div>
+      <div class="form-group">
+        <label for="helpType">Help Type:</label>
+        <!-- <input type="text" formControlName="helpType" placeholder="helpType" name="helpType" class="form-control" id="helpType" > -->
+        <select name="helpType"  formControlName="helpType" class="form-control" id="helpType">
+          <option>---Select---</option>
+          <option *ngFor="let item of dhelpTypeData" [value]="item">
+            {{item}}
+          </option>
+        </select>
+      </div>
+  
+      
+      <!-- <div class="form-group">
         <label for="oldHelpType">Old Help Type:</label>
         <input formControlName="oldHelpType" placeholder="oldHelpType" name="oldHelpType" class="form-control" id="oldHelpType">
       </div> -->
+  
+      
+      <input type="submit" value="Update" class="btn btn-success">
+    </form>
+  </div>
 
 
-    <input type="submit" value="Update" class="btn btn-success">
-  </form>
+  <div style="margin-top: 460px;">
+    <app-footer></app-footer>
 </div>

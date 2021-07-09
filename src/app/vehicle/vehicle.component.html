@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="col">
         <div class="card">
             <div class="card-header">{{vehicle.owner.userName}}</div>
@@ -18,4 +18,54 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+
+<div>
+    <app-header></app-header>
 </div>
+
+
+
+
+<div>
+<aside class="profile-card">
+    <header>
+      <!-- here’s the avatar -->
+      <a target="_blank" href="#">
+        <img src="assets/images/vehicleimg.jpg" class="hoverZoomLink">
+      </a>
+  
+      <!-- the username -->
+      <h1>
+              Owner Name
+            </h1>
+  
+      <!-- and role or location -->
+      <h2 style="margin-bottom: -12px;">
+              {{vehicle.owner.name}}
+            </h2>
+  
+    </header>
+  
+    <!-- bit of a bio; who are you? -->
+    <div class="profile-bio">
+      <h3 style="font-size: 25px;margin-bottom: 20px;">Vehicle Details</h3>
+      <div style="text-align: left;font-size: 18px;">
+        <h6><span style="font-weight: bold;">Number Plate:  </span><span style="color: #FF5722;">{{vehicle.numberPlate}}</span></h6>
+        <h6 ><span style="font-weight: bold;">Vehicle Color:  </span><span style="color: #FF5722;">{{vehicle.vehicleColour}}</span></h6>
+        <div class="card-footer">
+            <button (click)="onBack()" class="btn-info">Back</button>
+        </div>
+    </div>
+    </div>
+  </aside>
+  </div>
+
+
+
+<div style="margin-top: 550px;">
+    <app-footer></app-footer>
+</div>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { VisitorService } from '../shared/visitorService';
 import { Visitor } from './visitor';
 
@@ -18,7 +19,7 @@ export class ListVisitorComponent implements OnInit {
     private flatNumber: number=0;
     public isGuard: boolean=false;
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: VisitorService) { }
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: VisitorService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     var role = sessionStorage.getItem('role')
@@ -29,10 +30,14 @@ export class ListVisitorComponent implements OnInit {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
         this.service.getVisitorByFlatId(this.id).subscribe(
           (data: Visitor[]) => {
+            this.toastr.success('Successfully Fetched');
             console.log(data);
             this.visitors = data;
         },
-        (err: any) => console.log(err)
+        (err: any) => {
+          this.toastr.error('Failed to Fetch Visitor Details: Invalid Status');
+          console.log(err)
+        }
         );
   }
 
@@ -41,7 +46,7 @@ export class ListVisitorComponent implements OnInit {
   }
   
   onBack(){
-    this.router.navigate(['deliveries']);
+    this.router.navigate(['flatDetails']);
 }
 
 }

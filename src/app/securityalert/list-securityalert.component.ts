@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SecurityAlertService } from '../shared/securityalertservice';
 import { SecurityAlert } from './securityalert';
 
@@ -18,7 +19,7 @@ export class ListSecurityalertComponent implements OnInit {
   public isAdmin: boolean = false;
   public isGuard: boolean = false;
 
-  constructor(private service: SecurityAlertService, private router: Router) { }
+  constructor(private service: SecurityAlertService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     var role = sessionStorage.getItem('role')
@@ -29,8 +30,14 @@ export class ListSecurityalertComponent implements OnInit {
       this.isGuard = true;
     }
     this.service.getAllSecurityAlerts().subscribe(
-      (data) => this.securityalerts = data,
-      (err) => console.log(err)
+      (data) => {
+        // this.toastr.success('Successfully Fetched');
+        this.securityalerts = data;
+      },
+      (err) => {
+        this.toastr.error('Failed to Fetch Security Alert Details: Invalid Status');
+        console.log(err)
+      }
     );
   }
 

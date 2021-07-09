@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../shared/adminservice';
 
 import { Admin } from './admin';
@@ -18,7 +19,7 @@ export class EditAdminComponent implements OnInit {
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: AdminService) { }
+    private service: AdminService,private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -35,7 +36,9 @@ export class EditAdminComponent implements OnInit {
           userName: this.admin.userName,
         })
       },
-      (err) => console.log(err)
+      (err) => {
+        console.log(err)
+      }
     );
   }
 
@@ -56,10 +59,13 @@ export class EditAdminComponent implements OnInit {
     this.service.updateAdmin(data).
       subscribe(
         (data) => {
+          this.toastr.success('Successfully Updated');
           this.admin = data;
-          this.router.navigate(['admins'])
+          this.router.navigate(['admin-home'])
         },
-        (err) => { console.log(err) }
+        (err) => { 
+          this.toastr.success('Failed to Update Admin Details: Invalid Status');
+          console.log(err) }
       )
   }
 

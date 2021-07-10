@@ -12,12 +12,22 @@
 
       <div class="form-group">
         <label for="vehicleInTime">Vehicle InTime:</label>
-        <input type="datetime-local" formControlName="vehicleInTime" class="form-control">
+        <input type="datetime-local" formControlName="vehicleInTime" class="form-control" [ngClass]="{'is-invalid': submitted && f.vehicleInTime.errors}"/>
+        <div *ngIf="submitted && f.vehicleInTime.errors" class="invalid-feedback">    
+          <div *ngIf="f.vehicleInTime.errors.required">
+                Vehicle In Time is required
+          </div> 
+    </div>
       </div>
 
       <div class="form-group">
         <label for="vehicleOutTime">Vehicle OutTime:</label>
-        <input type="datetime-local" formControlName="vehicleOutTime" placeholder="vehicleOutTime" name="vehicleOutTime" class="form-control" id="vehicleOutTime" >
+        <input type="datetime-local" formControlName="vehicleOutTime" placeholder="vehicleOutTime" name="vehicleOutTime" class="form-control" id="vehicleOutTime" [ngClass]="{'is-invalid': submitted && f.vehicleOutTime.errors}"/>
+        <div *ngIf="submitted && f.vehicleOutTime.errors" class="invalid-feedback">    
+          <div *ngIf="f.vehicleOutTime.errors.required">
+                Vehicle Out Time is required
+          </div> 
+    </div>
       </div>
 
       <input type="submit" value="Update" class="btn btn-success">

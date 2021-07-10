@@ -11,13 +11,26 @@
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" formControlName="name" placeholder="name"
-            name="name" class="form-control" id="name">
+            name="name" class="form-control" id="name" [ngClass]="{'is-invalid': submitted && f.name.errors}"/>
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">    
+                <div *ngIf="f.name.errors.required">
+                      Name is required
+                </div> 
+              </div>
         </div>
 
         <div class="form-group">
             <label for="mobileNumber">Mobile Number</label>
             <input type="text" formControlName="mobileNumber" placeholder="mobileNumber"
-            name="mobileNumber" class="form-control" id="mobileNumber">
+            name="mobileNumber" class="form-control" id="mobileNumber" [ngClass]="{'is-invalid': submitted && f.mobileNumber.errors}"/>
+            <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">    
+                <div *ngIf="f.mobileNumber.errors.required">
+                      Mobile Number is required
+                </div> 
+                <div *ngIf="f.mobileNumber.errors.minlength">
+                    Mobile Number must have 10 digits
+                  </div>
+            </div>
         </div>
 
         <div class="form-group">
@@ -35,7 +48,15 @@
         <div class="form-group">
             <label for="aadharId">Aadhar Id</label>
             <input type="text" formControlName="aadharId" placeholder="aadharId"
-            name="aadharId" class="form-control" id="aadharId">
+            name="aadharId" class="form-control" id="aadharId" [ngClass]="{'is-invalid': submitted && f.aadharId.errors}"/>
+            <div *ngIf="submitted && f.aadharId.errors" class="invalid-feedback">    
+                <div *ngIf="f.aadharId.errors.required">
+                      Aadhar Id is required
+                </div> 
+                <div *ngIf="f.aadharId.errors.minlength">
+                    Aadhar Id must have 12 digits
+                  </div>
+            </div>
         </div>
 
 

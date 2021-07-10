@@ -19,6 +19,8 @@ export class AddGuardsalaryComponent implements OnInit {
   id: number = 0;
   addSalaryForm!: FormGroup;
 
+  submitted= false;
+
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -35,14 +37,23 @@ export class AddGuardsalaryComponent implements OnInit {
           id: this.guard.id,
           dateofPayment: ['', Validators.required],
           amount: ['', Validators.required],
-          salaryStatus: ['', Validators.required]
+          salaryStatus: ''
         })
       },
       (err) => console.log(err)
     );
   }
 
+  get f() {
+    return this.addSalaryForm.controls ;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if(this.addSalaryForm.invalid) 
+    {
+      return ;
+    }
     console.log(this.addSalaryForm.value + "from onSubmit of add salary component")
 
     this.service.addGuardSalary(this.id, this.addSalaryForm.value).subscribe(

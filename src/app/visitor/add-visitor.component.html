@@ -9,19 +9,37 @@
         <div class="form-group">
             <label for="visitorName">Visitor Name</label>
             <input type="text" formControlName="visitorName" placeholder="visitorName"
-            name="visitorName" class="form-control" id="visitorName">
+            name="visitorName" class="form-control" id="visitorName" [ngClass]="{'is-invalid': submitted && f.visitorName.errors}"/>
+            <div *ngIf="submitted && f.visitorName.errors" class="invalid-feedback">    
+                <div *ngIf="f.visitorName.errors.required">
+                      Visitor Name is required
+                </div> 
+            </div>
         </div>
 
         <div class="form-group">
             <label for="mobileNumber">Mobile Number</label>
             <input type="text" formControlName="mobileNumber" placeholder="mobileNumber"
-            name="mobileNumber" class="form-control" id="mobileNumber">
+            name="mobileNumber" class="form-control" id="mobileNumber" [ngClass]="{'is-invalid': submitted && f.mobileNumber.errors}"/>
+            <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">    
+                <div *ngIf="f.mobileNumber.errors.required">
+                      Mobile Number is required
+                </div> 
+                <div *ngIf="f.mobileNumber.errors.minlength">
+                    Mobile Number must have 10 digits
+                </div>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="inTime">Visitor In Time</label>
             <input type="datetime-local" formControlName="inTime" placeholder="inTime"
-            name="inTime" class="form-control" id="inTime">
+            name="inTime" class="form-control" id="inTime" [ngClass]="{'is-invalid': submitted && f.inTime.errors}"/>
+            <div *ngIf="submitted && f.inTime.errors" class="invalid-feedback">    
+                <div *ngIf="f.inTime.errors.required">
+                      Visitor In Time is required
+                </div> 
+            </div>
         </div>
 
         <!-- <div class="form-group">

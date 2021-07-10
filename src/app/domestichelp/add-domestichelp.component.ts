@@ -20,6 +20,8 @@ export class AddDomestichelpComponent implements OnInit {
   // flatDetails!: FlatDetails;
   // owner!: Owner;
 
+  submitted= false;
+
   constructor(private _ActivatedRoute: ActivatedRoute,
     private router: Router, private formBuilder: FormBuilder, private service: DomesticHelpService, private toastr: ToastrService) { }
 
@@ -27,13 +29,22 @@ export class AddDomestichelpComponent implements OnInit {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.addDHelpForm = this.formBuilder.group({
       name: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
-      helpType: ['', Validators.required],
-      aadharId: ['', Validators.required]
+      mobileNumber: ['', [Validators.required,Validators.minLength(10)]],
+      helpType: '',
+      aadharId: ['', [Validators.required,Validators.minLength(12)]]
     })
   }
 
+  get f() {
+    return this.addDHelpForm.controls ;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if(this.addDHelpForm.invalid) 
+    {
+      return ;
+    }
     console.log(this.addDHelpForm.value + "from onSubmit of add customer component")
     console.log(this.addDHelpForm.value.flatNumber);
     const formValue = this.addDHelpForm.value;

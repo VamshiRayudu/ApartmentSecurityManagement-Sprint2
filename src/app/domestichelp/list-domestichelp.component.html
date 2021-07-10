@@ -61,7 +61,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 		<tbody>
 			 <tr *ngFor="let dHelp of dHelps">
             <td>{{dHelp.id}}</td>
-            <td>{{dHelp.name}}</td>
+            <td>{{dHelp.name | uppercase}}</td>
             <td>{{dHelp.helpType}}</td>
             <td>{{dHelp.aadharId}}</td>
             <td>{{dHelp.mobileNumber}}</td>

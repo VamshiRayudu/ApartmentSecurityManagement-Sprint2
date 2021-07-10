@@ -16,6 +16,8 @@ export class UpdateVisitorComponent implements OnInit {
   id: number = 0;
   updateVisitorForm!: FormGroup;
 
+  submitted= false;
+
   constructor(private _ActivatedRoute: ActivatedRoute,
     private router: Router, private formBuilder: FormBuilder, private service: VisitorService,private toastr: ToastrService) { }
 
@@ -33,7 +35,17 @@ export class UpdateVisitorComponent implements OnInit {
     );
   }
 
+  get f() {
+    return this.updateVisitorForm.controls ;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if(this.updateVisitorForm.invalid) 
+    {
+      console.log(this.updateVisitorForm.value);
+      return ;
+    }
     console.log(this.updateVisitorForm.value + "from onSubmit of update visitor component")
     const formValue = this.updateVisitorForm.value;
     const data: any = {

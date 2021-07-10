@@ -50,9 +50,10 @@ export class ListOwnerComponent implements OnInit {
         this.owners = this.owners.filter(
           own => own !== owner
         )
+        this.router.navigate(['admin-home']);
       },
       (err) => {
-        this.toastr.error('Failed to Delete');
+        // this.toastr.error('Failed to Delete');
         console.log(err)
       }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../shared/authentication.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   public isGuard: boolean=false;
   public isOwner: boolean=false;
 
-  constructor(private router: Router,public loginservice: AuthenticationService) { }
+  constructor(private router: Router,public loginservice: AuthenticationService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem('role') == "ADMIN")
@@ -36,7 +37,9 @@ export class HeaderComponent implements OnInit {
 
   checkLogout() {
     this.loginservice.logOut();
+    this.toastr.success('Logout Successful');
     this.router.navigate(['']);
+    
     
   }
 

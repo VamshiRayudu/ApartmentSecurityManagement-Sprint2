@@ -57,6 +57,7 @@
     font-size: 14px;
   }
   .form-field {
+    width: 290px;
     height: 46px;
     padding: 0 16px;
     border: 2px solid #ddd;

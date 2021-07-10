@@ -37,7 +37,16 @@ export class ViewGuardshiftComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['guards']);
+    if(sessionStorage.getItem('role') == "ADMIN")
+    {
+      this.router.navigate(['guards']);
+    }
+    else if(sessionStorage.getItem('role') == "GUARD")
+    {
+      this.router.navigate(['guard-home']);
+    }
+    
+    
   }
 
 }

@@ -18,6 +18,8 @@ export class AddGuardshiftComponent implements OnInit {
   id: number = 0;
   addShiftForm!: FormGroup;
 
+  submitted= false;
+
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -40,7 +42,16 @@ export class AddGuardshiftComponent implements OnInit {
     );
   }
 
+  get f() {
+    return this.addShiftForm.controls ;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if(this.addShiftForm.invalid) 
+    {
+      return ;
+    }
     console.log(this.addShiftForm.value + "from onSubmit of add shift component")
 
     this.service.addGuardShift(this.id, this.addShiftForm.value).subscribe(

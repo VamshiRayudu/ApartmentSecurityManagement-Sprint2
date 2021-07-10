@@ -57,10 +57,10 @@
 		<tbody>
 			 <tr *ngFor="let visitor of visitors">
             <td>{{visitor.id}}</td>
-            <td>{{visitor.visitorName}}</td>
+            <td>{{visitor.visitorName | uppercase}}</td>
             <td>{{visitor.mobileNumber}}</td>
-            <td>{{visitor.inTime}}</td>
-            <td>{{visitor.outTime}}</td>
+            <td>{{visitor.inTime | date:'medium'}}</td>
+            <td>{{visitor.outTime | date:'medium'}}</td>
             <td>{{visitor.guard.id}}</td>
             <td *ngIf="isGuard" ngClass="td1">
                 <button (click)="onEdit(visitor)" class="btn-success edit-button" style="height: 43px;width: 85px;">Update OutTime</button>

@@ -42,8 +42,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 		</thead>
 		<tbody>
 			 <tr *ngFor="let attendance of attendances">
-            <td>{{attendance.inTime}}</td>
-            <td>{{attendance.outTime}}</td>
+            <td>{{attendance.inTime | date:'medium'}}</td>
+            <td>{{attendance.outTime | date:'medium'}}</td>
             <td>{{attendance.dateOfAttendance}}</td>
             <td>{{attendance.updatedByGuardId}}</td>
         </tr>	

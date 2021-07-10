@@ -19,6 +19,8 @@ export class AddFlatdetailsComponent implements OnInit {
   owner!: Owner;
   public isRented: boolean = false;
 
+  submitted= false;
+
   constructor(private _ActivatedRoute: ActivatedRoute,
     private router: Router, private formBuilder: FormBuilder, private service: FlatDetailsService,private toastr: ToastrService) { }
 
@@ -26,17 +28,26 @@ export class AddFlatdetailsComponent implements OnInit {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.addFlatDetailsForm = this.formBuilder.group({
       floorNumber: ['', Validators.required],
-      amount: ['', Validators.required],
-      aadharId: ['', Validators.required],
-      emailId: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
-      name: ['', Validators.required],
-      isRented: ['', Validators.required]
+      amount: '',
+      aadharId: '',
+      emailId: '',
+      mobileNumber: '',
+      name: '',
+      isRented: ''
       // if(isRented)
     })
   }
 
+  get f() {
+    return this.addFlatDetailsForm.controls ;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if(this.addFlatDetailsForm.invalid) 
+    {
+      return ;
+    }
     console.log(this.addFlatDetailsForm.value + "from onSubmit of add flatDetails component")
     const formValue = this.addFlatDetailsForm.value;
     // if (this.isRented) {

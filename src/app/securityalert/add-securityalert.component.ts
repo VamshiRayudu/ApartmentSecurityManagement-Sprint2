@@ -19,6 +19,8 @@ export class AddSecurityalertComponent implements OnInit {
   public isAdmin: boolean = false;
   public isGuard: boolean = false;
 
+  submitted= false;
+
   constructor(
     private formBuilder: FormBuilder,
     private service: SecurityAlertService,
@@ -39,7 +41,17 @@ export class AddSecurityalertComponent implements OnInit {
       this.isGuard = true;
     }
   }
+
+  get f() {
+    return this.addSecurityAlertForm.controls ;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if(this.addSecurityAlertForm.invalid) 
+    {
+      return ;
+    }
     console.log("in the formsubmission for add")
     const formValue = this.addSecurityAlertForm.value;
     if (this.isAdmin) {
@@ -55,7 +67,7 @@ export class AddSecurityalertComponent implements OnInit {
         subscribe(
           (data) => { 
             this.toastr.success('Successfully Added');
-            this.securityAlert = data; this.router.navigate(['securityAlerts']) },
+            this.securityAlert = data; this.router.navigate(['securityalerts']) },
           (err) => {
             this.toastr.error('Failed to Add Security Alert Details: Invalid Status');
             console.log(err)

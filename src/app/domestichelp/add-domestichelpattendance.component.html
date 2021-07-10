@@ -10,17 +10,32 @@
 
         <div class="form-group">
             <label for="">Date Of Attendance:</label>
-            <input type="date" formControlName="dateOfAttendance" class="form-control">
+            <input type="date" formControlName="dateOfAttendance" class="form-control" [ngClass]="{'is-invalid': submitted && f.dateOfAttendance.errors}"/>
+            <div *ngIf="submitted && f.dateOfAttendance.errors" class="invalid-feedback">    
+              <div *ngIf="f.dateOfAttendance.errors.required">
+                    Date is required
+              </div> 
+            </div>
         </div>
 
       <div class="form-group">
         <label for="inTime">InTime:</label>
-        <input type="datetime-local" formControlName="inTime" class="form-control">
+        <input type="datetime-local" formControlName="inTime" class="form-control" [ngClass]="{'is-invalid': submitted && f.inTime.errors}"/>
+        <div *ngIf="submitted && f.inTime.errors" class="invalid-feedback">    
+          <div *ngIf="f.inTime.errors.required">
+                Date and In Time is required
+          </div> 
+        </div>
       </div>
 
       <div class="form-group">
         <label for="outTime">OutTime:</label>
-        <input type="datetime-local" formControlName="outTime" placeholder="outTime" name="outTime" class="form-control" id="outTime" >
+        <input type="datetime-local" formControlName="outTime" placeholder="outTime" name="outTime" class="form-control" id="outTime" [ngClass]="{'is-invalid': submitted && f.outTime.errors}"/>
+        <div *ngIf="submitted && f.outTime.errors" class="invalid-feedback">    
+          <div *ngIf="f.outTime.errors.required">
+                Date and Out Time is required
+          </div> 
+        </div>
       </div>
 
       <input type="submit" value="Add Attendance" class="btn btn-success">

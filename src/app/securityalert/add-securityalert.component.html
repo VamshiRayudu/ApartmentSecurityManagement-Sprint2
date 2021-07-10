@@ -10,7 +10,12 @@
         <div class="form-group">
             <label for="alert">Alert</label>
             <input type="text" formControlName="alert" placeholder="alert" name="alert" class="form-control"
-                id="alert">
+                id="alert" [ngClass]="{'is-invalid': submitted && f.alert.errors}"/>
+                <div *ngIf="submitted && f.alert.errors" class="invalid-feedback">    
+                    <div *ngIf="f.alert.errors.required">
+                          alert is required
+                    </div> 
+                </div>
         </div>
 <!-- 
         <div class="form-group">
@@ -21,7 +26,12 @@
 
         <div class="form-group">
             <label for="message">Message</label>
-            <input type="text" formControlName="message" placeholder="message" name="message" class="form-control" id="message">
+            <input type="text" formControlName="message" placeholder="message" name="message" class="form-control" id="message" [ngClass]="{'is-invalid': submitted && f.message.errors}"/>
+            <div *ngIf="submitted && f.message.errors" class="invalid-feedback">    
+                <div *ngIf="f.message.errors.required">
+                      Message is required
+                </div> 
+            </div>
         </div>
 
         <input type="submit" value="Add Alert" class="btn btn-success">

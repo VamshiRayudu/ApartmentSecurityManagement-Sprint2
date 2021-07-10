@@ -1,13 +1,3 @@
-<!-- <div class="container">
-    <div>
-        Email Id : <input type="text" name="email" [(ngModel)]="email"><br>
-        Password : <input type="password" name="password" [(ngModel)]="password"><br>
-        Role : <input type="text" name="role" [(ngModel)]="role"><br>
-    </div>
-    <button (click)=checkLogin() class="btn btn-success">
-        Login
-    </button>
-</div> -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -18,28 +8,44 @@
 </div>
 <!-- <h1><span class="glyphicon glyphicon-home"></span></h1> -->
 <div class="container">
-  
-    <div class="left-section">
-      
-      <div class="header">
-        <h1 class="animation a1">Welcome Back!</h1>
-        <h4 class="animation a2">Login to your account</h4>
-      </div>
-      <div class="form">
-        
-        <input type="text" name="email" [(ngModel)]="email" class="form-field animation a3" placeholder="Email Id">
-        
-        <input type="password" name="password" [(ngModel)]="password" class="form-field animation a4" placeholder="Password">
-        <!-- <input type="text" name="role" [(ngModel)]="role" class="form-field animation a5" placeholder="Role"> -->
-        <select name="role" class="form-field animation a5" [(ngModel)]="role">
-          <option>---Select---</option>
-          <option *ngFor="let item of roleData" [value]="item">
-            {{item}}
-          </option>
-        </select>
-        
-        <button (click)=checkLogin() class="animation a6">LOGIN</button>
-      </div>
+  <div class="left-section">
+    <div class="header">
+      <h1 class="animation a1">Welcome Back!</h1>
+      <h4 class="animation a2">Login to your account</h4>
     </div>
-    <div class="right-section"></div>
+    <form #form1="ngForm" (ngSubmit)="checkLogin(form1)">
+      <div class="form">
+
+        <div class="log-in-inputs">
+          <input type="text" [(ngModel)]="user.emailId" placeholder="Email Id" name="emailId"
+            class="form-field animation a3" id="emailId" required #emailId="ngModel">
+          <div [hidden]="emailId.valid || emailId.pristine" class="alert alert-danger">
+            Invalid Email
+          </div>
+        </div>
+
+
+        <div class="log-in-inputs">
+          <input type="password" [(ngModel)]="user.password" placeholder="Password" name="password"
+            class="form-field animation a4" id="password" required minlength="5" #password="ngModel">
+          <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+            Password must contain atleast 6 letters
+          </div>
+        </div>
+
+
+        <div class="log-in-inputs">
+          <select name="role" class="form-field animation a5" [(ngModel)]="user.role">
+            <option>---Select---</option>
+            <option *ngFor="let item of roleData" [value]="item">
+              {{item}}
+            </option>
+          </select>
+        </div>
+
+        <button type="submit" class="animation a6" style="width: 245px;">LOGIN</button>
+      </div>
+    </form>
   </div>
+  <div class="right-section"></div>
+</div>

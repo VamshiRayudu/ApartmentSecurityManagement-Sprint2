@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SecurityAlertService } from '../shared/securityalertservice';
@@ -17,6 +17,8 @@ export class EditSecurityalertComponent implements OnInit {
   editForm!: FormGroup;
   id: number = 0;
 
+  submitted= false;
+
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -33,8 +35,8 @@ export class EditSecurityalertComponent implements OnInit {
         this.editForm = this.formBuilder.group({
 
           id: this.securityalert.id,
-          alert: this.securityalert.alert,
-          message: this.securityalert.message,
+          alert: ['', Validators.required],
+          message: ['', Validators.required]
 
         })
       },
@@ -42,8 +44,16 @@ export class EditSecurityalertComponent implements OnInit {
     );
   }
 
-  onSubmit() {
+  get f() {
+    return this.editForm.controls ;
+  }
 
+  onSubmit() {
+    this.submitted = true;
+    if(this.editForm.invalid) 
+    {
+      return ;
+    }
     console.log('form onSubmit of edit securityalert' + this.editForm.value);
     this.service.updateSecurityAlert(this.id, this.editForm.value).
       subscribe(

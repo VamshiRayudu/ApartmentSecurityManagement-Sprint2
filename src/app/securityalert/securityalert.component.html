@@ -52,7 +52,7 @@
       <h3>Details</h3>
       <div style="text-align: left;font-size: 40px;margin-top: 20px;">
         <h6><span style="font-weight: bold;">Alert Message:  </span><span style="color: #FF5722;">{{securityalert.message}}</span></h6>
-        <h6 ><span style="font-weight: bold;">Date of Incident:  </span><span style="color: #FF5722;">{{securityalert.dateTimeOfAlert}}</span></h6>
+        <h6 ><span style="font-weight: bold;">Date of Incident:  </span><span style="color: #FF5722;">{{securityalert.dateTimeOfAlert | date:'medium'}}</span></h6>
         <div class="card-footer" style="margin-top: 10px;">
             <button (click)="onBack()" class="btn-info">Back</button>
         </div>

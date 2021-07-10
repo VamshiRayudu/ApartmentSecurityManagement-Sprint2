@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../shared/adminservice';
@@ -15,6 +15,8 @@ export class EditAdminComponent implements OnInit {
   admin!: Admin;
   editForm!: FormGroup;
   id: number = 0;
+
+  submitted= false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -32,8 +34,11 @@ export class EditAdminComponent implements OnInit {
         this.editForm = this.formBuilder.group({
           id: this.id,
           name: this.admin.name,
-          mobileNumber: this.admin.mobileNumber,
-          userName: this.admin.userName,
+          // mobileNumber: this.admin.mobileNumber,
+          // userName: this.admin.userName,
+          // name: ['', Validators.required],
+          mobileNumber: ['',[ Validators.required,Validators.minLength(10)]],
+          userName: ['', Validators.required]
         })
       },
       (err) => {
@@ -42,8 +47,16 @@ export class EditAdminComponent implements OnInit {
     );
   }
 
-  onSubmit() {
+  get f() {
+    return this.editForm.controls ;
+  }
 
+  onSubmit() {
+    this.submitted = true;
+    if(this.editForm.invalid) 
+    {
+      return ;
+    }
     console.log('form onSubmit of edit admin' + this.admin);
     const formValue = this.editForm.value;
     const data: any = {
@@ -64,7 +77,7 @@ export class EditAdminComponent implements OnInit {
           this.router.navigate(['admin-home'])
         },
         (err) => { 
-          this.toastr.success('Failed to Update Admin Details: Invalid Status');
+          this.toastr.error('Failed to Update Admin Details: Invalid Status');
           console.log(err) }
       )
   }

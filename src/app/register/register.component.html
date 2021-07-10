@@ -49,41 +49,71 @@
 </div>
 
 
-
 <div class="container">
     <div class="left-section">
+    
       <div class="header">
-        <h1 class="animation a1">Welcome!</h1>
+        <h1 class="animation a1">User Registration!</h1>
         <h4 class="animation a2">Register an account</h4>
-      </div>
+      
       <form #form1="ngForm" (ngSubmit)="createUser(form1)">
         
       <div class="form">
         
-            <input type="text" [(ngModel)]="user.name" placeholder="Name" name="name" class="form-field animation a3" id="name">
-        
+        <div class="log-in-inputs">
+            <input type="text" [(ngModel)]="user.name" placeholder="Name" name="name" class="form-field animation a3" id="name"
+            required #name="ngModel">
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                name is required
+            </div>
+        </div>
+
+        <div class="log-in-inputs">
             <input type="text" [(ngModel)]="user.userName" placeholder="User Name" name="userName" class="form-field animation a3"
-                id="userName">
-        
+                id="userName" required #userName="ngModel">
+            <div [hidden]="userName.valid || userName.pristine" class="alert alert-danger">
+                    Username is required
+            </div>
+        </div>
+
+        <div class="log-in-inputs">
+           
             <input type="text" [(ngModel)]="user.mobileNumber" placeholder="Mobile Number" name="mobileNumber" class="form-field animation a4"
-                id="mobileNumber">
-        
-            <input type="text" [(ngModel)]="user.emailId" placeholder="Email Id" name="emailId" class="form-field animation a4" id="emailId">
-        
+                id="mobileNumber" required #mobileNumber="ngModel">
+            <div [hidden]="mobileNumber.valid || mobileNumber.pristine" class="alert alert-danger">
+                Mobilenumber must have 10 numbers
+            </div>
+        </div>
+
+        <div class="log-in-inputs">
+            <input type="text" [(ngModel)]="user.emailId" placeholder="Email Id" name="emailId" class="form-field animation a4" id="emailId"
+            required minlength="10" required #emailId="ngModel">
+            <div [hidden]="emailId.valid || emailId.pristine" class="alert alert-danger">
+                Invalid Email
+              </div>
+        </div>
+
+        <div class="log-in-inputs">
             <input type="password" [(ngModel)]="user.password" placeholder="Password" name="password" class="form-field animation a5"
-                id="password">
-        
-            <!-- <input type="text" [(ngModel)]="user.role" placeholder="Role" name="role" class="form-field animation a5" id="role"> -->
+                id="password" required minlength="6" #password="ngModel">
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Password must contain atleast 6 letters
+            </div>
+        </div>
+
+        <div class="log-in-inputs">
             <select name="role" class="form-field animation a5" [(ngModel)]="user.role">
                 <option>---Select---</option>
                 <option *ngFor="let item of roleData" [value]="item">
                   {{item}}
                 </option>
               </select>
-        
-        <button  type="submit" class="animation a6">Register</button>
+        </div>
+        <button  type="submit" class="animation a6" style="width: 290px;">Register</button>
       </div>
+    
       </form>
+    </div>
     </div>
     <div class="right-section"></div>
   </div>

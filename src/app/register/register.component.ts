@@ -11,40 +11,53 @@ import { User } from './user';
 })
 export class RegisterComponent implements OnInit {
 
-  roleData: any[] = ['ADMIN','GUARD','FLATOWNER']
+  roleData: any[] = ['ADMIN', 'GUARD', 'FLATOWNER']
 
-  user:User= {
+  user: User = {
     userName: '',
-    password:'',
-    role:'---Select---',
-    emailId:'',
+    password: '',
+    role: '---Select---',
+    emailId: '',
     mobileNumber: 0,
-    name:''
+    name: ''
   }
-   
+
+  name: string = '';
+  userName: string = '';
+  emailId: string = '';
+  password: string = '';
+  role: string = '---Select---';
+  mobileNumber: number = 0;
+  isValidFormSubmitted: boolean = false;
+
   constructor(
     private registerService: RegisterService,
-    private router:Router,private toastr: ToastrService
+    private router: Router, private toastr: ToastrService
   ) { }
 
   ngOnInit() {
   }
 
   createUser(form1: any): void {
-    console.log("in create user",form1.value)
-    
+    console.log("in create user", form1.value)
+    this.isValidFormSubmitted = false;
+    if (form1.valid) {
+      this.isValidFormSubmitted = true;
+    } else {
+      return;
+    }
     this.registerService.createUser(this.user)
-        .subscribe( data => {
-          this.toastr.success('Registration Successful');
-          console.log(data);
-          this.router.navigate(['admin-home'])
-        },
+      .subscribe(data => {
+        this.toastr.success('Registration Successful');
+        console.log(data);
+        this.router.navigate(['admin-home'])
+      },
         error => {
           this.toastr.error('Failed to Register: Email Id Already Exists');
-          
+
         }
-        );
-       
+      );
+
   };
 
   home() {

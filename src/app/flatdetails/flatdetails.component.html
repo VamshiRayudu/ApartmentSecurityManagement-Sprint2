@@ -72,7 +72,7 @@
         
         <div *ngIf="isRented" class="card-subtitle">
             <h6><span style="font-weight: bold;">Rent Amount: </span><span style="color: #FF5722;">{{flatDetails.flatRent.amount}}</span></h6>
-            <h6><span style="font-weight: bold;">Rental Name: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.name}}</span></h6>
+            <h6><span style="font-weight: bold;">Rental Name: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.name | uppercase}}</span></h6>
             <h6><span style="font-weight: bold;">Rental MobileNumber: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.mobileNumber}}</span></h6>
             <h6><span style="font-weight: bold;">Rental Email Id: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.emailId}}</span></h6>
             <h6><span style="font-weight: bold;">Rental Aadhar Id: </span><span style="color: #FF5722;">{{flatDetails.flatRent.rentals.aadharId}}</span></h6>

@@ -17,6 +17,8 @@ export class AddGuardattendanceComponent implements OnInit {
   id: number = 0;
   addAttendanceForm!: FormGroup;
 
+  submitted= false;
+
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -30,7 +32,16 @@ export class AddGuardattendanceComponent implements OnInit {
     })
   }
 
+  get f() {
+    return this.addAttendanceForm.controls ;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if(this.addAttendanceForm.invalid) 
+    {
+      return ;
+    }
     console.log(this.addAttendanceForm.value + "from onSubmit of add dhelp attendance component")
     console.log(this.addAttendanceForm.value.inTime + "from onSubmit of add dhelp attendance component")
     const formValue = this.addAttendanceForm.value;

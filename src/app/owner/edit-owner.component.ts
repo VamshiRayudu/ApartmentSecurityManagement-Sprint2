@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { OwnerService } from '../shared/ownerservice';
@@ -15,6 +15,8 @@ export class EditOwnerComponent implements OnInit {
   owner!: Owner;
   editForm!: FormGroup;
   id: number = 0;
+
+  submitted= false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -32,16 +34,24 @@ export class EditOwnerComponent implements OnInit {
         this.editForm = this.formBuilder.group({
           id: this.id,
           name: this.owner.name,
-          mobileNumber: this.owner.mobileNumber,
-          userName: this.owner.userName,
+          mobileNumber: ['', [Validators.required,Validators.minLength(10)]],
+          userName: ['', Validators.required]
         })
       },
       (err) => console.log(err)
     );
   }
 
-  onSubmit() {
+  get f() {
+    return this.editForm.controls ;
+  }
 
+  onSubmit() {
+    this.submitted = true;
+    if(this.editForm.invalid) 
+    {
+      return ;
+    }
     console.log('form onSubmit of edit customer' + this.owner);
     const formValue = this.editForm.value;
     const data: any = {

@@ -12,19 +12,36 @@
         <div class="form-group">
             <label for="numberPlate">Number Plate</label>
             <input type="text" formControlName="numberPlate" placeholder="numberPlate"
-            name="numberPlate" class="form-control" id="numberPlate">
+            name="numberPlate" class="form-control" id="numberPlate" [ngClass]="{'is-invalid': submitted && f.numberPlate.errors}"/>
+            <!-- <mat-hint class="invalid" *ngIf="addVehicleForm.get('numberPlate').errors && addVehicleForm.get('numberPlate').errors.alphabetValidator">Alphabet must contain</mat-hint> -->
+            <div *ngIf="submitted && f.numberPlate.errors" class="invalid-feedback">    
+                  <div *ngIf="f.numberPlate.errors.required">
+                        Number Plate is required
+                  </div> 
+            </div>
+  
         </div>
 
         <div class="form-group">
             <label for="vehicleColour">Vehicle Colour</label>
             <input type="text" formControlName="vehicleColour" placeholder="vehicleColour"
-            name="vehicleColour" class="form-control" id="vehicleColour">
+            name="vehicleColour" class="form-control" id="vehicleColour" [ngClass]="{'is-invalid': submitted && f.vehicleColour.errors}"/>
+            <div *ngIf="submitted && f.vehicleColour.errors" class="invalid-feedback">    
+                <div *ngIf="f.vehicleColour.errors.required">
+                      Vehicle Colour is required
+                </div> 
+          </div>
         </div>
 
         <div class="form-group">
             <label for="role">Flat Number</label>
             <input type="text" formControlName="flatNumber" placeholder="flatNumber"
-            name="flatNumber" class="form-control" id="flatNumber">
+            name="flatNumber" class="form-control" id="flatNumber" [ngClass]="{'is-invalid': submitted && f.flatNumber.errors}"/>
+            <div *ngIf="submitted && f.flatNumber.errors" class="invalid-feedback">    
+                <div *ngIf="f.flatNumber.errors.required">
+                      Flat Number is required
+                </div> 
+          </div>
         </div>
 
         <input type="submit" value="Add" class="btn btn-success">

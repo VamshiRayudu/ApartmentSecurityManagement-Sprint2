@@ -11,7 +11,12 @@
         <div class="form-group">
             <label for="outTime">Visitor Out Time</label>
             <input type="datetime-local" formControlName="outTime" placeholder="outTime"
-            name="outTime" class="form-control" id="outTime">
+            name="outTime" class="form-control" id="outTime" [ngClass]="{'is-invalid': submitted && f.outTime.errors}"/>
+            <div *ngIf="submitted && f.outTime.errors" class="invalid-feedback">    
+                <div *ngIf="f.outTime.errors.required">
+                      Visitor Out Time is required
+                </div> 
+            </div>
         </div>
 
 

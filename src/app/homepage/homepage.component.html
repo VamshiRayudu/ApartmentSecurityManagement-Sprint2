@@ -23,7 +23,7 @@
         
     
         <!--Thrid row-->
-        <div class="container-fluid" >
+        <div class="container-fluid" style="background-color: rgb(126, 212, 212);">
             <owl-carousel-o [options]="customOptions">
                 
                <ng-template carouselSlide><img src="assets/images/app1.jpg"  height="500"></ng-template>
@@ -72,38 +72,83 @@
                 </div>
             </div> -->
             <!--fourth row-->
-            <div class="conatiner fourth-div" id="about-us">
-                <h1>Welcome to Apartment Security Mangement System</h1>
+        <div>
+            <div class="conatine-fluid fourth-div" id="about-us" style="margin-bottom: 33px;border-width: 0px;">
+                <h1 style="font-weight: 600;">Welcome to Apartment Security Mangement System</h1>
                 <blockquote>
-                    <p>Book flat in our Apartments and enjoy the best experience.</p>
+                    <p style="font-size: 16px;">The purpose of this application is to help the Admin , 
+                        Guards and Flat owners to manage the record and information of the visitor, 
+                        vehicles , deliveries ,security alerts and domesticHelp. 
+                        By using this application it will be easy for the Admin ,
+                        Guard and Owner to keep track of all the activities performed in apartment virtually. 
+                        Besides that, they can edit, add and delete the information . 
+                        The admin is responsible for register Guards and Flat Owner. 
+                        Guard manages the Visitor in time and out time records, and can also add and view deliveries. 
+                        This system also will provide a user friendly application system and a security 
+                        control to ensure the data integrity.</p>
                 </blockquote>
             </div>
             <!--fifth row-->
             <div class="container-fluid fifth-div" id="gallery">
-                <div class="col-4 class-row3" id="fifth-img1">
-                    <img src="assets/images/security.jpg" width=100% height=60%><br><br>
+                <div class="col-3 class-row3" id="fifth-img1">
+                    <img src="assets/images/guard.jpg" width=100% height=60%><br><br>
                     <h4><b>Security Services</b></h4>
-                    <p> Best Security services are provided,with well trained security guards.Helps you at any time.Now you
+                    <p style="text-align: center;"> Best Security services are provided,with well trained security guards.Helps you at any time.Now you
                         can relax..your Family is in safe hands.</p>
                 </div>
-                <div class="col-4 class-row3" id="fifth-img2">
-                    <img src="assets/images/web2.jpg" width=100% height=60%><br><br>
+                <div class="col-3 class-row3" id="fifth-img2">
+                    <img src="assets/images/flat.jpg" width=100% height=60%><br><br>
                     <h4><b>Flat Details</b></h4>
-                    <p>Login credentials provieded to you,will help you to easy login and you can view all your flat deatils
+                    <p style="text-align: center;">Login credentials will be provided to respective Flat Owners, which will help owners to login at ease and  can view all flat related details
                         from any where in the world...</p>
                 </div>
-                <div class="col-4 class-row3" id="fifth-img3">
+                <div class="col-3 class-row3" id="fifth-img3">
                     <img src="assets/images/alert.jpg" width=100% height=60%><br><br>
                     <h4><b>Security Alerts</b></h4>
-                    <p>We are providing 24/7 Emergency Sevices and security alerts.In case of any emergency ,immediate
+                    <p style="text-align: center;">We are providing 24/7 Emergency Sevices and security alerts.In case of any emergency ,immediate
                         actions are taken.And Information will be passed to all the residents immediately.</p>
                 </div>
+                <div class="col-3 class-row3" id="fifth-img3">
+                    <img src="assets/images/attendance.jpg" width=100% height=60%><br><br>
+                    <h4><b>Guard And Domestic-help Attendance</b></h4>
+                    <p style="text-align: center;">Guards and Domestic Help related attendances can easily be tracked and notified under respective guards and flats</p>
+                </div>
             </div><br><br>
-            <!-- footer -->
             
-    <!-- </body> -->
-    
-    <!-- </html> -->
+
+            <div class="container-fluid fifth-div" id="gallery">
+                <div class="col-3 class-row3" id="fifth-img1">
+                    <img src="assets/images/delivery.jpg" width=100% height=60%><br><br>
+                    <h4><b>Delivery Service</b></h4>
+                    <p style="text-align: center;"> All your packages delivered, whether or not you’re home
+                        Get your deliveries Status by clicking view delivery ,Simply instruct security to collect it for you and update the status for your convenience.</p>
+                </div>
+                <div class="col-3 class-row3" id="fifth-img2">
+                    <img src="assets/images/vehicle.jpg" width=100% height=60%><br><br>
+                    <h4><b>Vechicle Tracking</b></h4>
+                    <p style="text-align: center;">Capture vehicle make, model and number easily during entry and exit for record purposes.
+                        capture in-time and out time and calculate the duration of stay.
+                        Immediately identify if the vehicle is registered with the complex or is an outside vehicle.</p>
+                </div>
+                <div class="col-3 class-row3" id="fifth-img3">
+                    <img src="assets/images/visitor.jpg" width=100% height=60%><br><br>
+                    <h4><b>Visitor Tracking </b></h4>
+                    <p style="text-align: center;">Replace all your manual registers at gate with a single click
+                        Ability to stop impostors trying to enter your Apartment Complex
+                        Ability to verify contact details of visitors, 
+                        Ability to stop blacklisted staff from entering
+                        Faster check-ins, gets rid of queues at security gate</p>
+                </div>
+                <div class="col-3 class-row3" id="fifth-img3">
+                    <img src="assets/images/dhelp.jpg" width=100% height=60%><br><br>
+                    <h4><b>Domestic-Help Service </b></h4>
+                    <p style="text-align: center;">Domestic Helps services like plumbing,electrician... etc is provided to flat residents and their details are recorded for further investigations in future</p>
+                </div>
+            </div><br><br>
+            
+   
     <div>
         <app-footer></app-footer>
     </div>
+
+</div>

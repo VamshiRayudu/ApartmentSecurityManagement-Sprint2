@@ -19,6 +19,8 @@ export class AddVehicleupdateComponent implements OnInit {
   id: number = 0;
   vehicleUpdate!: vehicleUpdate;
 
+  submitted= false;
+
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -42,7 +44,16 @@ export class AddVehicleupdateComponent implements OnInit {
     );
   }
 
+  get f() {
+    return this.updateForm.controls ;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if(this.updateForm.invalid) 
+    {
+      return ;
+    }
     console.log(this.updateForm.value + "from onSubmit of upadte vehicleupdate component")
     const formValue = this.updateForm.value;
 

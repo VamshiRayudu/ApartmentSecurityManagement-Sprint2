@@ -17,6 +17,8 @@ export class AddDeliveryComponent implements OnInit {
   id: number = 0;
   addDeliveryForm!: FormGroup;
 
+  submitted= false;
+
   // flatDetails!: FlatDetails;
   // owner!: Owner;
 
@@ -27,13 +29,23 @@ export class AddDeliveryComponent implements OnInit {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.addDeliveryForm = this.formBuilder.group({
       deliveryDateTime: ['', Validators.required],
-      status: ['', Validators.required],
-      flatNumber: ['', Validators.required],
-      guardId: ['', Validators.required]
+      status: ''
+      // flatNumber: ['', Validators.required],
+      // guardId: ['', Validators.required]
     })
   }
 
+  get f() {
+    return this.addDeliveryForm.controls ;
+  }
+
+
   onSubmit() {
+    this.submitted = true;
+    if(this.addDeliveryForm.invalid) 
+    {
+      return ;
+    }
     console.log(this.addDeliveryForm.value + "from onSubmit of add delivery component")
 
     console.log(this.addDeliveryForm.value.flatNumber);

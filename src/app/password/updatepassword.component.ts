@@ -14,6 +14,8 @@ export class UpdatepasswordComponent implements OnInit {
   user!:User;
   editForm!: FormGroup;
 
+  submitted= false;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -26,8 +28,17 @@ export class UpdatepasswordComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  get f() {
+    return this.editForm.controls ;
+  }
 
+  onSubmit() {
+    this.submitted = true;
+    if(this.editForm.invalid) 
+    {
+      console.log(this.editForm.value);
+      return ;
+    }
     const formValue = this.editForm.value;
     const data: any = {
       "emailId": sessionStorage.getItem('email'),
@@ -54,7 +65,7 @@ export class UpdatepasswordComponent implements OnInit {
           }
         },
         (err) => { 
-          this.toastr.error('Failed to Update Password: Invalid Status');
+          this.toastr.error('Failed to Update Password');
           console.log(err) }
       )
   }

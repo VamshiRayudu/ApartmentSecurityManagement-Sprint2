@@ -45,9 +45,10 @@ export class ListGuardComponent implements OnInit {
         this.guards = this.guards.filter(
           gua => gua !== guard
         )
+        this.router.navigate(['admin-home']);
       },
       (err) => {
-        this.toastr.error('Failed to Delete');
+        // this.toastr.error('Failed to Delete');
         console.log(err)
       }
 

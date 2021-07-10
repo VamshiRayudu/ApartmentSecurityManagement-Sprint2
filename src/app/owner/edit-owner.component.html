@@ -12,17 +12,35 @@
 
       <div class="form-group">
         <label for="username">User Name:</label>
-        <input type="text" formControlName="userName" placeholder="userName" name="userName" class="form-control" id="userName" >
+        <input type="text" formControlName="userName" placeholder="userName" name="userName" class="form-control" id="userName" [ngClass]="{'is-invalid': submitted && f.userName.errors}"/>
+        <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">    
+          <div *ngIf="f.userName.errors.required">
+                Username is required
+          </div> 
+      </div>
       </div>
 
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name" >
+        <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name" [ngClass]="{'is-invalid': submitted && f.name.errors}"/>
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">    
+          <div *ngIf="f.name.errors.required">
+                Name is required
+          </div> 
+      </div>
       </div>
 
       <div class="form-group">
         <label for="mobileNumber">Mobile Number:</label>
-        <input type="mobileNumber" formControlName="mobileNumber" placeholder="mobileNumber" name="mobileNumber" class="form-control" id="mobileNumber" >
+        <input type="mobileNumber" formControlName="mobileNumber" placeholder="mobileNumber" name="mobileNumber" class="form-control" id="mobileNumber" [ngClass]="{'is-invalid': submitted && f.mobileNumber.errors}"/>
+        <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">    
+          <div *ngIf="f.mobileNumber.errors.required">
+                Mobile Number is required
+          </div> 
+          <div *ngIf="f.mobileNumber.errors.minlength">
+            Mobile Number must have 10 digits
+          </div>
+      </div>
       </div>
   
       <input type="submit" value="Update" class="btn btn-success">

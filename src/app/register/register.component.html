@@ -48,7 +48,7 @@
                     <div class="log-in-inputs">
                         <input type="text" [(ngModel)]="user.emailId" placeholder="Email Id" name="emailId"
                             class="form-field animation a4" id="emailId" required minlength="10" required
-                            #emailId="ngModel">
+                            #emailId="ngModel" email>
                         <div [hidden]="emailId.valid || emailId.pristine" class="alert alert-danger">
                             Invalid Email
                         </div>

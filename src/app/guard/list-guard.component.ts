@@ -44,11 +44,11 @@ export class ListGuardComponent implements OnInit {
         console.log('user deleted');
         this.guards = this.guards.filter(
           gua => gua !== guard
-        )
-        this.router.navigate(['admin-home']);
+        ),
+        this.router.navigate(['guards']);
       },
       (err) => {
-        // this.toastr.error('Failed to Delete');
+        this.toastr.error('Failed to Delete');
         console.log(err)
       }
 

@@ -17,12 +17,12 @@ export class AddGuardattendanceComponent implements OnInit {
   id: number = 0;
   addAttendanceForm!: FormGroup;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: AttendanceService,private toastr: ToastrService) { }
+    private service: AttendanceService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.addAttendanceForm = this.formBuilder.group({
@@ -32,15 +32,21 @@ export class AddGuardattendanceComponent implements OnInit {
     })
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.addAttendanceForm.controls ;
+    return this.addAttendanceForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns Attendance
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addAttendanceForm.invalid) 
-    {
-      return ;
+    if (this.addAttendanceForm.invalid) {
+      return;
     }
     console.log(this.addAttendanceForm.value + "from onSubmit of add dhelp attendance component")
     console.log(this.addAttendanceForm.value.inTime + "from onSubmit of add dhelp attendance component")

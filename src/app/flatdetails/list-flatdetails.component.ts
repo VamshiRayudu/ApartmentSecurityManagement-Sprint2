@@ -64,34 +64,65 @@ export class ListFlatdetailsComponent implements OnInit {
     }
   }
 
+  /**
+   * Add FlatDetails Button
+   */
   addFlatDetails() {
     this.router.navigate(['add-flatdetails'])
   }
 
+  /**
+   * Add Dhelp
+   * @param flatDetails
+   */
   addDHelp(flatDetails: FlatDetails) {
     this.router.navigate(['add-domestichelp', flatDetails.flatNumber])
   }
 
+  /**
+   * Add Delivery
+   * @param flatDetails
+   */
   addDelivery(flatDetails: FlatDetails) {
     this.router.navigate(['add-delivery', flatDetails.flatNumber])
   }
 
+  /**
+   * Add Visitor
+   * @param flatDetails
+   */
   addVisitor(flatDetails: FlatDetails) {
     this.router.navigate(['add-visitor', flatDetails.flatNumber])
   }
 
+  /**
+   * View Delivery
+   * @param flatDetails
+   */
   viewDelivery(flatDetails: FlatDetails) {
     this.router.navigate(['list-delivery', flatDetails.flatNumber])
   }
 
+  /**
+   * View Visitor
+   * @param flatDetails
+   */
   viewVisitor(flatDetails: FlatDetails) {
     this.router.navigate(['list-visitor', flatDetails.flatNumber])
   }
 
+  /**
+   * View Dhelp
+   * @param flatDetails
+   */
   viewDHelp(flatDetails: FlatDetails) {
     this.router.navigate(['list-domestichelp', flatDetails.flatNumber])
   }
 
+  /**
+   * On Edit Button
+   * @param flatDetails
+   */
   onEdit(flatDetails: FlatDetails) {
     this.router.navigate(['edit-flatdetails', flatDetails.flatNumber])
   }

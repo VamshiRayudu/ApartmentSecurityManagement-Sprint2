@@ -41,11 +41,17 @@ export class ListSecurityalertComponent implements OnInit {
     );
   }
 
+  /**
+   * On Edit Button
+   * @param securityalert 
+   */
   onEdit(securityalert: SecurityAlert) {
     this.router.navigate(['edit-securityalert', securityalert.id])
   }
 
-
+  /**
+   * Add Security Alert Button
+   */
   addSecurityAlert() {
     this.router.navigate(['add-securityalert']);
 

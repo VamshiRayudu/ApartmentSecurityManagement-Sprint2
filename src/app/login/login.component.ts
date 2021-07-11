@@ -32,17 +32,22 @@ export class LoginComponent implements OnInit {
   password: string = '';
   role: string = '---Select---';
   isValidFormSubmitted: boolean = false;
-  
+
   invalidLogin: boolean = false;
   response!: JwtResponse
 
-  constructor(private router: Router,private toastr: ToastrService,
+  constructor(private router: Router, private toastr: ToastrService,
     private loginservice: AuthenticationService) { }
 
   ngOnInit() {
 
   }
 
+  /**
+   * Check Login
+   * @param form1
+   * @returns User
+   */
   checkLogin(form1: any) {
     console.log("in create user", form1.value)
     this.isValidFormSubmitted = false;
@@ -57,16 +62,13 @@ export class LoginComponent implements OnInit {
         this.toastr.success('Login Successful');
         console.log(data)
         // this.router.navigate([''])
-        if(this.user.role == "ADMIN")
-        {
+        if (this.user.role == "ADMIN") {
           this.router.navigate(['admin-home'])
         }
-        else if(this.user.role == "GUARD")
-        {
+        else if (this.user.role == "GUARD") {
           this.router.navigate(['guard-home'])
         }
-        else if(this.user.role == "FLATOWNER")
-        {
+        else if (this.user.role == "FLATOWNER") {
           this.router.navigate(['owner-home'])
         }
         this.invalidLogin = false

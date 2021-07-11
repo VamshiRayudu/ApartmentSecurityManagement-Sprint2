@@ -1,7 +1,4 @@
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
 <div>
@@ -9,109 +6,62 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 </div>
 
 
-<!-- <div class="container">
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th colspan="2">FlatDetails List</th>
-        </tr>
-
-        <tr>
-            <th colspan="1">Flat Number</th>
-            <th colspan="1">Owner Name</th>
-        </tr>
-
-
-        <tr *ngFor="let flatDetail of flatDetails">
-            <td>
-                <a [routerLink]="['/flatDetails',flatDetail.flatNumber]">{{flatDetail.flatNumber}}</a>
-            </td>
-
-            <td>
-                <h4>{{flatDetail.owner.name}}</h4>
-            </td>
-
-            <td ngClass="td1">
-                <button (click)="viewDelivery(flatDetail)">View Delivery</button>
-            </td>
-
-            <td ngClass="td2">
-                <button (click)="viewVisitor(flatDetail)">View Visitor</button>
-            </td>
-
-            <td ngClass="td3">
-                <button (click)="viewDHelp(flatDetail)">View Domestic Help</button>
-            </td>
-
-            <td ngClass="td1">
-                <button *ngIf="isGuard" (click)="addDelivery(flatDetail)">Add Delivery</button>
-            </td>
-
-            <td ngClass="td2">
-                <button *ngIf="isGuard" (click)="addVisitor(flatDetail)">Add Visitor</button>
-            </td>
-
-            <td ngClass="td3">
-                <button *ngIf="isGuard" (click)="addDHelp(flatDetail)">Add DHelp</button>
-            </td>
-
-        </tr>
-    </table>
-</div> -->
-
-
 <h2>FLAT DETAILS </h2>
 
 <div class="container d-flex flex-column justify-content-center">
-    
-	<table class="table table-striped animate__animated animate__zoomInDown">
-		<thead>
-			<tr>
-				<th>FLAT NUMBER</th>
-				<th>OWNER NAME</th>
-				<th></th>
+
+    <table class="table table-striped animate__animated animate__zoomInDown">
+        <thead>
+            <tr>
+                <th>FLAT NUMBER</th>
+                <th>OWNER NAME</th>
                 <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let flatDetail of flatDetails">
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let flatDetail of flatDetails">
                 <td>
                     <a [routerLink]="['/flatDetails',flatDetail.flatNumber]">{{flatDetail.flatNumber}}</a>
                 </td>
-    
+
                 <td>
                     <h4>{{flatDetail.owner.name | uppercase}}</h4>
                 </td>
-    
+
                 <td ngClass="td1">
-                    <button *ngIf="isGuard" (click)="addDelivery(flatDetail)" class="btn-success button">Add Delivery</button>
+                    <button *ngIf="isGuard" (click)="addDelivery(flatDetail)" class="btn-success button">Add
+                        Delivery</button>
                 </td>
 
                 <td ngClass="td1">
                     <button (click)="viewDelivery(flatDetail)" class="btn-info button">View Delivery</button>
                 </td>
-    
+
                 <td ngClass="td2">
-                    <button *ngIf="isGuard" (click)="addVisitor(flatDetail)" class="btn-success button">Add Visitor</button>
+                    <button *ngIf="isGuard" (click)="addVisitor(flatDetail)" class="btn-success button">Add
+                        Visitor</button>
                 </td>
 
                 <td ngClass="td2">
                     <button (click)="viewVisitor(flatDetail)" class="btn-info button">View Visitor</button>
                 </td>
-    
+
                 <td ngClass="td3">
-                    <button *ngIf="isGuard" (click)="addDHelp(flatDetail)" class="btn-success button">Add<br>Domestic Help</button>
+                    <button *ngIf="isGuard" (click)="addDHelp(flatDetail)" class="btn-success button">Add<br>Domestic
+                        Help</button>
                 </td>
 
                 <td ngClass="td3">
                     <button (click)="viewDHelp(flatDetail)" class="btn-info button">View<br>Domestic Help</button>
                 </td>
             </tr>
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>
 
 

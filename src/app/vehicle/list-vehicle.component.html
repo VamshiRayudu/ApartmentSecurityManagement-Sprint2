@@ -1,8 +1,5 @@
 <!-- <p>list-vehicle works!</p> -->
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
 <div>
@@ -11,66 +8,35 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 
 
 
-<!-- <div class="container">
-    <button *ngIf="isOwner" class="btn btn-info" style="width:100px" (click)="addVehicle()">Add Vehicle</button>
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th colspan="2">Vehicle List</th>
-        </tr>
-
-        <tr>
-            <th colspan="2">numberPlate</th>
-        </tr>
-
-        <tr *ngFor="let vehicle of vehicles">
-            <td>
-                <a [routerLink]="['/vehicles',vehicle.id]">{{vehicle.numberPlate}}</a>
-            </td>
-
-            <td *ngIf="isOwner" ngClass="td1">
-                <button (click)="onDelete(vehicle)">Delete</button>
-            </td>
-
-            <td *ngIf="isGuard" ngClass="td1">
-                <button (click)="updateVehicle(vehicle)">Add Vehicle Update</button>
-            </td>
-
-            <td ngClass="td2">
-                <button (click)="listVehicleUpdate(vehicle)">Vehicle Updates List</button>
-            </td>
-        </tr>
-    </table>
-</div> -->
-
-
 <h2>VEHICLES</h2>
 
 <div class="container d-flex flex-column justify-content-center">
     <button *ngIf="isOwner" class="btn btn-success add-button" (click)="addVehicle()">Add Vehicle</button>
-	<table class="table table-striped animate__animated animate__zoomInDown">
-		<thead>
-			<tr>
-				<th>VEHICLE<br>NUMBER PLATE</th>
-				<th></th>
+    <table class="table table-striped animate__animated animate__zoomInDown">
+        <thead>
+            <tr>
+                <th>VEHICLE<br>NUMBER PLATE</th>
+                <th></th>
                 <th *ngIf="isGuard || isOwner" ngClass="th1"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let vehicle of vehicles">
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehicle of vehicles">
                 <td>
                     <a [routerLink]="['/vehicles',vehicle.id]">{{vehicle.numberPlate}}</a>
                 </td>
 
                 <td ngClass="td1">
-                    <button (click)="listVehicleUpdate(vehicle)" class="btn-info button">Vehicle<br>Updates List</button>
+                    <button (click)="listVehicleUpdate(vehicle)" class="btn-info button">Vehicle<br>Updates
+                        List</button>
                 </td>
-    
-                
-    
+
+
+
                 <td *ngIf="isGuard" ngClass="td1">
                     <button (click)="updateVehicle(vehicle)" class="btn-success button">Add<br>Vehicle Update</button>
                 </td>
-    
+
                 <!-- <td ngClass="td1">
                     <button (click)="listVehicleUpdate(vehicle)" class="btn-info button">Vehicle<br>Updates List</button>
                 </td> -->
@@ -79,10 +45,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
                     <button (click)="onDelete(vehicle)" class="btn btn-danger del-button">Delete</button>
                 </td>
             </tr>
-			
-			
-		</tbody>
-	</table>
+
+
+        </tbody>
+    </table>
 </div>
 
 

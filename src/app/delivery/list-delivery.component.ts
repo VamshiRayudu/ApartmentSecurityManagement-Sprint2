@@ -18,7 +18,7 @@ export class ListDeliveryComponent implements OnInit {
   public isGuard: boolean = false;
 
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: DeliveryService,private toastr: ToastrService) { }
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: DeliveryService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     var role = sessionStorage.getItem('role')
@@ -39,10 +39,16 @@ export class ListDeliveryComponent implements OnInit {
     );
   }
 
+  /**
+   * On Edit Button
+   */
   onEdit(delivery: Delivery) {
     this.router.navigate(['edit-delivery', delivery.deliveryId]);
   }
 
+  /**
+   * On Back Button
+   */
   onBack() {
     this.router.navigate(['flatDetails']);
   }

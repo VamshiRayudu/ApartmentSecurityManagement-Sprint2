@@ -16,10 +16,10 @@ export class UpdateVisitorComponent implements OnInit {
   id: number = 0;
   updateVisitorForm!: FormGroup;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: VisitorService,private toastr: ToastrService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: VisitorService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -35,16 +35,22 @@ export class UpdateVisitorComponent implements OnInit {
     );
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.updateVisitorForm.controls ;
+    return this.updateVisitorForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns 
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.updateVisitorForm.invalid) 
-    {
+    if (this.updateVisitorForm.invalid) {
       console.log(this.updateVisitorForm.value);
-      return ;
+      return;
     }
     console.log(this.updateVisitorForm.value + "from onSubmit of update visitor component")
     const formValue = this.updateVisitorForm.value;

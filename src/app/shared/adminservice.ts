@@ -5,30 +5,46 @@ import { Owner } from "../owner/owner";
 import { Admin } from "../admin/admin";
 
 @Injectable({
-    providedIn:'root'
+    providedIn: 'root'
 })
-export class AdminService{
- 
-    private baseUrl:string='http://localhost:9999/api/v1';
+export class AdminService {
 
-    constructor(private http:HttpClient){}
+    private baseUrl: string = 'http://localhost:9999/api/v1';
 
-    getAllAdmins():Observable<Admin[]>{
-        return <Observable<Admin[]>>this.http.get(this.baseUrl+"/admin/getAllAdmins");
+    constructor(private http: HttpClient) { }
+
+    /**
+     * Get All Admins
+     * @returns Admin[]
+     */
+    getAllAdmins(): Observable<Admin[]> {
+        return <Observable<Admin[]>>this.http.get(this.baseUrl + "/admin/getAllAdmins");
     }
- 
-    getAdminById(id:number):Observable<Admin>{
- 
-        return <Observable<Admin>>this.http.get(this.baseUrl+"/admin/getAdminById?id="+id)
+
+    /**
+     * Get Admin By Id
+     * @param id 
+     * @returns Admin
+     */
+    getAdminById(id: number): Observable<Admin> {
+        return <Observable<Admin>>this.http.get(this.baseUrl + "/admin/getAdminById?id=" + id)
     }
- 
-    deleteAdminById(id:number):Observable<Admin>{
- 
-        return <Observable<Admin>>this.http.delete(this.baseUrl+"/admin/"+id)
+
+    /**
+     * Delete Admin By Id
+     * @param id 
+     * @returns Admin
+     */
+    deleteAdminById(id: number): Observable<Admin> {
+        return <Observable<Admin>>this.http.delete(this.baseUrl + "/admin/" + id)
     }
- 
-    updateAdmin(admin:Admin):Observable<Admin>{
- 
-        return <Observable<Admin>>this.http.patch(this.baseUrl+"/admin/",admin)
+
+    /**
+     * Update Admin
+     * @param admin 
+     * @returns Admin
+     */
+    updateAdmin(admin: Admin): Observable<Admin> {
+        return <Observable<Admin>>this.http.patch(this.baseUrl + "/admin/", admin)
     }
 }

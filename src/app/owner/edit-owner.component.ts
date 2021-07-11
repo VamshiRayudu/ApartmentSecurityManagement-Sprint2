@@ -16,12 +16,12 @@ export class EditOwnerComponent implements OnInit {
   editForm!: FormGroup;
   id: number = 0;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: OwnerService,private toastr: ToastrService) { }
+    private service: OwnerService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class EditOwnerComponent implements OnInit {
         this.editForm = this.formBuilder.group({
           id: this.id,
           name: this.owner.name,
-          mobileNumber: ['', [Validators.required,Validators.minLength(10)]],
+          mobileNumber: ['', [Validators.required, Validators.minLength(10)]],
           userName: ['', Validators.required]
         })
       },
@@ -42,15 +42,21 @@ export class EditOwnerComponent implements OnInit {
     );
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.editForm.controls ;
+    return this.editForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns Owner
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.editForm.invalid) 
-    {
-      return ;
+    if (this.editForm.invalid) {
+      return;
     }
     console.log('form onSubmit of edit customer' + this.owner);
     const formValue = this.editForm.value;
@@ -69,18 +75,17 @@ export class EditOwnerComponent implements OnInit {
         (data) => {
           this.toastr.success('Successfully Updated');
           this.owner = data;
-          if(sessionStorage.getItem('role') == "ADMIN")
-          {
+          if (sessionStorage.getItem('role') == "ADMIN") {
             this.router.navigate(['owners'])
           }
-          else if(sessionStorage.getItem('role') == "FLATOWNER")
-          {
+          else if (sessionStorage.getItem('role') == "FLATOWNER") {
             this.router.navigate(['owner-home'])
           }
         },
-        (err) => { 
+        (err) => {
           this.toastr.error('Failed to Update Owner Details: Invalid Status');
-          console.log(err) }
+          console.log(err)
+        }
       )
   }
 }

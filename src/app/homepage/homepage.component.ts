@@ -14,15 +14,15 @@ export class HomepageComponent implements OnInit {
   customOptions: any = {
     loop: true,
     mouseDrag: true,
-    autoplay:true,
-    autoplayTimeout:1000,
-    autoplayHoverPause:true,
+    autoplay: true,
+    autoplayTimeout: 1000,
+    autoplayHoverPause: true,
     touchDrag: true,
     pullDrag: true,
     dots: false,
     navSpeed: 1000,
     navText: ['', ''],
-    autoWidth:true,
+    autoWidth: true,
     responsive: {
       0: {
         items: 1

@@ -19,7 +19,7 @@ export class AddSecurityalertComponent implements OnInit {
   public isAdmin: boolean = false;
   public isGuard: boolean = false;
 
-  submitted= false;
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,15 +42,21 @@ export class AddSecurityalertComponent implements OnInit {
     }
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.addSecurityAlertForm.controls ;
+    return this.addSecurityAlertForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns Security Alert
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addSecurityAlertForm.invalid) 
-    {
-      return ;
+    if (this.addSecurityAlertForm.invalid) {
+      return;
     }
     console.log("in the formsubmission for add")
     const formValue = this.addSecurityAlertForm.value;
@@ -65,9 +71,10 @@ export class AddSecurityalertComponent implements OnInit {
       };
       this.service.addSecurityAlert(adminSecurityAlert).
         subscribe(
-          (data) => { 
+          (data) => {
             this.toastr.success('Successfully Added');
-            this.securityAlert = data; this.router.navigate(['securityalerts']) },
+            this.securityAlert = data; this.router.navigate(['securityalerts'])
+          },
           (err) => {
             this.toastr.error('Failed to Add Security Alert Details: Invalid Status');
             console.log(err)
@@ -85,9 +92,10 @@ export class AddSecurityalertComponent implements OnInit {
       };
       this.service.addSecurityAlert(guardSecurityAlert).
         subscribe(
-          (data) => { 
+          (data) => {
             this.toastr.success('Successfully Added');
-            this.securityAlert = data; this.router.navigate(['securityalerts']) },
+            this.securityAlert = data; this.router.navigate(['securityalerts'])
+          },
           (err) => {
             this.toastr.error('Failed to Add Security Alert Details: Invalid Status');
             console.log(err)

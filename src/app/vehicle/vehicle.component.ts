@@ -16,7 +16,7 @@ export class VehicleComponent implements OnInit {
     vehicle!: Vehicle;
     id: number = 0
 
-    constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: VehicleService,private toastr: ToastrService) {
+    constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: VehicleService, private toastr: ToastrService) {
 
     }
 
@@ -35,7 +35,10 @@ export class VehicleComponent implements OnInit {
         );
     }
 
-    onBack(){
+    /**
+     * On Back Button
+     */
+    onBack() {
         this.router.navigate(['vehicles']);
     }
 

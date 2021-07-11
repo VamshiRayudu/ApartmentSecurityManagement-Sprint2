@@ -11,15 +11,15 @@ import { AuthenticationService, User } from '../shared/authentication.service';
 })
 export class UpdatepasswordComponent implements OnInit {
 
-  user!:User;
+  user!: User;
   editForm!: FormGroup;
 
-  submitted= false;
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: AuthenticationService,private toastr: ToastrService) { }
+    private service: AuthenticationService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.editForm = this.formBuilder.group({
@@ -29,15 +29,18 @@ export class UpdatepasswordComponent implements OnInit {
   }
 
   get f() {
-    return this.editForm.controls ;
+    return this.editForm.controls;
   }
 
+  /**
+   * on Submit Button
+   * @returns User
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.editForm.invalid) 
-    {
+    if (this.editForm.invalid) {
       console.log(this.editForm.value);
-      return ;
+      return;
     }
     const formValue = this.editForm.value;
     const data: any = {
@@ -46,27 +49,25 @@ export class UpdatepasswordComponent implements OnInit {
       "role": sessionStorage.getItem('role')
     };
 
-    this.service.updatePassword(formValue.newPassword,data).
+    this.service.updatePassword(formValue.newPassword, data).
       subscribe(
         (data) => {
           this.toastr.success('Successfully Updated');
           this.user = data;
-          if(sessionStorage.getItem('role') == "ADMIN")
-          {
+          if (sessionStorage.getItem('role') == "ADMIN") {
             this.router.navigate(['admin-home'])
           }
-          if(sessionStorage.getItem('role') == "GUARD")
-          {
+          if (sessionStorage.getItem('role') == "GUARD") {
             this.router.navigate(['guard-home'])
           }
-          if(sessionStorage.getItem('role') == "FLATOWNER")
-          {
+          if (sessionStorage.getItem('role') == "FLATOWNER") {
             this.router.navigate(['owner-home'])
           }
         },
-        (err) => { 
+        (err) => {
           this.toastr.error('Failed to Update Password');
-          console.log(err) }
+          console.log(err)
+        }
       )
   }
 }

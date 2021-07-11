@@ -1,24 +1,4 @@
-<!-- <div class="container">
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th colspan="2">Vehicle Update List</th>
-        </tr>
-
-        <tr *ngFor="let vehicleUpdate of vehicleUpdates">
-            <th colspan="2">InTime:</th>
-            <td colspan="2">{{vehicleUpdate.vehicleInTime}}</td>
-            <th colspan="2">OutTime:</th>
-            <td colspan="2">{{vehicleUpdate.vehicleOutTime}}</td>
-            <th colspan="2">Updated By GuardId:</th>
-            <td colspan="2">{{vehicleUpdate.updatedByGuardId}}</td>
-        </tr>
-        
-    </table>
-</div> -->
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
 
@@ -31,22 +11,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 <h2>VEHICLE UPDATES</h2>
 
 <div class="container d-flex flex-column justify-content-center">
-	<table class="table table-striped animate__animated animate__zoomInDown">
-		<thead>
-			<tr>
-				<th>IN TIME</th>
-				<th>OUT TIME</th>
+    <table class="table table-striped animate__animated animate__zoomInDown">
+        <thead>
+            <tr>
+                <th>IN TIME</th>
+                <th>OUT TIME</th>
                 <th>UPDATED BY GUARD ID</th>
-			</tr>
-		</thead>
-		<tbody>
-			 <tr *ngFor="let vehicleUpdate of vehicleUpdates">
-            <td>{{vehicleUpdate.vehicleInTime | date:'medium'}}</td>
-            <td>{{vehicleUpdate.vehicleOutTime | date:'medium'}}</td>
-            <td>{{vehicleUpdate.updatedByGuardId}}</td>
-        </tr>	
-		</tbody>
-	</table>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehicleUpdate of vehicleUpdates">
+                <td>{{vehicleUpdate.vehicleInTime | date:'medium'}}</td>
+                <td>{{vehicleUpdate.vehicleOutTime | date:'medium'}}</td>
+                <td>{{vehicleUpdate.updatedByGuardId}}</td>
+            </tr>
+        </tbody>
+    </table>
     <div class="card-footer" style="margin-top: 10px;border-width: 0px;text-align: center;">
         <button (click)="onBack()" class="btn-info">Back</button>
     </div>

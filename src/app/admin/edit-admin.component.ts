@@ -16,12 +16,12 @@ export class EditAdminComponent implements OnInit {
   editForm!: FormGroup;
   id: number = 0;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: AdminService,private toastr: ToastrService) { }
+    private service: AdminService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class EditAdminComponent implements OnInit {
           // mobileNumber: this.admin.mobileNumber,
           // userName: this.admin.userName,
           // name: ['', Validators.required],
-          mobileNumber: ['',[ Validators.required,Validators.minLength(10)]],
+          mobileNumber: ['', [Validators.required, Validators.minLength(10)]],
           userName: ['', Validators.required]
         })
       },
@@ -47,15 +47,21 @@ export class EditAdminComponent implements OnInit {
     );
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.editForm.controls ;
+    return this.editForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns Admin
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.editForm.invalid) 
-    {
-      return ;
+    if (this.editForm.invalid) {
+      return;
     }
     console.log('form onSubmit of edit admin' + this.admin);
     const formValue = this.editForm.value;
@@ -76,9 +82,10 @@ export class EditAdminComponent implements OnInit {
           this.admin = data;
           this.router.navigate(['admin-home'])
         },
-        (err) => { 
+        (err) => {
           this.toastr.error('Failed to Update Admin Details: Invalid Status');
-          console.log(err) }
+          console.log(err)
+        }
       )
   }
 

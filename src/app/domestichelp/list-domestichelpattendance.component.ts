@@ -14,29 +14,32 @@ export class ListDomestichelpattendanceComponent implements OnInit {
   attendances!: Attendance[];
   private id: number = 0;
   private numberPlate: string = "";
-  
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: AttendanceService,private toastr: ToastrService) {
+
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: AttendanceService, private toastr: ToastrService) {
 
   }
 
-ngOnInit(): void {
-  this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
-      this.service.getAttendanceByDhelpId(this.id).subscribe(
-          (data) => {
-              this.toastr.success('Successfully Fetched');
-              console.log(data);
-              this.attendances = data;
-          },
-          (err) => {
-            this.toastr.error('Failed to Fetch DomesticHelp Attendance Details: Invalid Status');
-            console.log(err)
-          }
-      );
-}
+  ngOnInit(): void {
+    this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
+    this.service.getAttendanceByDhelpId(this.id).subscribe(
+      (data) => {
+        this.toastr.success('Successfully Fetched');
+        console.log(data);
+        this.attendances = data;
+      },
+      (err) => {
+        this.toastr.error('Failed to Fetch DomesticHelp Attendance Details: Invalid Status');
+        console.log(err)
+      }
+    );
+  }
 
-onBack(){
-  this.router.navigate(['flatDetails']);
-}
+  /**
+   * On Back Button
+   */
+  onBack() {
+    this.router.navigate(['flatDetails']);
+  }
 
 }

@@ -13,32 +13,42 @@ export class DeliveryService {
 
     constructor(private http: HttpClient) { }
 
+    /**
+     * getDeliveryByFlatId
+     * @param flatNumber 
+     * @returns Delivery
+     */
     getDeliveryByFlatId(flatNumber: number): Observable<Delivery[]> {
         return <Observable<Delivery[]>>this.http.get(this.baseUrl + "/owner/getDeliveryByFlatId/" + flatNumber)
     }
-    // guard/delivery/addDelivery?flatId=7&guardId=6
-    addDelivery(flatNumber: number,guardId: number,delivery: Delivery): Observable<Delivery> {
-        return <Observable<Delivery>>this.http.post(this.baseUrl + "/guard/delivery/addDelivery?flatId="+flatNumber+"&guardId="+guardId, delivery)
+    
+    /**
+     * add Delivery
+     * @param flatNumber 
+     * @param guardId 
+     * @param delivery 
+     * @returns Delivery
+     */
+    addDelivery(flatNumber: number, guardId: number, delivery: Delivery): Observable<Delivery> {
+        return <Observable<Delivery>>this.http.post(this.baseUrl + "/guard/delivery/addDelivery?flatId=" + flatNumber + "&guardId=" + guardId, delivery)
     }
 
+    /**
+     * get Delivery By Id
+     * @param id 
+     * @returns Delivery
+     */
     getDeliveryById(id: number): Observable<Delivery> {
         return <Observable<Delivery>>this.http.get(this.baseUrl + "/owner/delivery/" + id)
     }
 
+    /**
+     * update Delivery
+     * @param delivery 
+     * @returns Delivery
+     */
     updateDelivery(delivery: Delivery): Observable<Delivery> {
-        return <Observable<Delivery>>this.http.patch(this.baseUrl + "/guard/delivery/updateDeliveryStatus" , delivery)
+        return <Observable<Delivery>>this.http.patch(this.baseUrl + "/guard/delivery/updateDeliveryStatus", delivery)
     }
 
-    // deleteVehicleById(id: number): Observable<Vehicle> {
-    //     return <Observable<Vehicle>>this.http.delete(this.baseUrl + "/owner/vehicles/" + id)
-    // }
-
-    // getAllVehiclesByOwnerId(ownerId: number): Observable<Vehicle[]> {
-    //     return <Observable<Vehicle[]>>this.http.get(this.baseUrl + "/owner/getVehiclesByOwnerId?id=" + ownerId)
-    // }
-
-    // findVehicleUpdatesById(id: number): Observable<vehicleUpdate[]> {
-    //     return <Observable<vehicleUpdate[]>>this.http.get(this.baseUrl + "/guard/vehicleUpdates/getById?id=" + id)
-    // }
- 
 }

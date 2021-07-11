@@ -16,7 +16,7 @@ export class AddVisitorComponent implements OnInit {
   id: number = 0;
   addVisitorForm!: FormGroup;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private router: Router, private formBuilder: FormBuilder, private service: VisitorService, private toastr: ToastrService) { }
@@ -25,22 +25,28 @@ export class AddVisitorComponent implements OnInit {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
     this.addVisitorForm = this.formBuilder.group({
       visitorName: ['', Validators.required],
-      mobileNumber: ['', [Validators.required,Validators.minLength(10)]],
+      mobileNumber: ['', [Validators.required, Validators.minLength(10)]],
       inTime: ['', Validators.required]
       // outTime: ['', Validators.required]
     })
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.addVisitorForm.controls ;
+    return this.addVisitorForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns 
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addVisitorForm.invalid) 
-    {
+    if (this.addVisitorForm.invalid) {
       console.log(this.addVisitorForm.value);
-      return ;
+      return;
     }
     console.log(this.addVisitorForm.value + "from onSubmit of add visitor component")
     const formValue = this.addVisitorForm.value;

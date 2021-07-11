@@ -11,6 +11,11 @@ export class RegisterService {
         private httpClient: HttpClient
     ) { }
 
+    /**
+     * create User
+     * @param user 
+     * @returns User
+     */
     public createUser(user: any) {
 
         return this.httpClient.post<User>("http://localhost:9999/register", user);

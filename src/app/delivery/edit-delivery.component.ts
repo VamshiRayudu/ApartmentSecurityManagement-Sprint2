@@ -12,13 +12,13 @@ import { Delivery } from './delivery';
 })
 export class EditDeliveryComponent implements OnInit {
 
-  statusData: any[] = ['RECEIVED','PICKEDUP','NOTPICKEDUP']
+  statusData: any[] = ['RECEIVED', 'PICKEDUP', 'NOTPICKEDUP']
   delivery!: Delivery;
   id: number = 0;
   updateDeliveryForm!: FormGroup;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: DeliveryService,private toastr: ToastrService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: DeliveryService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -34,6 +34,9 @@ export class EditDeliveryComponent implements OnInit {
     );
   }
 
+  /**
+   * On Submit Button 
+   */
   onSubmit() {
     console.log(this.updateDeliveryForm.value + "from onSubmit of update delivery component")
     const formValue = this.updateDeliveryForm.value;
@@ -49,7 +52,7 @@ export class EditDeliveryComponent implements OnInit {
         this.delivery = data;
         this.router.navigate(['flatDetails'])
       },
-      (err: any) =>{
+      (err: any) => {
         this.toastr.error('Failed to Update Delivery Details: Invalid Status');
         console.log(err)
       }

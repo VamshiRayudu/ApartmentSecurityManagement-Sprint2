@@ -15,7 +15,7 @@ export class FlatdetailsComponent implements OnInit {
   id: number = 0;
   public isRented: boolean = false;
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: FlatDetailsService,private toastr: ToastrService) { }
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: FlatDetailsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -33,6 +33,9 @@ export class FlatdetailsComponent implements OnInit {
     );
   }
 
+  /**
+   * On Back Button
+   */
   onBack() {
     this.router.navigate(['flatDetails']);
   }

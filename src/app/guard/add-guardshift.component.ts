@@ -18,12 +18,12 @@ export class AddGuardshiftComponent implements OnInit {
   id: number = 0;
   addShiftForm!: FormGroup;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: GuardService,private toastr: ToastrService) { }
+    private service: GuardService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -42,15 +42,21 @@ export class AddGuardshiftComponent implements OnInit {
     );
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.addShiftForm.controls ;
+    return this.addShiftForm.controls;
   }
 
+  /**
+   * On Submit Method
+   * @returns Guard Shift
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addShiftForm.invalid) 
-    {
-      return ;
+    if (this.addShiftForm.invalid) {
+      return;
     }
     console.log(this.addShiftForm.value + "from onSubmit of add shift component")
 

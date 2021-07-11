@@ -1,22 +1,4 @@
-<!-- <div class="container">
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th colspan="2">Guard Shift</th>
-        </tr>
-
-        <tr>
-            <th colspan="2">In Time:</th>
-            <td colspan="2">{{guardshift.inTime}}</td>
-            <th colspan="2">Out Time:</th>
-            <td colspan="2">{{guardshift.outTime}}</td>
-        </tr>
-
-    </table>
-</div> -->
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
 
@@ -28,21 +10,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 <h2>GUARD SHIFTS</h2>
 
 <div class="container d-flex flex-column justify-content-center">
-	<table class="table table-striped animate__animated animate__zoomInDown">
-		<thead>
-			<tr>
-				<th>IN TIME</th>
-				<th>OUT TIME</th>
-			</tr>
-		</thead>
-		<tbody>
-			 <!-- <tr *ngFor="let guardsalary of guardsalaries"> -->
+    <table class="table table-striped animate__animated animate__zoomInDown">
+        <thead>
             <tr>
-            <td>{{guardshift.inTime | date:'medium'}}</td>
-            <td>{{guardshift.outTime | date:'medium'}}</td>
-        </tr>	
-		</tbody>
-	</table>
+                <th>IN TIME</th>
+                <th>OUT TIME</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let guardsalary of guardsalaries"> -->
+            <tr>
+                <td>{{guardshift.inTime | date:'medium'}}</td>
+                <td>{{guardshift.outTime | date:'medium'}}</td>
+            </tr>
+        </tbody>
+    </table>
     <div class="card-footer" style="margin-top: 10px;border-width: 0px;text-align: center;">
         <button (click)="onBack()" class="btn-info">Back</button>
     </div>

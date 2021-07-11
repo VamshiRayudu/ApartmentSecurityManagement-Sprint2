@@ -17,12 +17,12 @@ export class EditSecurityalertComponent implements OnInit {
   editForm!: FormGroup;
   id: number = 0;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private router: Router,
-    private service: SecurityAlertService,private toastr: ToastrService) { }
+    private service: SecurityAlertService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -44,15 +44,21 @@ export class EditSecurityalertComponent implements OnInit {
     );
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.editForm.controls ;
+    return this.editForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns Security Alert
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.editForm.invalid) 
-    {
-      return ;
+    if (this.editForm.invalid) {
+      return;
     }
     console.log('form onSubmit of edit securityalert' + this.editForm.value);
     this.service.updateSecurityAlert(this.id, this.editForm.value).
@@ -62,9 +68,10 @@ export class EditSecurityalertComponent implements OnInit {
           this.securityalert = data;
           this.router.navigate(['securityalerts'])
         },
-        (err) => { 
+        (err) => {
           this.toastr.error('Failed to Update Security Alert Details: Invalid Status');
-          console.log(err) }
+          console.log(err)
+        }
       )
   }
 }

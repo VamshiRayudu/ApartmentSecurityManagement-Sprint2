@@ -1,30 +1,4 @@
-<!-- <div class="container">
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th colspan="2">Delivery List</th>
-        </tr>
-
-            <tr *ngFor="let delivery of deliveries">
-                <th colspan="2">Delivery Id:</th>
-                <td colspan="2">{{delivery.deliveryId}}</td>
-                <th colspan="2">Delivery Date Time:</th>
-                <td colspan="2">{{delivery.deliveryDateTime}}</td>
-                <th colspan="2">Status:</th>
-                <td colspan="2">{{delivery.status}}</td>
-                <th colspan="2">Guard Id:</th>
-                <td colspan="2">{{delivery.guard.id}}</td>
-
-                <td *ngIf="isGuard" ngClass="td2">
-                    <button (click)="onEdit(delivery)">Edit Delivery Status</button>
-                </td>
-            </tr>
-        
-    </table>
-</div> -->
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
 <div>
@@ -35,28 +9,29 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 <h2>DELIVERIES </h2>
 
 <div class="container d-flex flex-column justify-content-center">
-	<table class="table table-striped animate__animated animate__zoomInDown">
-		<thead>
-			<tr>
-				<th>DELIVERY ID</th>
-				<th>DATE TIME</th>
-				<th>STATUS</th>
+    <table class="table table-striped animate__animated animate__zoomInDown">
+        <thead>
+            <tr>
+                <th>DELIVERY ID</th>
+                <th>DATE TIME</th>
+                <th>STATUS</th>
                 <th>GUARD ID</th>
                 <th></th>
-			</tr>
-		</thead>
-		<tbody>
-			 <tr *ngFor="let delivery of deliveries">
-            <td>{{delivery.deliveryId}}</td>
-            <td>{{delivery.deliveryDateTime | date:'medium'}}</td>
-            <td>{{delivery.status}}</td>
-            <td>{{delivery.guard.id}}</td>
-            <td *ngIf="isGuard" ngClass="td1">
-                <button (click)="onEdit(delivery)" class="btn-success edit-button" style="height: 46px;width: 100px;">Edit Delivery Status</button>
-            </td>
-        </tr>	
-		</tbody>
-	</table>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let delivery of deliveries">
+                <td>{{delivery.deliveryId}}</td>
+                <td>{{delivery.deliveryDateTime | date:'medium'}}</td>
+                <td>{{delivery.status}}</td>
+                <td>{{delivery.guard.id}}</td>
+                <td *ngIf="isGuard" ngClass="td1">
+                    <button (click)="onEdit(delivery)" class="btn-success edit-button"
+                        style="height: 46px;width: 100px;">Edit Delivery Status</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <div class="card-footer" style="margin-top: 10px;border-width: 0px;text-align: center;">
         <button (click)="onBack()" class="btn-info">Back</button>
     </div>

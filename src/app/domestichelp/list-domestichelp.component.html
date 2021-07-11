@@ -1,39 +1,4 @@
-<!-- <div class="container">
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th colspan="2">DHelp List</th>
-        </tr>
-
-        <tr *ngFor="let dHelp of dHelps">
-            <th colspan="2">Domestichelp Id:</th>
-            <td colspan="2">{{dHelp.id}}</td>
-            <th colspan="2">Name:</th>
-            <td colspan="2">{{dHelp.name}}</td>
-            <th colspan="2">DomesticHelp Type:</th>
-            <td colspan="2">{{dHelp.helpType}}</td>
-            <th colspan="2">Aadhar Id:</th>
-            <td colspan="2">{{dHelp.aadharId}}</td>
-            <th colspan="2">Mobile Number:</th>
-            <td colspan="2">{{dHelp.mobileNumber}}</td>
-
-            <td *ngIf="isGuard" ngClass="td1">
-                <button (click)="addDHelpAttendance(dHelp)">Add Attendance</button>
-            </td>
-
-            <td ngClass="td1">
-                <button (click)="viewDHelpAttendance(dHelp)">View Attendance</button>
-            </td>
-
-            <td *ngIf="isGuard" ngClass="td2">
-                <button (click)="onEdit(dHelp)">Edit</button>
-            </td>
-        </tr>
-    </table>
-</div> -->
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
 
@@ -45,40 +10,41 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 <h2>DOMESTIC HELPS</h2>
 
 <div class="container d-flex flex-column justify-content-center">
-	<table class="table table-striped animate__animated animate__zoomInDown">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>NAME</th>
-				<th>TYPE</th>
+    <table class="table table-striped animate__animated animate__zoomInDown">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>TYPE</th>
                 <th>AADHAR ID</th>
                 <th>MOBILE NUMBER</th>
                 <th></th>
                 <th></th>
                 <th *ngIf="isGuard"></th>
-			</tr>
-		</thead>
-		<tbody>
-			 <tr *ngFor="let dHelp of dHelps">
-            <td>{{dHelp.id}}</td>
-            <td>{{dHelp.name | uppercase}}</td>
-            <td>{{dHelp.helpType}}</td>
-            <td>{{dHelp.aadharId}}</td>
-            <td>{{dHelp.mobileNumber}}</td>
-            <td *ngIf="isGuard" ngClass="td1">
-                <button (click)="addDHelpAttendance(dHelp)" class="btn-success edit-button">Add Attendance</button>
-            </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dHelp of dHelps">
+                <td>{{dHelp.id}}</td>
+                <td>{{dHelp.name | uppercase}}</td>
+                <td>{{dHelp.helpType}}</td>
+                <td>{{dHelp.aadharId}}</td>
+                <td>{{dHelp.mobileNumber}}</td>
+                <td *ngIf="isGuard" ngClass="td1">
+                    <button (click)="addDHelpAttendance(dHelp)" class="btn-success edit-button">Add Attendance</button>
+                </td>
 
-            <td ngClass="td1">
-                <button (click)="viewDHelpAttendance(dHelp)" class="btn-info edit-button">View Attendance</button>
-            </td>
+                <td ngClass="td1">
+                    <button (click)="viewDHelpAttendance(dHelp)" class="btn-info edit-button">View Attendance</button>
+                </td>
 
-            <td *ngIf="isGuard" ngClass="td1">
-                <button (click)="onEdit(dHelp)" class="btn-info edit-button" style="width: 53px;height: 40px;">Edit</button>
-            </td>
-        </tr>	
-		</tbody>
-	</table>
+                <td *ngIf="isGuard" ngClass="td1">
+                    <button (click)="onEdit(dHelp)" class="btn-info edit-button"
+                        style="width: 53px;height: 40px;">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <div class="card-footer" style="margin-top: 10px;border-width: 0px;text-align: center;">
         <button (click)="onBack()" class="btn-info">Back</button>
     </div>

@@ -12,14 +12,13 @@ import { Owner } from './owner';
 export class ListOwnerComponent implements OnInit {
 
   owners!: Owner[];
-  public isAdmin: boolean=false;
+  public isAdmin: boolean = false;
 
-  constructor(private service: OwnerService, private router: Router,private toastr: ToastrService) { }
+  constructor(private service: OwnerService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    var role=sessionStorage.getItem('role');
-    if(role == "ADMIN")
-    {
+    var role = sessionStorage.getItem('role');
+    if (role == "ADMIN") {
       this.isAdmin = true;
     }
     this.service.getAllOwners().subscribe(
@@ -35,12 +34,19 @@ export class ListOwnerComponent implements OnInit {
 
   }
 
+  /**
+   * Edit Button
+   * @param owner
+   */
   onEdit(owner: Owner) {
 
     this.router.navigate(['edit-owner', owner.id])
-
-
   }
+
+  /**
+   * Delete Admin
+   * @param owner 
+   */
   onDelete(owner: Owner) {
 
     this.service.deleteOwnerById(owner.id).subscribe(
@@ -60,12 +66,19 @@ export class ListOwnerComponent implements OnInit {
     );
   }
 
+  /**
+   * Add Owner Button
+   */
   addOwner() {
     this.router.navigate(['register']);
   }
-
+  
+  /**
+   * Add Flat Details
+   * @param owner 
+   */
   addFlatDetails(owner: Owner) {
-    this.router.navigate(['add-flatDetails',owner.id]);
+    this.router.navigate(['add-flatDetails', owner.id]);
   }
 
 

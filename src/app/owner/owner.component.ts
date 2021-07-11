@@ -17,7 +17,7 @@ export class OwnerComponent implements OnInit {
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private router: Router,
-    private service: OwnerService,private toastr: ToastrService) { }
+    private service: OwnerService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -37,6 +37,9 @@ export class OwnerComponent implements OnInit {
 
   }
 
+  /**
+   * On Back Button
+   */
   onBack() {
     this.router.navigate(['owners']);
   }

@@ -32,13 +32,17 @@ export class AdminHomepageComponent implements OnInit {
 
   }
 
+  /**
+   * Edit Admin
+   * @param admin
+   */
   onEdit(admin: Admin) {
-
     this.router.navigate(['edit-admin', admin.id])
-
-
   }
 
+  /**
+   * Update Password
+   */
   updatePassword() {
     this.router.navigate(['updatePassword'])
   }

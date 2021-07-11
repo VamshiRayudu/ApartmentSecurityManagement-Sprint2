@@ -16,7 +16,7 @@ export class EditGuardComponent implements OnInit {
   editForm!: FormGroup;
   id: number = 0;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -34,7 +34,7 @@ export class EditGuardComponent implements OnInit {
         this.editForm = this.formBuilder.group({
           id: this.id,
           name: this.guard.name,
-          mobileNumber: ['', [Validators.required,Validators.minLength(10)]],
+          mobileNumber: ['', [Validators.required, Validators.minLength(10)]],
           userName: ['', Validators.required]
         })
       },
@@ -42,15 +42,21 @@ export class EditGuardComponent implements OnInit {
     );
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.editForm.controls ;
+    return this.editForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns Guard
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.editForm.invalid) 
-    {
-      return ;
+    if (this.editForm.invalid) {
+      return;
     }
     console.log('form onSubmit of edit guard' + this.guard);
     const formValue = this.editForm.value;
@@ -71,9 +77,10 @@ export class EditGuardComponent implements OnInit {
           this.guard = data;
           this.router.navigate(['guards'])
         },
-        (err) => { 
+        (err) => {
           this.toastr.error('Failed to Update Guard Details: Invalid Status');
-          console.log(err) }
+          console.log(err)
+        }
       )
   }
 }

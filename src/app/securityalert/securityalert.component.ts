@@ -17,7 +17,7 @@ export class SecurityalertComponent implements OnInit {
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private router: Router,
-    private service: SecurityAlertService,private toastr: ToastrService) { }
+    private service: SecurityAlertService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -37,8 +37,10 @@ export class SecurityalertComponent implements OnInit {
 
   }
 
+  /**
+   * On Back Button
+   */
   onBack() {
-
     this.router.navigate(['securityalerts']);
   }
 

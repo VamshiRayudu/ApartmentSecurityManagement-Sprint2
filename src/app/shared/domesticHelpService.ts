@@ -15,32 +15,69 @@ export class DomesticHelpService {
 
     constructor(private http: HttpClient) { }
 
+    /**
+     * get DomesticHelp List
+     * @returns DomesticHelp[]
+     */
     getDomesticHelpList(): Observable<DomesticHelp[]> {
         return <Observable<DomesticHelp[]>>this.http.get(this.baseUrl + "/admin/domesticHelps")
     }
-    // guard/domesticHelps/getDomesticHelpById?id=21
+    
+    /**
+     * get DomesticHelp By Id
+     * @param id 
+     * @returns DomesticHelp
+     */
     getDomesticHelpById(id: number): Observable<DomesticHelp> {
         return <Observable<DomesticHelp>>this.http.get(this.baseUrl + "/guard/domesticHelps/getDomesticHelpById?id=" + id)
     }
-    // guard/domesticHelp/Attendance?domesticHelpId=21
+    
+    /**
+     * update Dhelp Attendance
+     * @param id 
+     * @param attendance 
+     * @returns DomesticHelp
+     */
     updateAttendance(id: number, attendance: Attendance): Observable<DomesticHelp> {
         return <Observable<DomesticHelp>>this.http.patch(this.baseUrl + "/guard/domesticHelp/Attendance?domesticHelpId=" + id, attendance)
     }
-    // guard/domesticHelps?flatNumber=21
-    addDomesticHelp(flatNumber: number,domesticHelp: DomesticHelp): Observable<DomesticHelp> {
+    
+    /**
+     * add Domestic Help
+     * @param flatNumber 
+     * @param domesticHelp 
+     * @returns DomesticHelp
+     */
+    addDomesticHelp(flatNumber: number, domesticHelp: DomesticHelp): Observable<DomesticHelp> {
         return <Observable<DomesticHelp>>this.http.post(this.baseUrl + "/guard/domesticHelps/" + flatNumber, domesticHelp)
     }
-    
+
+    /**
+     * get DomesticHelp By FlatId
+     * @param flatNumber 
+     * @returns DomesticHelp[]
+     */
     getDomesticHelpByFlatId(flatNumber: number): Observable<DomesticHelp[]> {
         return <Observable<DomesticHelp[]>>this.http.get(this.baseUrl + "/owner/domesticHelps/getDomesticHelpByFlatId/" + flatNumber)
     }
-    // admin/domesticHelps/getDomesticHelpAttendanceById?id=21
+    
+    /**
+     * get DomesticHelp Attendance By Id
+     * @param id 
+     * @returns Attendance[]
+     */
     getDomesticHelpAttendanceById(id: number): Observable<Attendance[]> {
         return <Observable<Attendance[]>>this.http.get(this.baseUrl + "/admin/domesticHelps/getDomesticHelpAttendanceById?id=" + id)
     }
-    // guard/domesticHelps/21?newHelpType=COOKING&oldHelpType=COOKING
-    updateDomesticHelpById(id: number,domesticHelp: DomesticHelp): Observable<DomesticHelp> {
-        return <Observable<DomesticHelp>>this.http.patch(this.baseUrl + "/guard/domesticHelps/"+id, domesticHelp)
+    
+    /**
+     * update DomesticHelp By Id
+     * @param id 
+     * @param domesticHelp 
+     * @returns DomesticHelp
+     */
+    updateDomesticHelpById(id: number, domesticHelp: DomesticHelp): Observable<DomesticHelp> {
+        return <Observable<DomesticHelp>>this.http.patch(this.baseUrl + "/guard/domesticHelps/" + id, domesticHelp)
     }
- 
+
 }

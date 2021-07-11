@@ -10,31 +10,29 @@ export class NotfoundComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  role:string= "";
+  role: string = "";
 
   ngOnInit(): void {
-     var r = sessionStorage.getItem('role')
-     if(r != null)
-     {
-        this.role = r;
-     }
+    var r = sessionStorage.getItem('role')
+    if (r != null) {
+      this.role = r;
+    }
   }
 
-  onBack()
-  {
-    if(this.role == "ADMIN")
-    {
+  /**
+   * Back Button
+   */
+  onBack() {
+    if (this.role == "ADMIN") {
       this.router.navigate(['admin-home'])
     }
-    else if(this.role == "GUARD")
-    {
+    else if (this.role == "GUARD") {
       this.router.navigate(['guard-home'])
     }
-    else if(this.role == "FLATOWNER")
-    {
+    else if (this.role == "FLATOWNER") {
       this.router.navigate(['owner-home'])
     }
-    else{
+    else {
       this.router.navigate([''])
     }
 

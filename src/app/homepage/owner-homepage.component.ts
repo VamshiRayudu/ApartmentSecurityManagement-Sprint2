@@ -32,10 +32,17 @@ export class OwnerHomepageComponent implements OnInit {
 
   }
 
+  /**
+   * Edit Owner
+   * @param owner
+   */
   onEdit(owner: Owner) {
     this.router.navigate(['edit-owner', owner.id])
   }
 
+  /**
+   * Update Password
+   */
   updatePassword() {
     this.router.navigate(['updatePassword'])
   }

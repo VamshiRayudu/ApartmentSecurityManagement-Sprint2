@@ -15,7 +15,7 @@ export class ListGuardattendanceComponent implements OnInit {
   private numberPlate: string = "";
 
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: AttendanceService,private toastr: ToastrService) {
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: AttendanceService, private toastr: ToastrService) {
 
   }
 
@@ -34,13 +34,14 @@ export class ListGuardattendanceComponent implements OnInit {
     );
   }
 
+  /**
+   * On Back Button
+   */
   onBack() {
-    if(sessionStorage.getItem('role') == "ADMIN")
-    {
+    if (sessionStorage.getItem('role') == "ADMIN") {
       this.router.navigate(['guards']);
     }
-    else if(sessionStorage.getItem('role') == "GUARD")
-    {
+    else if (sessionStorage.getItem('role') == "GUARD") {
       this.router.navigate(['guard-home']);
     }
   }

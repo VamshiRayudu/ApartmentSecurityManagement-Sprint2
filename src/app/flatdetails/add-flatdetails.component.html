@@ -1,8 +1,7 @@
-
 <!-- Reactive form -->
 <div>
     <app-header></app-header>
-  </div>
+</div>
 
 
 
@@ -12,24 +11,26 @@
 
         <div class="form-group">
             <label for="floorNumber">Floor Number</label>
-            <input type="text" formControlName="floorNumber" placeholder="floorNumber"
-            name="floorNumber" class="form-control" id="floorNumber" [ngClass]="{'is-invalid': submitted && f.floorNumber.errors}"/>
-            <div *ngIf="submitted && f.floorNumber.errors" class="invalid-feedback">    
+            <input type="text" formControlName="floorNumber" placeholder="floorNumber" name="floorNumber"
+                class="form-control" id="floorNumber" [ngClass]="{'is-invalid': submitted && f.floorNumber.errors}" />
+            <div *ngIf="submitted && f.floorNumber.errors" class="invalid-feedback">
                 <div *ngIf="f.floorNumber.errors.required">
-                      Floor Number is required
-                </div> 
-              </div>
+                    Floor Number is required
+                </div>
+            </div>
         </div>
-        
+
         <div class="form-group">
             <label>Is Flat Rented?</label>
             <div class="form-control">
                 <label class="radio-inline">
-                    <input type="radio" formControlName="isRented" name="isRented" [value]="true" [checked]='true' [(ngModel)]="isRented">
+                    <input type="radio" formControlName="isRented" name="isRented" [value]="true" [checked]='true'
+                        [(ngModel)]="isRented">
                     Yes
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" formControlName="isRented" name="isRented" [value]="false" [(ngModel)]="isRented">
+                    <input type="radio" formControlName="isRented" name="isRented" [value]="false"
+                        [(ngModel)]="isRented">
                     No
                 </label>
             </div>
@@ -37,63 +38,63 @@
 
         <div *ngIf="isRented" class="form-group">
             <label for="amount">Flat Rent Amount</label>
-            <input type="text" formControlName="amount" placeholder="amount"
-            name="amount" class="form-control" id="amount" [ngClass]="{'is-invalid': submitted && f.amount.errors}"/>
-            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">    
+            <input type="text" formControlName="amount" placeholder="amount" name="amount" class="form-control"
+                id="amount" [ngClass]="{'is-invalid': submitted && f.amount.errors}" />
+            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
                 <div *ngIf="f.amount.errors.required">
-                      Amount is required
-                </div> 
-              </div>
+                    Amount is required
+                </div>
+            </div>
         </div>
 
         <div *ngIf="isRented" class="form-group">
             <label for="aadharId">Rentals AadharId</label>
-            <input type="text" formControlName="aadharId" placeholder="aadharId"
-            name="aadharId" class="form-control" id="aadharId" [ngClass]="{'is-invalid': submitted && f.aadharId.errors}"/>
-            <div *ngIf="submitted && f.aadharId.errors" class="invalid-feedback">    
+            <input type="text" formControlName="aadharId" placeholder="aadharId" name="aadharId" class="form-control"
+                id="aadharId" [ngClass]="{'is-invalid': submitted && f.aadharId.errors}" />
+            <div *ngIf="submitted && f.aadharId.errors" class="invalid-feedback">
                 <div *ngIf="f.aadharId.errors.required">
-                      Aadhar Id is required
-                </div> 
+                    Aadhar Id is required
+                </div>
                 <div *ngIf="f.aadharId.errors.minlength">
                     Aadhar Id must have 12 digits
                 </div>
-              </div>
+            </div>
         </div>
 
         <div *ngIf="isRented" class="form-group">
             <label for="emailId">Rentals EmailId</label>
-            <input type="text" formControlName="emailId" placeholder="emailId"
-            name="emailId" class="form-control" id="emailId" [ngClass]="{'is-invalid': submitted && f.emailId.errors}"/>
-            <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">    
+            <input type="text" formControlName="emailId" placeholder="emailId" name="emailId" class="form-control"
+                id="emailId" [ngClass]="{'is-invalid': submitted && f.emailId.errors}" />
+            <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
                 <div *ngIf="f.emailId.errors.required">
-                      Email Id is required
-                </div> 
-              </div>
+                    Email Id is required
+                </div>
+            </div>
         </div>
 
         <div *ngIf="isRented" class="form-group">
             <label for="mobileNumber">Rentals MobileNumber</label>
-            <input type="text" formControlName="mobileNumber" placeholder="mobileNumber"
-            name="mobileNumber" class="form-control" id="mobileNumber" [ngClass]="{'is-invalid': submitted && f.mobileNumber.errors}"/>
-            <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">    
+            <input type="text" formControlName="mobileNumber" placeholder="mobileNumber" name="mobileNumber"
+                class="form-control" id="mobileNumber" [ngClass]="{'is-invalid': submitted && f.mobileNumber.errors}" />
+            <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
                 <div *ngIf="f.mobileNumber.errors.required">
-                      Mobile Number is required
-                </div> 
+                    Mobile Number is required
+                </div>
                 <div *ngIf="f.mobileNumber.errors.minlength">
                     Mobile Number must have 10 digits
                 </div>
-              </div>
+            </div>
         </div>
 
         <div *ngIf="isRented" class="form-group">
             <label for="name">Rentals Name</label>
-            <input type="text" formControlName="name" placeholder="name"
-            name="name" class="form-control" id="name" [ngClass]="{'is-invalid': submitted && f.name.errors}"/>
-            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">    
+            <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name"
+                [ngClass]="{'is-invalid': submitted && f.name.errors}" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                 <div *ngIf="f.name.errors.required">
-                      Name is required
-                </div> 
-              </div>
+                    Name is required
+                </div>
+            </div>
         </div>
 
         <input type="submit" value="Add" class="btn btn-success">

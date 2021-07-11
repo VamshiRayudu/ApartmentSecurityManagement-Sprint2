@@ -17,7 +17,7 @@ export class ViewGuardshiftComponent implements OnInit {
   private numberPlate: string = "";
 
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: GuardService,private toastr: ToastrService) {
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: GuardService, private toastr: ToastrService) {
 
   }
 
@@ -36,17 +36,15 @@ export class ViewGuardshiftComponent implements OnInit {
     );
   }
 
+  /**
+   * View Guard Shift
+   */
   onBack() {
-    if(sessionStorage.getItem('role') == "ADMIN")
-    {
+    if (sessionStorage.getItem('role') == "ADMIN") {
       this.router.navigate(['guards']);
     }
-    else if(sessionStorage.getItem('role') == "GUARD")
-    {
+    else if (sessionStorage.getItem('role') == "GUARD") {
       this.router.navigate(['guard-home']);
     }
-    
-    
   }
-
 }

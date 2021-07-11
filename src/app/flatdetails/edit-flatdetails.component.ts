@@ -20,7 +20,7 @@ export class EditFlatdetailsComponent implements OnInit {
   public isRented: boolean = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: FlatDetailsService,private toastr: ToastrService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: FlatDetailsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -33,6 +33,9 @@ export class EditFlatdetailsComponent implements OnInit {
     })
   }
 
+  /**
+   * On Edit Button
+   */
   onSubmit() {
     console.log(this.updateFlatRentalsForm.value + "from onSubmit of add flatDetails component")
     const formValue = this.updateFlatRentalsForm.value;
@@ -50,9 +53,10 @@ export class EditFlatdetailsComponent implements OnInit {
     };
     this.service.updateFlatDetails(this.id, updateRent).
       subscribe(
-        (data) => { 
+        (data) => {
           this.toastr.success('Successfully Updated');
-          this.flatDetails = data; this.router.navigate(['flatDetails']) },
+          this.flatDetails = data; this.router.navigate(['flatDetails'])
+        },
         (err) => {
           this.toastr.error('Failed to Update Flat Details: Invalid Status');
           console.log(err)

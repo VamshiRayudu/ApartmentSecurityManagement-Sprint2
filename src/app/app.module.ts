@@ -137,9 +137,11 @@ import { Routes, RouterModule } from '@angular/router';
     RouterModule.forRoot([])
   ],
   providers: [RegisterService,
-    { provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true}],
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

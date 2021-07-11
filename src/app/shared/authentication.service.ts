@@ -27,6 +27,13 @@ export class AuthenticationService {
   ) {
   }
 
+  /**
+   * Authenticate
+   * @param email 
+   * @param password 
+   * @param role 
+   * @returns userData
+   */
   authenticate(email: any, password: any, role: any): Observable<any> {
 
     console.log('in authentication service authenticate method', email)
@@ -43,19 +50,32 @@ export class AuthenticationService {
       ));
   }
 
+  /**
+   * 
+   * @returns bool
+   */
   isUserLoggedIn() {
     let user = sessionStorage.getItem('email')
     console.log(!(user === null))
     return !(user === null)
   }
 
+  /**
+   * Logout Function
+   */
   logOut() {
     sessionStorage.removeItem('email')
     sessionStorage.removeItem('id')
     sessionStorage.removeItem('role')
   }
 
-  updatePassword(newPassword: string,user: User): Observable<User> {
-    return <Observable<User>>this.httpClient.patch(this.baseUrl + "/updatePassword?newPassword="+newPassword,user)
+  /**
+   * Update Password
+   * @param newPassword 
+   * @param user 
+   * @returns User
+   */
+  updatePassword(newPassword: string, user: User): Observable<User> {
+    return <Observable<User>>this.httpClient.patch(this.baseUrl + "/updatePassword?newPassword=" + newPassword, user)
   }
 }

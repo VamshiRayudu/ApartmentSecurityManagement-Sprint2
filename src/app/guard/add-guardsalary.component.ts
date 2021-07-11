@@ -13,13 +13,13 @@ import { GuardSalary } from './guardsalary';
 })
 export class AddGuardsalaryComponent implements OnInit {
 
-  statusData: any = ['PENDING','CREDITED']
+  statusData: any = ['PENDING', 'CREDITED']
   guardsalary!: GuardSalary;
   guard!: Guard;
   id: number = 0;
   addSalaryForm!: FormGroup;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -44,15 +44,21 @@ export class AddGuardsalaryComponent implements OnInit {
     );
   }
 
+   /**
+   * Form Validation
+   */
   get f() {
-    return this.addSalaryForm.controls ;
+    return this.addSalaryForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns GuardSalary
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addSalaryForm.invalid) 
-    {
-      return ;
+    if (this.addSalaryForm.invalid) {
+      return;
     }
     console.log(this.addSalaryForm.value + "from onSubmit of add salary component")
 

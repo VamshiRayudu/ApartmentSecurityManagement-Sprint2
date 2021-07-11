@@ -13,19 +13,41 @@ export class VisitorService {
 
     constructor(private http: HttpClient) { }
 
+    /**
+     * get Visitor By FlatId
+     * @param flatNumber 
+     * @returns Visitor[]
+     */
     getVisitorByFlatId(flatNumber: number): Observable<Visitor[]> {
         return <Observable<Visitor[]>>this.http.get(this.baseUrl + "/guard/visitor/getVisitorListByFlatNumber?id=" + flatNumber)
     }
 
-    addVisitor(visitor: Visitor,guardId: number): Observable<Visitor> {
-        return <Observable<Visitor>>this.http.post(this.baseUrl + "/guard/visitor?guardId=" + guardId , visitor)
+    /**
+     * add Visitor
+     * @param visitor 
+     * @param guardId 
+     * @returns Visitor
+     */
+    addVisitor(visitor: Visitor, guardId: number): Observable<Visitor> {
+        return <Observable<Visitor>>this.http.post(this.baseUrl + "/guard/visitor?guardId=" + guardId, visitor)
     }
 
+    /**
+     * get Visitor ById
+     * @param id 
+     * @returns Visitor
+     */
     getVisitorById(id: number): Observable<Visitor> {
         return <Observable<Visitor>>this.http.get(this.baseUrl + "/owner/visitor/" + id)
     }
 
-    updateVisitor(visitor: Visitor,guardId: number): Observable<Visitor> {
-        return <Observable<Visitor>>this.http.patch(this.baseUrl + "/guard/visitor/updateOutTime?guardId=" + guardId , visitor)
+    /**
+     * update Visitor
+     * @param visitor 
+     * @param guardId 
+     * @returns Visitor
+     */
+    updateVisitor(visitor: Visitor, guardId: number): Observable<Visitor> {
+        return <Observable<Visitor>>this.http.patch(this.baseUrl + "/guard/visitor/updateOutTime?guardId=" + guardId, visitor)
     }
 }

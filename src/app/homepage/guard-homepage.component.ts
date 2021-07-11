@@ -31,23 +31,40 @@ export class GuardHomepageComponent implements OnInit {
 
   }
 
+  /**
+   * Add Attendance
+   */
   addAttendance() {
     this.router.navigate(['add-guard-attendance'])
   }
 
+  /**
+   * View Attendance
+   * @param guard
+   */
   viewAttendance(guard: Guard) {
-    this.router.navigate(['list-guardattendance',guard.id])
+    this.router.navigate(['list-guardattendance', guard.id])
   }
 
+  /**
+   * View Shift
+   * @param guard
+   */
   viewShift(guard: Guard) {
-    this.router.navigate(['view-guardshift',guard.id])
+    this.router.navigate(['view-guardshift', guard.id])
   }
 
+  /**
+   * View Salary
+   * @param guard
+   */
   viewSalary(guard: Guard) {
-    this.router.navigate(['list-guardsalaries',guard.id])
+    this.router.navigate(['list-guardsalaries', guard.id])
   }
 
-
+  /**
+   * Update Password
+   */
   updatePassword() {
     this.router.navigate(['updatePassword'])
   }

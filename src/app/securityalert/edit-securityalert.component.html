@@ -1,6 +1,6 @@
 <div>
     <app-header></app-header>
-  </div>
+</div>
 
 
 <div class="col-md-6 user-container">
@@ -12,23 +12,24 @@
         </div>
         <div class="form-group">
             <label for="username">Alert:</label>
-            <input type="text" formControlName="alert" placeholder="alert" name="alert" class="form-control" id="alert" [ngClass]="{'is-invalid': submitted && f.alert.errors}"/>
-            <div *ngIf="submitted && f.alert.errors" class="invalid-feedback">    
+            <input type="text" formControlName="alert" placeholder="alert" name="alert" class="form-control" id="alert"
+                [ngClass]="{'is-invalid': submitted && f.alert.errors}" />
+            <div *ngIf="submitted && f.alert.errors" class="invalid-feedback">
                 <div *ngIf="f.alert.errors.required">
-                      Alert is required
-                </div> 
+                    Alert is required
+                </div>
             </div>
         </div>
 
         <div class="form-group">
             <label for="Role">Message:</label>
             <input type="text" formControlName="message" placeholder="message" name="message" class="form-control"
-                id="message" [ngClass]="{'is-invalid': submitted && f.message.errors}"/>
-                <div *ngIf="submitted && f.message.errors" class="invalid-feedback">    
-                    <div *ngIf="f.message.errors.required">
-                          Message is required
-                    </div> 
+                id="message" [ngClass]="{'is-invalid': submitted && f.message.errors}" />
+            <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                <div *ngIf="f.message.errors.required">
+                    Message is required
                 </div>
+            </div>
         </div>
 
         <input type="submit" value="Update" class="btn btn-success">

@@ -19,10 +19,10 @@ export class AddFlatdetailsComponent implements OnInit {
   owner!: Owner;
   public isRented: boolean = false;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private service: FlatDetailsService,private toastr: ToastrService) { }
+    private router: Router, private formBuilder: FormBuilder, private service: FlatDetailsService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
@@ -38,15 +38,21 @@ export class AddFlatdetailsComponent implements OnInit {
     })
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.addFlatDetailsForm.controls ;
+    return this.addFlatDetailsForm.controls;
   }
 
+  /**
+   * On Submit Method
+   * @returns FlatDetails
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addFlatDetailsForm.invalid) 
-    {
-      return ;
+    if (this.addFlatDetailsForm.invalid) {
+      return;
     }
     console.log(this.addFlatDetailsForm.value + "from onSubmit of add flatDetails component")
     const formValue = this.addFlatDetailsForm.value;
@@ -69,9 +75,10 @@ export class AddFlatdetailsComponent implements OnInit {
     };
     this.service.addFlatDetails(flatWithRent).
       subscribe(
-        (data) => { 
+        (data) => {
           this.toastr.success('Successfully Added');
-          this.flatDetails = data; this.router.navigate(['owners']) },
+          this.flatDetails = data; this.router.navigate(['owners'])
+        },
         (err) => {
           this.toastr.error('Failed to Add Flat Details: Invalid Status');
           console.log(err)

@@ -40,6 +40,9 @@ export class EditDomestichelpComponent implements OnInit {
     );
   }
 
+  /**
+   * On Submit Button
+   */
   onSubmit() {
 
     console.log('form onSubmit of edit domestichelp' + this.editDHelpForm.value);
@@ -50,9 +53,10 @@ export class EditDomestichelpComponent implements OnInit {
           this.dHelp = data;
           this.router.navigate(['flatDetails'])
         },
-        (err) => { 
+        (err) => {
           this.toastr.error('Failed to Update DomesticHelp Details: Invalid Status');
-          console.log(err) }
+          console.log(err)
+        }
       )
   }
 

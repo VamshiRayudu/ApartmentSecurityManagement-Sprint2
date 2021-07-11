@@ -17,7 +17,7 @@ export class GuardComponent implements OnInit {
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private router: Router,
-    private service: GuardService,private toastr: ToastrService) { }
+    private service: GuardService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -37,6 +37,9 @@ export class GuardComponent implements OnInit {
 
   }
 
+  /**
+   * On Back Button
+   */
   onBack() {
     this.router.navigate(['guards']);
   }

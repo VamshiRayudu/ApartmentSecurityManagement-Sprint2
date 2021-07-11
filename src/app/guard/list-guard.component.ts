@@ -30,12 +30,19 @@ export class ListGuardComponent implements OnInit {
 
   }
 
+  /**
+   * On Edit Button
+   * @param guard
+   */
   onEdit(guard: Guard) {
 
     this.router.navigate(['edit-guard', guard.id])
-
-
   }
+
+  /**
+   * On Delete Button
+   * @param guard 
+   */
   onDelete(guard: Guard) {
 
     this.service.deleteGuardById(guard.id).subscribe(
@@ -45,7 +52,7 @@ export class ListGuardComponent implements OnInit {
         this.guards = this.guards.filter(
           gua => gua !== guard
         ),
-        this.router.navigate(['guards']);
+          this.router.navigate(['guards']);
       },
       (err) => {
         this.toastr.error('Failed to Delete');
@@ -55,26 +62,49 @@ export class ListGuardComponent implements OnInit {
     );
   }
 
+  /**
+   * Add Guard Button
+   */
   addGuard() {
     this.router.navigate(['register']);
   }
 
+  /**
+   * Add Guard Salary Button
+   * @param guard 
+   */
   addGuardSalary(guard: Guard) {
     this.router.navigate(['add-guardsalary', guard.id])
   }
 
+  /**
+   * List Guard Salary Button
+   * @param guard 
+   */
   listGuardSalary(guard: Guard) {
     this.router.navigate(['list-guardsalaries', guard.id])
   }
 
+  /**
+   * Add Guard Shift Button
+   * @param guard 
+   */
   addGuardShift(guard: Guard) {
     this.router.navigate(['add-guardshift', guard.id])
   }
 
+  /**
+   * View Guard Shift Button
+   * @param guard 
+   */
   viewGuardShift(guard: Guard) {
     this.router.navigate(['view-guardshift', guard.id])
   }
 
+  /**
+   * View Guard Salary Button
+   * @param guard 
+   */
   viewGuardAttendance(guard: Guard) {
     this.router.navigate(['list-guardattendance', guard.id])
   }

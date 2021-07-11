@@ -15,33 +15,39 @@ export class ListAdminComponent implements OnInit {
   admins!: Admin[];
   public isAdmin: boolean = false;
 
-  constructor(private service: AdminService, private router: Router,private toastr: ToastrService,
+  constructor(private service: AdminService, private router: Router, private toastr: ToastrService,
     private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.service.getAllAdmins().subscribe(
       (data) => {
-      // this.toastr.success('Successfully Fetched');
-      this.admins = data;
+        // this.toastr.success('Successfully Fetched');
+        this.admins = data;
       },
       (err) => {
         this.toastr.error('Failed to Fetch Data');
         console.log(err)
       }
     );
-    if(sessionStorage.getItem('role') == "ADMIN")
-    {
-      this.isAdmin=true;
+    if (sessionStorage.getItem('role') == "ADMIN") {
+      this.isAdmin = true;
     }
 
   }
 
+  /**
+   * on Edit Admin
+   * @param admin
+   */
   onEdit(admin: Admin) {
 
     this.router.navigate(['edit-admin', admin.id])
-
-
   }
+
+  /**
+   * Delete Admin Button
+   * @param admin 
+   */
   onDelete(admin: Admin) {
 
     this.service.deleteAdminById(admin.id).subscribe(
@@ -51,23 +57,24 @@ export class ListAdminComponent implements OnInit {
         this.admins = this.admins.filter(
           adm => adm !== admin
         )
-        if(admin.id == Number(sessionStorage.getItem('id')))
-        {
+        if (admin.id == Number(sessionStorage.getItem('id'))) {
           this.authService.logOut();
           this.router.navigate(['']);
         }
-        else
-        {
+        else {
           this.router.navigate(['admin-home'])
         }
       },
-      (err) =>{
+      (err) => {
         this.toastr.error('Failed to Delete');
         console.log(err)
       }
     );
   }
 
+  /**
+   * Add Admin Button
+   */
   addAdmin() {
     this.router.navigate(['register']);
   }

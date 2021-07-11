@@ -12,12 +12,12 @@ import { Delivery } from './delivery';
 })
 export class AddDeliveryComponent implements OnInit {
 
-  statusData: any[] = ['RECEIVED','PICKEDUP','NOTPICKEDUP']
+  statusData: any[] = ['RECEIVED', 'PICKEDUP', 'NOTPICKEDUP']
   delivery!: Delivery;
   id: number = 0;
   addDeliveryForm!: FormGroup;
 
-  submitted= false;
+  submitted = false;
 
   // flatDetails!: FlatDetails;
   // owner!: Owner;
@@ -35,16 +35,22 @@ export class AddDeliveryComponent implements OnInit {
     })
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.addDeliveryForm.controls ;
+    return this.addDeliveryForm.controls;
   }
 
 
+  /**
+   * on Submit Button
+   * @returns Delivery
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addDeliveryForm.invalid) 
-    {
-      return ;
+    if (this.addDeliveryForm.invalid) {
+      return;
     }
     console.log(this.addDeliveryForm.value + "from onSubmit of add delivery component")
 

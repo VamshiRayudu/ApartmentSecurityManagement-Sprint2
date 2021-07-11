@@ -1,40 +1,9 @@
-<!-- <div class="container">
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th colspan="2">Visitor List</th>
-        </tr>
-
-            <tr *ngFor="let visitor of visitors">
-                <th colspan="2">Visitor Id:</th>
-                <td colspan="2">{{visitor.id}}</td>
-                <th colspan="2">Visitor Name:</th>
-                <td colspan="2">{{visitor.visitorName}}</td>
-                <th colspan="2">Mobile Number:</th>
-                <td colspan="2">{{visitor.mobileNumber}}</td>
-                <th colspan="2">In Time:</th>
-                <td colspan="2">{{visitor.inTime}}</td>
-                <th colspan="2">Out Time:</th>
-                <td colspan="2">{{visitor.outTime}}</td>
-                <th colspan="2">Guard Id:</th>
-                <td colspan="2">{{visitor.guard.id}}</td>
-
-                <td *ngIf="isGuard" ngClass="td2">
-                    <button (click)="onEdit(visitor)">Update OutTime</button>
-                </td>
-            </tr>
-        
-    </table>
-</div>
- -->
- <link
- rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
- />
-
- 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
- <div>
+
+
+<div>
     <app-header></app-header>
 </div>
 
@@ -42,32 +11,33 @@
 <h2>VISITORS</h2>
 
 <div class="container d-flex flex-column justify-content-center">
-	<table class="table table-striped animate__animated animate__zoomInDown">
-		<thead>
-			<tr>
-				<th>VISITOR ID</th>
-				<th>VISITOR NAME</th>
-				<th>MOBILE NUMBER</th>
+    <table class="table table-striped animate__animated animate__zoomInDown">
+        <thead>
+            <tr>
+                <th>VISITOR ID</th>
+                <th>VISITOR NAME</th>
+                <th>MOBILE NUMBER</th>
                 <th>IN TIME</th>
                 <th>OUT TIME</th>
                 <th>GUARD ID</th>
                 <th *ngIf="isGuard"></th>
-			</tr>
-		</thead>
-		<tbody>
-			 <tr *ngFor="let visitor of visitors">
-            <td>{{visitor.id}}</td>
-            <td>{{visitor.visitorName | uppercase}}</td>
-            <td>{{visitor.mobileNumber}}</td>
-            <td>{{visitor.inTime | date:'medium'}}</td>
-            <td>{{visitor.outTime | date:'medium'}}</td>
-            <td>{{visitor.guard.id}}</td>
-            <td *ngIf="isGuard" ngClass="td1">
-                <button (click)="onEdit(visitor)" class="btn-success edit-button" style="height: 43px;width: 85px;">Update OutTime</button>
-            </td>
-        </tr>	
-		</tbody>
-	</table>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let visitor of visitors">
+                <td>{{visitor.id}}</td>
+                <td>{{visitor.visitorName | uppercase}}</td>
+                <td>{{visitor.mobileNumber}}</td>
+                <td>{{visitor.inTime | date:'medium'}}</td>
+                <td>{{visitor.outTime | date:'medium'}}</td>
+                <td>{{visitor.guard.id}}</td>
+                <td *ngIf="isGuard" ngClass="td1">
+                    <button (click)="onEdit(visitor)" class="btn-success edit-button"
+                        style="height: 43px;width: 85px;">Update OutTime</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <div class="card-footer" style="margin-top: 10px;border-width: 0px;text-align: center;">
         <button (click)="onBack()" class="btn-info">Back</button>
     </div>

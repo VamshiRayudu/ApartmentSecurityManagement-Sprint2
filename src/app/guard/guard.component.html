@@ -1,25 +1,3 @@
-<!-- <div class="container">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">{{guard.userName}}</div>
-            <div class="card-body">
-                <div class="card-title">Guard Details
-                    <div class="card-subtitle">
-                        <h4>{{guard.role}}</h4>
-                        <h5>{{guard.id}}</h5>
-                        <h5>{{guard.mobileNumber}}</h5>
-                        <h5>{{guard.name}}</h5>
-                        <h5>{{guard.emailId}}</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <button (click)="onBack()">Back</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div>
     <app-header></app-header>
 </div>
@@ -28,40 +6,44 @@
 
 
 <div>
-<aside class="profile-card">
-    <header>
-      <!-- here’s the avatar -->
-      <a target="_blank" href="#">
-        <img src="assets/images/guardimg.png" class="hoverZoomLink">
-      </a>
-  
-      <!-- the username -->
-      <h1>
-              {{guard.name | uppercase}}
+    <aside class="profile-card">
+        <header>
+            <!-- here’s the avatar -->
+            <a target="_blank" href="#">
+                <img src="assets/images/guardimg.png" class="hoverZoomLink">
+            </a>
+
+            <!-- the username -->
+            <h1>
+                {{guard.name | uppercase}}
             </h1>
-  
-      <!-- and role or location -->
-      <h2 style="margin-bottom: -12px;">
-              {{guard.role}}
+
+            <!-- and role or location -->
+            <h2 style="margin-bottom: -12px;">
+                {{guard.role}}
             </h2>
-  
-    </header>
-  
-    <!-- bit of a bio; who are you? -->
-    <div class="profile-bio">
-      <h3>Profile</h3>
-      <div style="text-align: left;font-size: 18px;">
-        <h6><span style="font-weight: bold;">Guard Id:  </span><span style="color: #FF5722;">{{guard.id}}</span></h6>
-        <h6 ><span style="font-weight: bold;">User Name:  </span><span style="color: #FF5722;">{{guard.userName}}</span></h6>
-        <h6 ><span style="font-weight: bold;">Email Id:  </span><span style="color: #FF5722;">{{guard.emailId}}</span></h6>
-        <h6 ><span style="font-weight: bold;">Mobile Number:  </span><span style="color: #FF5722;">{{guard.mobileNumber}}</span></h6>
-        <div class="card-footer">
-            <button (click)="onBack()" class="btn-info">Back</button>
+
+        </header>
+
+        <!-- bit of a bio; who are you? -->
+        <div class="profile-bio">
+            <h3>Profile</h3>
+            <div style="text-align: left;font-size: 18px;">
+                <h6><span style="font-weight: bold;">Guard Id: </span><span style="color: #FF5722;">{{guard.id}}</span>
+                </h6>
+                <h6><span style="font-weight: bold;">User Name: </span><span
+                        style="color: #FF5722;">{{guard.userName}}</span></h6>
+                <h6><span style="font-weight: bold;">Email Id: </span><span
+                        style="color: #FF5722;">{{guard.emailId}}</span></h6>
+                <h6><span style="font-weight: bold;">Mobile Number: </span><span
+                        style="color: #FF5722;">{{guard.mobileNumber}}</span></h6>
+                <div class="card-footer">
+                    <button (click)="onBack()" class="btn-info">Back</button>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-  </aside>
-  </div>
+    </aside>
+</div>
 
 
 

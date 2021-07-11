@@ -1,26 +1,4 @@
-<!-- <div class="container">
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th colspan="2">Guard Attendance List</th>
-        </tr>
-
-        <tr *ngFor="let attendance of attendances">
-            <th colspan="2">InTime:</th>
-            <td colspan="2">{{attendance.inTime}}</td>
-            <th colspan="2">OutTime:</th>
-            <td colspan="2">{{attendance.outTime}}</td>
-            <th colspan="2">Date:</th>
-            <td colspan="2">{{attendance.dateOfAttendance}}</td>
-            <th colspan="2">Added By GuardId:</th>
-            <td colspan="2">{{attendance.updatedByGuardId}}</td>
-        </tr>
-
-    </table>
-</div> -->
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
 <div>
@@ -31,24 +9,24 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 <h2>GUARD ATTENDANCE</h2>
 
 <div class="container d-flex flex-column justify-content-center">
-	<table class="table table-striped animate__animated animate__zoomInDown">
-		<thead>
-			<tr>
-				<th>IN TIME</th>
-				<th>OUT TIME</th>
-				<th>DATE</th>
+    <table class="table table-striped animate__animated animate__zoomInDown">
+        <thead>
+            <tr>
+                <th>IN TIME</th>
+                <th>OUT TIME</th>
+                <th>DATE</th>
                 <th>UPDATED BY GUARD</th>
-			</tr>
-		</thead>
-		<tbody>
-			 <tr *ngFor="let attendance of attendances">
-            <td>{{attendance.inTime | date:'medium'}}</td>
-            <td>{{attendance.outTime | date:'medium'}}</td>
-            <td>{{attendance.dateOfAttendance}}</td>
-            <td>{{attendance.updatedByGuardId}}</td>
-        </tr>	
-		</tbody>
-	</table>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let attendance of attendances">
+                <td>{{attendance.inTime | date:'medium'}}</td>
+                <td>{{attendance.outTime | date:'medium'}}</td>
+                <td>{{attendance.dateOfAttendance}}</td>
+                <td>{{attendance.updatedByGuardId}}</td>
+            </tr>
+        </tbody>
+    </table>
     <div class="card-footer" style="margin-top: 10px;border-width: 0px;text-align: center;">
         <button (click)="onBack()" class="btn-info">Back</button>
     </div>

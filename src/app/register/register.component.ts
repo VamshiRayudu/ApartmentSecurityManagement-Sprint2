@@ -38,6 +38,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Register User
+   * @param form1 
+   * @returns User
+   */
   createUser(form1: any): void {
     console.log("in create user", form1.value)
     this.isValidFormSubmitted = false;
@@ -60,6 +65,9 @@ export class RegisterComponent implements OnInit {
 
   };
 
+  /**
+   * On Back Button
+   */
   home() {
     this.router.navigate(['admin-home'])
   }

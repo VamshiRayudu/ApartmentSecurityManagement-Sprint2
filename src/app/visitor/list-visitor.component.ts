@@ -13,40 +13,46 @@ import { Visitor } from './visitor';
 })
 export class ListVisitorComponent implements OnInit {
 
-    visitors!: Visitor[];
-    private error!: string;
-    private id: number = 0;
-    private flatNumber: number=0;
-    public isGuard: boolean=false;
+  visitors!: Visitor[];
+  private error!: string;
+  private id: number = 0;
+  private flatNumber: number = 0;
+  public isGuard: boolean = false;
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: VisitorService,private toastr: ToastrService) { }
+  constructor(private _ActivatedRoute: ActivatedRoute, private router: Router, private service: VisitorService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     var role = sessionStorage.getItem('role')
-    if(role == "GUARD")
-    {
-        this.isGuard=true;
+    if (role == "GUARD") {
+      this.isGuard = true;
     }
     this.id = Number(this._ActivatedRoute.snapshot.paramMap.get("id"));
-        this.service.getVisitorByFlatId(this.id).subscribe(
-          (data: Visitor[]) => {
-            this.toastr.success('Successfully Fetched');
-            console.log(data);
-            this.visitors = data;
-        },
-        (err: any) => {
-          this.toastr.error('Failed to Fetch Visitor Details: Invalid Status');
-          console.log(err)
-        }
-        );
+    this.service.getVisitorByFlatId(this.id).subscribe(
+      (data: Visitor[]) => {
+        this.toastr.success('Successfully Fetched');
+        console.log(data);
+        this.visitors = data;
+      },
+      (err: any) => {
+        this.toastr.error('Failed to Fetch Visitor Details: Invalid Status');
+        console.log(err)
+      }
+    );
   }
 
-  onEdit(visitor: Visitor){
-    this.router.navigate(['update-visitor',visitor.id]);
+  /**
+   * On Edit Button
+   * @param visitor 
+   */
+  onEdit(visitor: Visitor) {
+    this.router.navigate(['update-visitor', visitor.id]);
   }
-  
-  onBack(){
+
+  /**
+   * On Back Button
+   */
+  onBack() {
     this.router.navigate(['flatDetails']);
-}
+  }
 
 }

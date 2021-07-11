@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private router: Router,
-    private service: AdminService,private toastr: ToastrService) { }
+    private service: AdminService, private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
@@ -29,15 +29,18 @@ export class AdminComponent implements OnInit {
         console.log(data);
         this.admin = data
       },
-      (err) =>{ 
+      (err) => {
         this.toastr.error('Failed to Fetch Data');
         console.log(err)
-      
+
       }
     );
 
   }
 
+  /**
+   * On Back Button
+   */
   onBack() {
     this.router.navigate(['admins']);
   }

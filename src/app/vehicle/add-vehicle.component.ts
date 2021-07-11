@@ -20,7 +20,7 @@ export class AddVehicleComponent implements OnInit {
   flatDetails!: FlatDetails;
   owner!: Owner;
 
-  submitted = false; 
+  submitted = false;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private formBuilder: FormBuilder, private service: VehicleService, private toastr: ToastrService) { }
@@ -33,15 +33,21 @@ export class AddVehicleComponent implements OnInit {
     })
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.addVehicleForm.controls ;
+    return this.addVehicleForm.controls;
   }
 
+  /**
+   * On Submit Button
+   * @returns Vehicle
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addVehicleForm.invalid) 
-    {
-      return ;
+    if (this.addVehicleForm.invalid) {
+      return;
     }
     console.log(this.addVehicleForm.value + "from onSubmit of add customer component")
     const formValue = this.addVehicleForm.value;

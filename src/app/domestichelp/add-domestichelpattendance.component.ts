@@ -17,7 +17,7 @@ export class AddDomestichelpattendanceComponent implements OnInit {
   id: number = 0;
   addAttendanceForm!: FormGroup;
 
-  submitted= false;
+  submitted = false;
 
   constructor(private _ActivatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -33,15 +33,21 @@ export class AddDomestichelpattendanceComponent implements OnInit {
     })
   }
 
+  /**
+   * Form Validation
+   */
   get f() {
-    return this.addAttendanceForm.controls ;
+    return this.addAttendanceForm.controls;
   }
 
+  /**
+   * Add Dhelp Attendance Submit
+   * @returns Attendance
+   */
   onSubmit() {
     this.submitted = true;
-    if(this.addAttendanceForm.invalid) 
-    {
-      return ;
+    if (this.addAttendanceForm.invalid) {
+      return;
     }
     console.log(this.addAttendanceForm.value + "from onSubmit of add dhelp attendance component")
     const formValue = this.addAttendanceForm.value;

@@ -1,31 +1,31 @@
 <div>
-    <app-header></app-header>
-  </div>
+  <app-header></app-header>
+</div>
 
 
 
 <div class="col-md-6 container">
-    <h2 class="text-center">Update Delivery Status Form</h2>
-    <form [formGroup]="updateDeliveryForm" (ngSubmit)="onSubmit()">
+  <h2 class="text-center">Update Delivery Status Form</h2>
+  <form [formGroup]="updateDeliveryForm" (ngSubmit)="onSubmit()">
 
-        <div class="form-group">
-            <label for="status">Delivery Status</label>
-            <!-- <input type="text" formControlName="status" placeholder="status"
+    <div class="form-group">
+      <label for="status">Delivery Status</label>
+      <!-- <input type="text" formControlName="status" placeholder="status"
             name="status" class="form-control" id="status"> -->
-            <select name="status"  formControlName="status" class="form-control" id="status">
-                <option>---Select---</option>
-                <option *ngFor="let item of statusData" [value]="item">
-                  {{item}}
-                </option>
-              </select>
-        </div>
+      <select name="status" formControlName="status" class="form-control" id="status">
+        <option>---Select---</option>
+        <option *ngFor="let item of statusData" [value]="item">
+          {{item}}
+        </option>
+      </select>
+    </div>
 
 
-        <input type="submit" value="Update" class="btn btn-success">
-    </form>
+    <input type="submit" value="Update" class="btn btn-success">
+  </form>
 </div>
 
 
 <div style="margin-top: 450px;">
-    <app-footer></app-footer>
+  <app-footer></app-footer>
 </div>
